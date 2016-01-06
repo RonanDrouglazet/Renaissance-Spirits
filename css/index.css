@@ -12,6 +12,8 @@ header {
 .logo {
     margin: auto; 
     width: 600px;
+    max-width: 60%;
+    max-height: 60%;
 }
 
 .ui.selection.dropdown, .ui.selection.visible.dropdown>.text:not(.default) {
@@ -32,7 +34,7 @@ header {
 
 p {
     text-align: center;
-    font-size: large;
+    font-size: 1.2em;
 }
 
 footer {
