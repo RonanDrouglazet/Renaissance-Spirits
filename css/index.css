@@ -1,5 +1,5 @@
 body {
-    background: url(../img/vueRS.jpg) !important;
+    background: url(../img/vueRS.jpg) rgb(15, 24, 64) !important;
     background-size: cover !important;
     font-family: 'RS';
     color: rgba(255,255,255,.85);
