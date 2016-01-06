@@ -1,0 +1,45 @@
+body {
+    background: url(../img/vueRS.jpg) !important;
+    background-size: cover !important;
+    font-family: 'RS';
+    color: rgba(255,255,255,.85);
+}
+
+header {
+    padding-bottom: 5%;
+}
+
+.logo {
+    margin: auto; 
+    width: 600px;
+}
+
+.ui.selection.dropdown, .ui.selection.visible.dropdown>.text:not(.default) {
+    background: transparent;
+    color: rgba(255,255,255,.85);
+    border-color: rgb(133, 133, 133);
+}
+
+.ui.selection.dropdown:hover {
+    border-color: rgba(133, 133, 133, .85);
+}
+
+.ui.inverted.button {
+    color: rgba(255,255,255,.85);
+    box-shadow: 0 0 0 1px rgb(133, 133, 133) inset!important;
+    font-family: 'RS';
+}
+
+p {
+    text-align: center;
+    font-size: large;
+}
+
+footer {
+    color: gray;
+    font-size: 1em;
+    position: absolute;
+    bottom: 0;
+    text-align:center;
+    width: 100%;
+}
