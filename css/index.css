@@ -1,19 +1,19 @@
+html, body {
+    overflow: hidden;
+}
+
 body {
     background: url(../img/vueRS.jpg) rgb(15, 24, 64) !important;
+    background-repeat: no-repeat;
     background-size: cover !important;
     font-family: 'RS';
     color: rgba(255,255,255,.85);
 }
 
-header {
-    padding-bottom: 5%;
-}
-
 .logo {
-    margin: auto; 
-    width: 600px;
+    margin: 10px auto 10px auto; 
+    width: 400px;
     max-width: 60%;
-    max-height: 60%;
 }
 
 .ui.selection.dropdown, .ui.selection.visible.dropdown>.text:not(.default) {
@@ -44,4 +44,18 @@ footer {
     bottom: 0;
     text-align:center;
     width: 100%;
+}
+
+@media only screen and (max-width:321px) {
+    .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column, .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row), .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column, .ui.stackable.grid>.wide.column {
+        padding: 0.4rem !important;
+    }
+
+    footer {
+        font-size: 0.8em;
+    }
+
+    p {
+        font-size: 1em;
+    }
 }
