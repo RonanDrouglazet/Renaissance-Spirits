@@ -1,37 +1,98 @@
+/* COMMON */
+section {
+    text-align: center;
+    position: relative;
+}
+
 body {
-	color: rgb(37, 61, 115);
+    color: rgb(37, 61, 115);
 }
 
 img {
-	margin: auto;
+    margin: auto;
 }
 
+img.background {
+    width: 100%;
+}
+
+.cover {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 100%;
+    left: 0;
+}
+
+h1 {
+    font-weight: 100;
+}
+
+h2 {
+    font-family: Helvetica;
+    font-size: 30px;
+    letter-spacing: 0.6pt;
+    font-weight: 100;
+}
+
+section .title p {
+    font-family: Helvetica;
+    font-size: 16px;
+    letter-spacing: .6pt;
+    font-weight: 100;
+}
+
+.button_rs_out {
+    width: 192px;
+    height: 38px;
+    border: 1px solid white;
+    position: relative;
+    margin: 50px auto;
+    cursor: pointer;
+}
+
+.button_rs_in {
+    width: 180px;
+    height: 48px;
+    border: 1px solid white; 
+    position: absolute;
+    top: -6px;
+    left: 5px;
+    padding-top: 14px;
+    font-family: Helvetica;
+    font-size: 16px;
+    letter-spacing: .6pt;
+    font-weight: 100;
+}
+
+/* MENU */
+
 .menu {
-	width: 100%;
-	height: 65px;
-	background-color: rgb(37, 61, 115);
-	position: fixed;
-	top: 0;
-	left: 0;
-	z-index: 2;
+    width: 100%;
+    height: 65px;
+    background-color: rgb(37, 61, 115);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
 }
 
 .menu ul {
-	width: 560px;
-	margin: 25px auto;
-	-webkit-padding-start: 0px;
-	padding-left: 0px;
+    width: 560px;
+    margin: 25px auto;
+    -webkit-padding-start: 0px;
+    padding-left: 0px;
 }
 
 .menu li {
-	display: inline-block;
-	color: white;
-	font-size: 14px;
-	font-family: Helvetica;
-	letter-spacing: .4pt;
-	font-weight: 100;
-	width: 91px;
-	text-align: center;
+    display: inline-block;
+    color: white;
+    font-size: 14px;
+    font-family: Helvetica;
+    letter-spacing: .4pt;
+    font-weight: 100;
+    width: 91px;
+    text-align: center;
 }
 
 .menu li.active span {
@@ -42,60 +103,98 @@ img {
     opacity: .8
 }
 
-section {
-	text-align: center;
+
+/* SCREEN 1 */
+
+.screen1 .title {
+    margin-top: 140px;
 }
 
-.title {
-	margin-top: 140px;
+.screen1 .title h1 {
+    font-family: 'RS';
+    font-size: 23px;
+    letter-spacing: 1pt;
 }
 
-.title h1 {
-	font-family: 'RS';
-	font-size: 23px;
-	letter-spacing: 1pt;
+.screen1 .nosmarques {
+    margin-top: 75px;
 }
 
-.title p {
-	font-family: Helvetica;
-    font-size: 16px;
-    letter-spacing: .6pt;
-    font-weight: 100;
+.screen1 .nosmarques img {
+    width: 741px;
 }
 
-.nosmarques {
-	margin-top: 75px;
-}
-
-.nosmarques h2 {
-	font-family: Helvetica;
-    font-size: 30px;
-    letter-spacing: 0.6pt;
-    font-weight: 100;
-}
-
-.nosmarques img {
-	width: 741px;
-}
-
-.button_down {
-	font-family: Helvetica;
+.screen1 .button_down {
+    font-family: Helvetica;
     font-size: 16px;
     letter-spacing: .6pt;
     font-weight: 100;
     margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-.button_down img {
-	width: 38px;
+.screen1 .button_down img {
+    width: 38px;
 }
+
+/* SCREEN 2*/
 
 .screen2 {
-	background-image: url(../img/beluga.png);
-	background-repeat: no-repeat;
-    background-size: cover;
     background-color: black;
+    color: white;
+    min-height: 530px;
 }
+
+.screen2 .cover {
+    background-color: rgba(14, 17, 49, .6);
+}
+
+.screen2 .logo {
+    width: 120px;
+    margin: 130px auto 70px;
+}
+
+.screen2 h2 {
+    margin-bottom: 25px;
+}
+
+
+/* SCREEN 3 */
+
+.screen3 {
+    height: 650px;
+    background-color: #fcf5e9;
+}
+
+/* SCREEN 4 */
+
+.screen4 {
+    height: 448px;
+    background-color: #f6faeb;
+}
+
+/* SCREEN 5 */
+
+.screen5 {
+    background-color: #87b241;
+    color: white;
+    min-height: 760px;
+}
+
+.screen5 .cover {
+    background-color: rgba(135, 178, 65, .6);
+}
+
+.screen5 .logo {
+    width: 240px;
+    margin: 200px auto 70px;
+}
+
+.screen5 h2 {
+    margin-bottom: 25px;
+}
+
+/* ANIM ARROW SCREEN 1*/
 
 .button_down img {
   animation: animationFrames linear 1.5s;
