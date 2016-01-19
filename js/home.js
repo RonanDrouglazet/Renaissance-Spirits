@@ -37,5 +37,6 @@ $(document).ready(function() {
     $('.covered').each(function() {
         $(window).scroll(cover.bind(this))
         $(window).resize(cover.bind(this))
+        cover.bind(this)()
     })
 })
