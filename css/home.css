@@ -1,7 +1,6 @@
 /* COMMON */
 section {
     text-align: center;
-    position: relative;
 }
 
 body {
@@ -19,8 +18,29 @@ img.background {
 .cover {
     width: 100%;
     height: 100%;
+    z-index: 4;
+    position: relative;
+}
+
+.covered img.background.fixed {
+    top: 0;
+    left: 0;
+    z-index: 2;
+    position: fixed;
+}
+
+.covered .cover_bg {
+    width: 100%;
+    height: 0px;
+    left: 0;
+    z-index: 3;
+    position: fixed;
+    overflow: hidden;
+}
+
+.covered .cover_bg img {
     position: absolute;
-    top: 100%;
+    bottom: 0;
     left: 0;
 }
 
@@ -74,7 +94,7 @@ section .title p {
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 2;
+    z-index: 10;
 }
 
 .menu ul {
@@ -140,22 +160,22 @@ section .title p {
 /* SCREEN 2*/
 
 .screen2 {
-    background-color: black;
+    background-color: rgb(37, 61, 115);
     color: white;
     min-height: 530px;
 }
 
-.screen2 .cover {
-    background-color: rgba(14, 17, 49, .6);
-}
-
 .screen2 .logo {
     width: 120px;
-    margin: 130px auto 70px;
+    margin: 0 auto 70px;
 }
 
 .screen2 h2 {
     margin-bottom: 25px;
+}
+
+.screen2 .cover {
+    padding-top: 130px;
 }
 
 
@@ -182,16 +202,22 @@ section .title p {
 }
 
 .screen5 .cover {
-    background-color: rgba(135, 178, 65, .6);
+    padding-top: 200px;
 }
 
 .screen5 .logo {
     width: 240px;
-    margin: 200px auto 70px;
+    margin: 0 auto 70px;
 }
 
 .screen5 h2 {
     margin-bottom: 25px;
+}
+
+/* SCREEN 6 */
+
+.screen6 {
+    height: 698px;
 }
 
 /* ANIM ARROW SCREEN 1*/
