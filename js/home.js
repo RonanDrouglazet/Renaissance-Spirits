@@ -73,6 +73,20 @@ var slide = function() {
 
 
 $(document).ready(function() {
+    
+    // Intro
+    $('.ui.dropdown').dropdown()
+    $('i.remove').click(function() {
+        $('.cookie_use,.cookie_use_mobile').fadeOut()
+    })
+    $('button.accept').click(function() {
+        $('.intro').fadeOut()
+        $('html, body').css('overflow', '')
+    })
+    $('html, body').css('overflow', 'hidden')
+
+
+    // Home page
     $('.covered').each(function() {
         $(window).scroll(cover.bind(this))
         $(window).resize(cover.bind(this))

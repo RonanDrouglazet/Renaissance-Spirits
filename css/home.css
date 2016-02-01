@@ -1,3 +1,98 @@
+/* INTRO */
+
+
+.intro {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url(../img/vueRS.jpg) rgb(15, 24, 64) !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+    color: rgba(255,255,255,.85);
+    z-index: 10;
+}
+
+.intro .logo {
+    margin: 10px auto 10px auto; 
+    width: 400px;
+    max-width: 60%;
+}
+
+.intro .ui.selection.dropdown, .intro .ui.selection.visible.dropdown>.text:not(.default) {
+    background: transparent;
+    color: rgba(255,255,255,.85);
+    border-color: rgb(133, 133, 133);
+}
+
+.intro .ui.selection.dropdown:hover {
+    border-color: rgba(133, 133, 133, .85);
+}
+
+.intro .ui.inverted.button {
+    color: rgba(255,255,255,.85);
+    box-shadow: 0 0 0 1px rgb(133, 133, 133) inset!important;
+}
+
+.intro .ui.inverted.button:hover {
+    color: black;
+    box-shadow: 0 0 0 1px rgb(133, 133, 133) inset!important;
+}
+
+.intro .cookie_use, .intro .cookie_use_mobile {
+    width: 100%;
+    height: 30px;
+    background-color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    padding-top: 5px;
+}
+
+.intro .cookie_use i {
+    cursor: pointer;
+}
+
+.intro .cookie_use_mobile {
+    display: none;
+}
+
+.intro p {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.intro footer {
+    color: gray;
+    font-size: 1em;
+    position: absolute;
+    bottom: 0;
+    text-align:center;
+    width: 100%;
+}
+
+@media only screen and (max-width:321px) {
+    .ui.grid>.stackable.stackable.row>.column, .ui.stackable.grid>.column.grid>.column, .ui.stackable.grid>.column.row>.column, .ui.stackable.grid>.column:not(.row), .ui.stackable.grid>.row>.column, .ui.stackable.grid>.row>.wide.column, .ui.stackable.grid>.wide.column {
+        padding: 0.4rem !important;
+    }
+
+    .intro footer {
+        font-size: 0.8em;
+        line-height: 1em;
+    }
+
+    .intro p {
+        font-size: 1em;
+    }
+
+    .intro .cookie_use_mobile {
+        display: block;
+    }
+
+    .intro .cookie_use {
+        display: none;
+    }
+}
+
 /* COMMON */
 section {
     text-align: center;
