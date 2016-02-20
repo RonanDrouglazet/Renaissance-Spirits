@@ -110,6 +110,8 @@ img {
     width: 100%;
 }
 
+
+/* COVER */
 .cover {
     width: 100%;
     height: 100%;
@@ -143,6 +145,25 @@ img {
     bottom: 0;
     left: 0;
 }
+
+.covered {
+    color: white;
+    min-height: 760px;
+}
+
+.covered .cover {
+    padding-top: 200px;
+}
+
+.covered .logo {
+    margin: 0 auto 70px;
+}
+
+.covered h2 {
+    margin-bottom: 25px;
+}
+
+/* SLIDE */
 
 div.slide {
   position: relative;
@@ -189,6 +210,38 @@ section .title p {
     font-weight: 100;
 }
 
+/* PRODUCT INTRO */ 
+.product_intro {
+    height: 448px;
+    padding-top: 50px;
+    font-family: 'Helvetica Light'; /* not ok for now..*/
+}
+
+.product_intro h2 {
+    font-family: 'RS';
+    font-size: 72px;
+    margin-bottom: 70px;
+}
+
+.product_intro p {
+    margin-bottom: 60px;
+    font-size: 18px;
+}
+
+.product_intro .column {
+  text-align: center;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 23.82px;
+}
+
+.product_intro .line {
+  width: 80px;
+  height: 1px;
+  background-color: #253d73;
+  margin: 5px auto;
+}
+
 
 /* SCREEN 1 */
 
@@ -206,8 +259,8 @@ section .title p {
     margin-top: 75px;
 }
 
-.screen1 .nosmarques img {
-    width: 741px;
+.screen1 .nosmarques h2 {
+    font-family: 'RS';
 }
 
 .screen1 .button_down {
@@ -227,17 +280,10 @@ section .title p {
 
 .screen2 {
     background-color: rgb(37, 61, 115);
-    color: white;
-    min-height: 530px;
 }
 
 .screen2 .logo {
     width: 120px;
-    margin: 0 auto 70px;
-}
-
-.screen2 h2 {
-    margin-bottom: 25px;
 }
 
 .screen2 .cover {
@@ -249,13 +295,11 @@ section .title p {
 
 .screen3 {
     height: 650px;
-    background-color: #fcf5e9;
 }
 
 /* SCREEN 4 */
 
 .screen4 {
-    height: 448px;
     background-color: #f6faeb;
 }
 
@@ -263,27 +307,185 @@ section .title p {
 
 .screen5 {
     background-color: #87b241;
-    color: white;
-    min-height: 760px;
-}
-
-.screen5 .cover {
-    padding-top: 200px;
 }
 
 .screen5 .logo {
     width: 240px;
-    margin: 0 auto 70px;
-}
-
-.screen5 h2 {
-    margin-bottom: 25px;
 }
 
 /* SCREEN 6 */
 
 .screen6 {
-    height: 698px;
+    height: 1445px;
+}
+
+/* SCREEN 7 */
+
+.screen7 {
+    background-color: #e0f1fd;
+}
+
+/* SCREEN 8 */
+
+.screen8 {
+    background-color: #5b8bae;
+}
+
+.screen8 .logo {
+    width: 440px;
+}
+
+/* SCREEN 9 */
+
+.screen9 {
+    height: 1445px;
+}
+
+/* SCREEN 10 */
+.screen10 {
+    background-color: #fbf4e8;
+}
+
+/* SCREEN 11 */
+
+.screen11 {
+    background-color: #e8cfa4;
+}
+
+.screen11 .logo {
+    width: 388px;
+}
+
+/* SCREEN 12 */
+
+.screen12 {
+    height: 1445px;
+}
+
+/* SCREEN 13 */
+.screen13 {
+    background-color: #ffdcba;
+}
+
+/* SCREEN 14 */
+
+.screen14 {
+    background-color: #ffa045;
+}
+
+.screen14 .logo {
+    width: 251px;
+}
+
+/* SCREEN 15 */
+
+.screen15 {
+    height: 1445px;
+}
+
+/* SCREEN 16 */
+.screen16 {
+    background-color: #efefef;
+}
+
+/* SCREEN 17 */
+
+.screen17 {
+    background-color: #a9adb3;
+}
+
+.screen17 .logo {
+    width: 294px;
+}
+
+/* SCREEN 18 */
+
+.screen18 {
+    height: 1445px;
+}
+
+/* SCREEN 19 */
+.screen19 {
+    background-color: #fbe7c0;
+}
+
+/* SCREEN 20 */
+
+.screen20 {
+    background-color: #fdc554;
+}
+
+.screen20 .logo {
+    width: 325px;
+}
+
+/* SCREEN 21 */
+
+.screen21 {
+    height: 1445px;
+}
+
+/* SCREEN 22 */
+.screen22 {
+    background-color: #fde0e0;
+}
+
+/* SCREEN 23 */
+
+.screen23 {
+    background-color: #740F0F;
+}
+
+.screen23 .logo {
+    width: 204px;
+}
+
+/* SCREEN 24 */
+
+.screen24 {
+    height: 1445px;
+}
+
+/* SCREEN 25 */
+.screen25 {
+    background-color: rgba(182, 146, 83, .3);
+}
+
+/* SCREEN 26 */
+
+.screen26 {
+    background-color: #b69253;
+}
+
+.screen26 .logo {
+    width: 316px;
+}
+
+/* SCREEN 27 */
+
+.screen27 {
+    height: 1445px;
+}
+
+/* SCREEN 28 */
+.screen28 {
+    background-color: rgba(132, 185, 251, .3);
+}
+
+/* SCREEN 29 */
+
+.screen29 {
+    background-color: #84B9FB;
+}
+
+.screen29 .logo {
+    width: 316px;
+}
+
+/* SCREEN 30 */
+
+.screen30 {
+    height: 1445px;
 }
 
 /* ANIM ARROW SCREEN 1*/
