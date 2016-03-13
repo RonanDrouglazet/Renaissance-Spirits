@@ -1,0 +1,25 @@
+{
+  "name": "Renaissance-Spirits",
+  "version": "1.0.0",
+  "description": "http://ronandrouglazet.github.io/Renaissance-Spirits/",
+  "main": "index.html",
+  "scripts": {
+    "start": "lessc --clean-css less/index.less css/index.css",
+    "watch": "watch 'date +\"%m-%d-%Y %T\" && npm start' less/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RonanDrouglazet/Renaissance-Spirits.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RonanDrouglazet/Renaissance-Spirits/issues"
+  },
+  "homepage": "https://github.com/RonanDrouglazet/Renaissance-Spirits",
+  "dependencies": {
+    "less": "^2.6.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "watch": "^0.17.1"
+  }
+}

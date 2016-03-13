@@ -1,0 +1,110 @@
+@imagesdir: "../img/";
+@king-blue: rgb(37, 61, 115);
+
+.bg_king_blue(@opacity: 1) {
+    background-color: rgba(37, 61, 115, @opacity);
+}
+
+@font-face {
+    font-family: "RS_Bold";
+    src: url('../font/Constantine_Bold.ttf');
+}
+
+@font-face {
+    font-family: "RS";
+    src: url('../font/Constantine.ttf');
+}
+
+@font-face {
+    font-family: "HT_light";
+    src: url('../font/Helvetica_LT_Light.ttf');
+}
+
+.font_rsb {
+	font-family: "RS_Bold";
+}
+
+.font_rs {
+	font-family: "RS";
+}
+
+.font_htl {
+	font-family: "HT_light";
+}
+
+.full_size {
+	width: 100%;
+    height: 100%;
+}
+
+.fixed(@top: 0, @right: 0) {
+  position: fixed;
+  top: @top;
+  right: @right;
+}
+
+.top(@top: 0, @left: 0) {
+  position: absolute;
+  top: @top;
+  left: @left;
+}
+
+.bottom(@bottom: 0) {
+	position: absolute;
+	bottom: @bottom;
+}
+
+.horizontal_center(@offset) {
+    left: 50%;
+    margin-left: @offset;
+}
+
+.cover(@img, @bg: rgb(15, 24, 64)) {
+	position: relative;
+	background: url("@{imagesdir}@{img}") @bg !important;
+    background-repeat: no-repeat;
+    background-size: cover !important;
+}
+
+section {
+    text-align: center;
+    position: relative;
+}
+
+body {
+    color: white;
+}
+
+img {
+    margin: auto;
+}
+
+h2 {
+    font-weight: normal;
+    font-size: 20pt;
+    .font_rsb; 
+}
+
+
+.button_rs_out {
+    width: 192px;
+    height: 38px;
+    border: 1px solid white;
+    position: relative;
+    margin: 50px auto;
+    cursor: pointer;
+}
+
+.button_rs_in {
+   	.font_htl;
+    width: 180px;
+    height: 48px;
+    border: 1px solid white;
+    position: absolute;
+    top: -6px;
+    left: 5px;
+    padding-top: 14px;
+    font-size: 16px;
+    letter-spacing: .6pt;
+    font-weight: 100;
+}

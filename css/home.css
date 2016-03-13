@@ -7,7 +7,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url(../img/vueRS.jpg) rgb(15, 24, 64) !important;
+    background: url("@{imagesdir}vueRS.jpg") rgb(15, 24, 64) !important;
     background-repeat: no-repeat;
     background-size: cover !important;
     color: rgba(255,255,255,.85);
