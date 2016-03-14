@@ -36,6 +36,10 @@ $(document).ready(function() {
         $('.actu .button').fadeOut(1000)
 
         actus.each(function(i, actu) {
+            $(actu).css('z-index', actus.length - i)
+        })
+
+        actus.each(function(i, actu) {
 
             if (i === index - 1) {
                 dir = left ? 'outleft' : 'center'
@@ -53,11 +57,15 @@ $(document).ready(function() {
                actus[i].className = 'actu ' + dir 
                if (dir === 'center') {
                     $(actus[i]).find('.button').fadeIn(1000)
+                    $(actus[i]).css('z-index', 100)
                }
                dir = null
             }
         })
+    })
 
+    actus.each(function(i, actu) {
+        $(actu).css('z-index', actus.length - i)
     })
 
     $(window).on('scroll', function() {
