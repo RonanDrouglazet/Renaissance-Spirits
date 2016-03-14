@@ -213,3 +213,38 @@ header {
         margin: 50px auto;
     }
  }
+
+ /************** 
+ * SCREEN 5 - MARQUES SLIDES
+ **************/
+
+ .screen5 {
+    .full_size;
+    background-color: white;
+    
+    .menu {
+        .font_rs;
+
+        font-size: 14pt;
+        color: @king-blue;
+
+        width: 100%;
+        height: 15%;
+        min-height: 110px;        
+
+        h2 { margin: 35px };
+    }
+    .slides {
+        background-color: red;
+        width: 100%;
+        height: 85%;
+        position: relative;
+        .slide { 
+            .full_size; 
+            .cover('', white); 
+            .top; 
+
+            transition: left 1s ease; 
+        }
+    }
+ }

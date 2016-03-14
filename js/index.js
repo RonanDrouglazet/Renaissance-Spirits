@@ -5,6 +5,27 @@ $(document).ready(function() {
     var fmenu = $('header .floating');
     var actus = $('.actu')
 
+    /************** 
+     * MENU
+     **************/
+    $('header .floating').click(function() {
+        menu.slideDown(500)
+        fmenu.fadeOut()
+    })
+
+    $(window).on('scroll', function() {
+        if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
+            menu.slideUp(500)
+            fmenu.fadeIn()
+        } else if (win.scrollTop() < mheight && fmenu.css('display') === 'block') {
+            menu.slideDown(500)
+            fmenu.fadeOut()
+        }
+    })
+
+    /************** 
+     * INTRO
+     **************/
     $('.ui.dropdown').dropdown()
     
     $('i.remove').click(function() {
@@ -16,6 +37,9 @@ $(document).ready(function() {
         $('html, body').css('overflow', '')
     })
 
+    /************** 
+     * SCREEN 1 - SHOW MORE
+     **************/
     $('.screen1 .button_rs_out').click(function() {
         $('.screen2').show()
         $('html, body').animate({
@@ -23,11 +47,9 @@ $(document).ready(function() {
         }, 1000);
     })
 
-    $('header .floating').click(function() {
-        menu.slideDown(500)
-        fmenu.fadeOut()
-    })
-
+    /************** 
+     * SCREEN 3 - ACTU
+     **************/
     $('.actu .button').click(function() {
         var left = !$(this).hasClass('left')
         var index = actus.get().indexOf(this.parentNode)
@@ -68,15 +90,56 @@ $(document).ready(function() {
         $(actu).css('z-index', actus.length - i)
     })
 
+    /************** 
+     * SCREEN 5 - SLIDE
+     **************/
+    var index_slide = 0
+    var screen5 = $('.screen5')
+    var screen5top = screen5.offset().top
+    var slides = screen5.find('.slides .slide')
+
+    var move = function() {
+        var s;
+        // move main
+        $(slides[index_slide]).css('left', '-100%')
+        
+        // reset out left to out right
+        if (slides[index_slide - 1]) {
+            s = slides[index_slide - 1]
+            $(s).hide()
+            $(s).css('left', '100%')
+            setTimeout(function() { $(s).show() }, 1000)
+        } else {
+            s = slides[slides.length - 1]
+            $(s).hide()
+            $(s).css('left', '100%')
+            setTimeout(function() { $(s).show() }, 1000)
+        }
+
+        // move next to main
+        if (slides[index_slide + 1]) {
+            $(slides[index_slide + 1]).css('left', '0%')
+        } else {
+            // else restart from begining
+            index_slide = -1
+            $(slides[0]).css('left', '0%')
+        }
+
+        index_slide++;
+    }
+
+    var interval_slide;
     $(window).on('scroll', function() {
-        if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
-            menu.slideUp(500)
-            fmenu.fadeIn()
-        } else if (win.scrollTop() < mheight && fmenu.css('display') === 'block') {
-            menu.slideDown(500)
-            fmenu.fadeOut()
+        if (win.scrollTop() >= screen5top && !interval_slide) {
+            interval_slide = setInterval(move, 8000);
         }
     })
+    
+    slides.each(function(i, slide) {
+        $(slide).css('left', Math.min(i * 100, 100) + '%')
+    })
+
+
     
     $('html, body').css('overflow', 'hidden')
 })

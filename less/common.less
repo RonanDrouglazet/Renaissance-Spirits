@@ -61,7 +61,8 @@
 
 .cover(@img, @bg: rgb(15, 24, 64)) {
 	position: relative;
-	background: url("@{imagesdir}@{img}") @bg !important;
+	background-image: url("@{imagesdir}@{img}");
+    background-color: @bg !important;
     background-repeat: no-repeat;
     background-size: cover !important;
 }
