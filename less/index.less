@@ -2,8 +2,8 @@
 @import "intro";
 
 /************** 
- * MENU
- **************/
+* MENU
+**************/
 
 header {
     cursor: pointer;
@@ -39,8 +39,8 @@ header {
 }
 
 /************** 
- * BUTTON ARROW DOWN
- **************/
+* BUTTON ARROW DOWN
+**************/
 
 .button_down {
     .bottom;
@@ -58,12 +58,12 @@ header {
 }
 
 /************** 
- * SCREEN 1
- **************/
+* SCREEN 1
+**************/
 
 .screen1 {
 
-    .cover("COUV_RS_BLEUE_BIS.jpg");
+    .cover_me("COUV_RS_BLEUE_BIS.jpg");
     .full_size;
     
     padding-top: 100px;
@@ -88,8 +88,8 @@ header {
 }
 
 /************** 
- * SCREEN 2 (HIDDEN)
- **************/
+* SCREEN 2 (HIDDEN)
+**************/
 
 .screen2 {
 
@@ -121,8 +121,8 @@ header {
 }
 
 /************** 
- * SCREEN 3 - ACTU
- **************/
+* SCREEN 3 - ACTU
+**************/
 
 .screen3 {
     @bg: #faf4ef;
@@ -170,8 +170,8 @@ header {
 }
 
 /************** 
- * SCREEN 4 - MARQUES
- **************/
+* SCREEN 4 - MARQUES
+**************/
 
  .screen4 {
     background-color: #ebf4f8;
@@ -214,9 +214,9 @@ header {
     }
  }
 
- /************** 
- * SCREEN 5 - MARQUES SLIDES
- **************/
+/************** 
+* SCREEN 5 - MARQUES SLIDES
+**************/
 
  .screen5 {
     .full_size;
@@ -230,9 +230,10 @@ header {
 
         width: 100%;
         height: 15%;
-        min-height: 110px;        
+        min-height: 110px;  
 
-        h2 { margin: 35px };
+        h2 { margin: 35px }
+        .column { cursor: pointer }
     }
     .slides {
         background-color: red;
@@ -241,10 +242,37 @@ header {
         position: relative;
         .slide { 
             .full_size; 
-            .cover('', white); 
+            .cover_me('', white); 
             .top; 
 
-            transition: left 1s ease; 
+            transition: left 1s ease;
+            overflow: hidden;
+
+            .cover {
+                .font_htl;
+                .full_size;
+                .top(0,100%);
+                
+                color: white;
+                min-height: 760px;
+                padding-top: 7%;
+                transition: left 1s ease;
+
+                .logo { margin: 0 auto 70px }
+
+                h2 { margin-bottom: 25px }
+                p { font-size: 14pt }
+            } 
         }
     }
  }
+
+/************** 
+* SCREEN 6 - CONTACT
+**************/
+
+.screen6 {
+    padding-top: 40px;
+    color: @king-blue;
+    h2 { margin-bottom: 40px }
+}
