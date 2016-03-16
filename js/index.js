@@ -9,18 +9,48 @@ $(document).ready(function() {
      * MENU
      **************/
     $('header .floating').click(function() {
-        menu.slideDown(500)
-        fmenu.fadeOut()
+        if (fmenu.find('i').hasClass('sidebar')) {
+            menu.slideDown(500)
+            fmenu.find('i').removeClass('sidebar').addClass('sort ascending')
+        } else {
+            menu.slideUp(500)
+            fmenu.find('i').removeClass('sort ascending').addClass('sidebar')
+        }
     })
 
     $(window).on('scroll', function() {
         if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
             menu.slideUp(500)
+            fmenu.find('i').removeClass('sort ascending sidebar').addClass('sidebar')
             fmenu.fadeIn()
         } else if (win.scrollTop() < mheight && fmenu.css('display') === 'block') {
             menu.slideDown(500)
             fmenu.fadeOut()
         }
+    })
+
+    $('header .selectbar').each(function(i, bar) {
+        var select = $(this)
+        $(bar).parent().find('.column').each(function(i, bt) {
+            var span = $(bt).find('span')
+            if (span.html() !== "") {
+                span.hover(function() {
+                    select
+                        .show()
+                        .css('left', span.offset().left)
+                        .css('width', span.width())
+                }, function() {})
+
+                var to = $(bt).attr('data-to')
+                if (to) {
+                    $(bt).click(function() {
+                        $('html, body').animate({
+                          scrollTop: $(to).offset().top
+                        }, 1000);
+                    })
+                }
+            }
+        })
     })
 
     /************** 
@@ -46,6 +76,12 @@ $(document).ready(function() {
           scrollTop: $('.screen2').offset().top
         }, 1000);
     })
+
+    setInterval(function() {
+       $('.screen1 .button_down')
+      .transition('bounce', '2s')
+    }, 3000)
+    
 
     /************** 
      * SCREEN 3 - ACTU
@@ -79,7 +115,7 @@ $(document).ready(function() {
                actus[i].className = 'actu ' + dir 
                if (dir === 'center') {
                     $(actus[i]).find('.button').fadeIn(1000)
-                    $(actus[i]).css('z-index', 100)
+                    $(actus[i]).css('z-index', 10)
                }
                dir = null
             }
@@ -97,8 +133,21 @@ $(document).ready(function() {
     var screen5 = $('.screen5')
     var screen5top = screen5.offset().top
     var slides = screen5.find('.slides .slide')
+    var screen5select = screen5.find('.selectbar')
+    var interval_slide, timer_slide
 
-    var move = function() {
+    screen5select
+        .show()
+        .css('left', $(screen5.find('.menu span')[index_slide]).offset().left)
+        .css('width', $(screen5.find('.menu span')[index_slide]).width())
+
+    var reset = function(slide, done) {
+        slide.css('transition', 'none')
+        slide.css('left', '100%')
+        setTimeout(function() {slide.css('transition', 'left 1s ease'); if (done) {done()}}, 100)
+    }
+
+    var move = function(to) {
         var s;
         // move main
         $(slides[index_slide]).css('left', '-100%')
@@ -106,43 +155,43 @@ $(document).ready(function() {
         // reset out left to out right
         if (slides[index_slide - 1]) {
             s = slides[index_slide - 1]
-            $(s).hide()
-            $(s).css('left', '100%')
-            setTimeout(function() { $(s).show() }, 1000)
+            reset($(s))
         } else {
             s = slides[slides.length - 1]
-            $(s).hide()
-            $(s).css('left', '100%')
-            setTimeout(function() { $(s).show() }, 1000)
+            reset($(s))
         }
 
         // move next to main
-        if (slides[index_slide + 1]) {
+        if (to && slides[to]) {
+            $(slides[to]).css('left', '0%')
+            index_slide = to
+        } else if (slides[index_slide + 1]) {
             $(slides[index_slide + 1]).css('left', '0%')
+            index_slide++;
         } else {
             // else restart from begining
-            index_slide = -1
+            index_slide = 0
             $(slides[0]).css('left', '0%')
         }
 
-        index_slide++;
-        setTimeout(over_slide, 2000);
+        screen5select
+            .show()
+            .css('left', $(screen5.find('.menu span')[index_slide]).offset().left)
+            .css('width', $(screen5.find('.menu span')[index_slide]).width())
+        
+        timer_slide = setTimeout(over_slide, 2000);
     }
 
     var over_slide = function() {
+        slides.find('.cover').css('left', '100%')
         $(slides[index_slide]).find('.cover').css('left', 0)
-        if (slides[index_slide - 1]) {
-            $(slides[index_slide - 1]).find('.cover').css('left', '100%')
-        } else {
-            $(slides[slides.length - 1]).find('.cover').css('left', '100%')
-        }
     }
 
-    var interval_slide;
+    
     $(window).on('scroll', function() {
         if (win.scrollTop() >= screen5top && !interval_slide) {
             interval_slide = setInterval(move, 10000);
-            setTimeout(over_slide, 2000);
+            timer_slide = setTimeout(over_slide, 2000);
         }
     })
     
@@ -150,7 +199,31 @@ $(document).ready(function() {
         $(slide).css('left', Math.min(i * 100, 100) + '%')
     })
 
+    screen5.find('.column span').each(function(i, span) {
+        $(span).parent().click(function() {
+            clearInterval(interval_slide)
+            clearTimeout(timer_slide)
+            reset($(slides[i]), function() {
+                move(i)
+            })
+        })
+    })
 
+    /************** 
+     * SCREEN 6 - CONTACT
+     **************/
+
+     $('.screen6 .grid .column').each(function(i, c) {
+        var img = $(c).find('img:not(.cover)')
+        var cover = $(this).find('.cover')
+        $(c).hover(function() {
+            cover.css('top', img.position().top)
+                 .css('left', img.position().left)
+                 .fadeIn()
+        }, function() {
+            cover.fadeOut()
+        })
+     })
     
     $('html, body').css('overflow', 'hidden')
 })
