@@ -77,12 +77,6 @@ $(document).ready(function() {
         }, 1000);
     })
 
-    setInterval(function() {
-       $('.screen1 .button_down')
-      .transition('bounce', '2s')
-    }, 3000)
-    
-
     /************** 
      * SCREEN 3 - ACTU
      **************/
