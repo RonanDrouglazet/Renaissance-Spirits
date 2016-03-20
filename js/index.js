@@ -83,7 +83,15 @@ $(document).ready(function() {
     $('.actu .button').click(function() {
         var left = !$(this).hasClass('left')
         var index = actus.get().indexOf(this.parentNode)
-        var dir
+        var acl = actus.length
+        var delay = 0
+        
+        var p1 = index === 0 ? acl - 1 : index - 1
+        var p2 = index <= 1 ? (acl - 2) + index : index - 2
+        var p3 = index === acl - 1 ? 0 : index + 1
+        var p4 = index >= acl - 2 ? (index - (acl - 2)) : index + 2
+
+        var dir = null
 
         $('.actu .button').fadeOut(1000)
 
@@ -93,25 +101,42 @@ $(document).ready(function() {
 
         actus.each(function(i, actu) {
 
-            if (i === index - 1) {
+            if (i === p1) {
                 dir = left ? 'outleft' : 'center'
-            } else if (i === index - 2) {
+            } else if (i === p2) {
                 dir = left ? 'outleft' : 'left'
             } else if (i === index) {
                 dir = left ? 'left' : 'right'
-            } else if (i === index + 1) {
+            } else if (i === p3) {
                 dir = left ? 'center' : 'outright'
-            } else if (i === index + 2) {
+            } else if (i === p4) {
                 dir = left ? 'right' : 'outright'
-            } 
+            }
+
+            if (
+                (dir === 'left' || dir === 'right') && 
+                ( !$(actus[i]).hasClass('out' + dir)  && !$(actus[i]).hasClass('center') )) {
+
+                actus[i].className = 'actu fast out' + dir
+                delay = 100
+            }
+
+            if (
+                (dir === 'outleft' && $(actus[i]).hasClass('outright')) || 
+                (dir === 'outright' && $(actus[i]).hasClass('outleft'))) {
+
+                actus[i].className = 'actu fast ' + dir
+                delay = 100
+            }
 
             if (dir) {
-               actus[i].className = 'actu ' + dir 
-               if (dir === 'center') {
-                    $(actus[i]).find('.button').fadeIn(1000)
-                    $(actus[i]).css('z-index', 10)
-               }
-               dir = null
+                setTimeout(function(dir) {
+                    actus[i].className = 'actu ' + dir 
+                    if (dir === 'center') {
+                        $(actus[i]).find('.button').fadeIn(1000)
+                        $(actus[i]).css('z-index', 10)
+                    }
+                }.bind(this, dir), delay)
             }
         })
     })
