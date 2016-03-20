@@ -187,11 +187,11 @@ header {
         }
         .button.right { margin-left: -60px }
         .content { margin-top: 100px }
-        p { .font_htl; margin: 0 0 0.1em }
+        p { .font_htl; margin: 0 0 0.1em; opacity: 0; transition: opacity 1s linear}
         .title { font-size: 16pt }
 
     }
-    .center { left: 50%; transform: scale(1) }
+    .center { left: 50%; transform: scale(1); p { opacity: 1 } }
     .left { left: 10%; transform: scale(0.75) }
     .outleft { left: -50%; transform: scale(0.5) }
     .right { left: 90%; transform: scale(0.75) }
