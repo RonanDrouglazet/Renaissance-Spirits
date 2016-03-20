@@ -194,10 +194,14 @@ header {
             width: 80%;
             margin: auto;
         }
+        img {
+            opacity: 0.4;
+            transition: opacity 1s linear;
+        }
         .title { font-size: 16pt }
 
     }
-    .center { left: 50%; transform: scale(1); p { opacity: 1 } }
+    .center { left: 50%; transform: scale(1); p { opacity: 1 }; img {opacity: 1} }
     .left { left: 10%; transform: scale(0.75) }
     .outleft { left: -50%; transform: scale(0.5) }
     .right { left: 90%; transform: scale(0.75) }
