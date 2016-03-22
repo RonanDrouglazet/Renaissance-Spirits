@@ -179,9 +179,9 @@ $(document).ready(function() {
             s = slides[slides.length - 1]
             reset($(s))
         }
-
+        
         // move next to main
-        if (to && slides[to]) {
+        if ((to || to === 0) && slides[to]) {
             $(slides[to]).css('left', '0%')
             index_slide = to
         } else if (slides[index_slide + 1]) {
