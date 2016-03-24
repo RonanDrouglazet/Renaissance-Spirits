@@ -155,10 +155,13 @@ $(document).ready(function() {
     var screen5select = screen5.find('.selectbar')
     var interval_slide, timer_slide
 
-    screen5select
+    setTimeout(function() {
+       screen5select
         .show()
         .css('left', $(screen5.find('.menu span')[index_slide]).offset().left)
-        .css('width', $(screen5.find('.menu span')[index_slide]).width())
+        .css('width', $(screen5.find('.menu span')[index_slide]).width()) 
+    }, 1000)
+    
 
     var reset = function(slide, done) {
         slide.css('transition', 'none')

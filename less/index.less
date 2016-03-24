@@ -253,9 +253,9 @@ header {
 
     p {
         .font_htl; 
-        font-size: 16pt; 
-        line-height: 30pt;
-        margin: 50px auto;
+        font-size: 14px; 
+        line-height: 30px;
+        margin: 40px auto;
     }
  }
 
@@ -271,15 +271,23 @@ header {
     .menu {
         .font_rs;
 
-        font-size: 14pt;
+        font-size: 14px;
         color: @king-blue;
 
         width: 100%;
         height: 15%;
         min-height: 110px;  
 
-        h2 { margin: 35px }
-        .column { cursor: pointer }
+        h2 { margin: 28px }
+        .column { 
+            display: inline-block;
+            cursor: pointer;
+            margin: 0 10px 0 10px;
+        }
+        .twoline {
+            position: relative;
+            top: 19px;
+        }
 
         .selectbar {
             height: 3px;
@@ -315,11 +323,11 @@ header {
                 padding-top: 7%;
                 transition: left 1s ease;
 
-                .logo { margin: 0 auto 70px }
-                .logob { margin: 0 auto 20px }
+                .logo { margin: 0 auto 50px }
+                .logob { margin: 0 auto 16px }
 
-                h2 { margin-bottom: 25px; .font_htl; font-weight: bold  }
-                p { font-size: 14pt }
+                h2 { margin-bottom: 20px; .font_htl; font-weight: bold; font-size: 20px }
+                p { font-size: 14px }
             } 
         }
     }
@@ -334,15 +342,19 @@ header {
     color: @king-blue;
     
     h2 { margin-bottom: 40px }
-
+    img {
+        height: 181px;
+    }
     .cover { display: none; position: absolute; }
 
     .cartouche {
         width: 742px;
         height: 384px;
-        margin: 90px auto;
+        margin: 0px auto;
         padding-top: 110px;
-
+        h2 {
+            margin-bottom: 0;
+        }
         p {
             .font_rs;
             font-size: 14pt;
@@ -359,10 +371,10 @@ header {
     height: 430px;
     padding-top: 10px;
     .font_rs;
-    font-size: 14pt;
+    font-size: 14px;
     color: #9a9c9d;
 
-    img.logo { height: 250px }
+    img.logo { height: 200px }
     .grid { margin-top: 100px }
 
     .cover_me("vueRS.jpg");
