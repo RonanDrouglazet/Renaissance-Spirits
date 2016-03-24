@@ -152,49 +152,57 @@ header {
 .screen3 {
     @bg: #faf4ef;
     .full_size;
-    height: 940px;
+    height: 750px;
     background-color: @bg;
     color: @king-blue;
-    padding-top: 60px;
+    padding-top: 48px;
 
     .actu {
-        width: 800px;
-        height: 580px;
+        width: 640px;
+        height: 464px;
         position: absolute;
         top: 50%;
-        margin-top: -290px;
-        margin-left: -400px;
+        margin-top: -232px;
+        margin-left: -320px;
         background-color: white;
         transform: scale(1);
         transform-origin: 50% 50%;
         transition: left 1s ease, transform 1s ease;
-        box-shadow: rgba(0,0,0,0.1) 0px 0px 8px;
+        box-shadow: rgba(0,0,0,0.1) 0px 0px 6px;
 
         .button {
-            width: 60px;
-            height: 100px;
+            width: 48px;
+            height: 80px;
             position: absolute;
             top: 50%;
-            margin-top: -50px;
+            margin-top: -40px;
             background-color: @bg;
             transform: scale(1);
-            padding-top: 30px;
+            padding-top: 24px;
             cursor: pointer;
         }
-        .button.right { margin-left: -60px }
-        .content { margin-top: 100px }
+        .button.right { margin-left: -48px }
+        .content { 
+            margin-top: 80px;
+            
+            img {
+                height: 276px;
+            }
+        }
         p { 
             .font_htl; margin: 0 0 0.1em; 
             opacity: 0; 
             transition: opacity 1s linear;
             width: 80%;
             margin: auto;
+            font-size: 12px
         }
         img {
             opacity: 0.4;
             transition: opacity 1s linear;
+            
         }
-        .title { font-size: 16pt }
+        .title { font-size: 16px }
 
     }
     .fast {transition: none;}
