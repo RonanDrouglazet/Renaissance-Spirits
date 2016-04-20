@@ -81,7 +81,7 @@ $(document).ready(function() {
      * SCREEN 3 - ACTU
      **************/
     $('.actu .button').click(function() {
-        var left = !$(this).hasClass('left')
+        var left = !$(this).hasClass('right')
         var index = actus.get().indexOf(this.parentNode)
         var acl = actus.length
         var delay = 0
