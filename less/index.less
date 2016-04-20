@@ -272,41 +272,9 @@ header {
     background-color: white;
     min-height: 800px;
     
-    .menu {
-        .font_rs;
-
-        font-size: 14px;
-        color: @king-blue;
-
-        width: 100%;
-        height: 15%;
-        min-height: 110px;  
-
-        h2 { margin: 28px }
-        .column { 
-            display: inline-block;
-            cursor: pointer;
-            margin: 0 10px 0 10px;
-        }
-        .twoline {
-            position: relative;
-            top: 19px;
-        }
-
-        .selectbar {
-            height: 3px;
-            background-color: #253d73;
-            position: absolute;
-            transition: left 0.5s ease, width 0.5s ease;
-            left: 0;
-            width: 0;
-            top: 110px;
-            display: none;
-        }
-    }
     .slides {
         width: 100%;
-        height: 85%;
+        height: 100%;
         position: relative;
 
         .slide { 
@@ -342,7 +310,7 @@ header {
 **************/
 
 .screen6 {
-    padding-top: 40px;
+    padding: 40px 0 50px 0;
     color: @king-blue;
     
     h2 { margin-bottom: 40px }
@@ -350,6 +318,19 @@ header {
         height: 181px;
     }
     .cover { display: none; position: absolute; }
+}
+
+/************** 
+* SCREEN 7 - FOOTER
+**************/
+
+.screen7 {
+    width: 100%;
+    height: 1073px;
+    padding-top: 100px;
+    .font_htl;
+    font-size: 14px;
+    color: white;
 
     .cartouche {
         width: 742px;
@@ -364,22 +345,25 @@ header {
             font-size: 14pt;
         }
     }
-}
-
-/************** 
-* SCREEN 7 - FOOTER
-**************/
-
-.screen7 {
-    width: 100%;
-    height: 430px;
-    padding-top: 10px;
-    .font_rs;
-    font-size: 14px;
-    color: #9a9c9d;
 
     img.logo { height: 200px }
-    .grid { margin-top: 100px }
+    .divider { 
+        margin: 100px auto 10px auto;
+        width: 880px;
+        height: 1px;
+        background-color: white;
+    }
+    .foot {
+        width: 880px;
+        margin: auto;
+        text-align: left;
+        
+        .bt {
+            display: inline-block;
+            margin-right: 40px;
+        }
+    }
+    
 
-    .cover_me("vueRS.jpg");
+    .cover_me("IMAGE_FOND_ROSE_DES_VENTS.jpg");
 }

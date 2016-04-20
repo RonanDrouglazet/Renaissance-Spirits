@@ -152,16 +152,7 @@ $(document).ready(function() {
     var screen5 = $('.screen5')
     var screen5top = screen5.offset().top
     var slides = screen5.find('.slides .slide')
-    var screen5select = screen5.find('.selectbar')
     var interval_slide, timer_slide
-
-    setTimeout(function() {
-       screen5select
-        .show()
-        .css('left', $(screen5.find('.menu span')[index_slide]).offset().left)
-        .css('width', $(screen5.find('.menu span')[index_slide]).width()) 
-    }, 1000)
-    
 
     var reset = function(slide, done) {
         slide.css('transition', 'none')
@@ -195,11 +186,6 @@ $(document).ready(function() {
             index_slide = 0
             $(slides[0]).css('left', '0%')
         }
-
-        screen5select
-            .show()
-            .css('left', $(screen5.find('.menu span')[index_slide]).offset().left)
-            .css('width', $(screen5.find('.menu span')[index_slide]).width())
         
         timer_slide = setTimeout(over_slide, 2000);
     }
@@ -219,16 +205,6 @@ $(document).ready(function() {
     
     slides.each(function(i, slide) {
         $(slide).css('left', Math.min(i * 100, 100) + '%')
-    })
-
-    screen5.find('.column span').each(function(i, span) {
-        $(span).parent().click(function() {
-            clearInterval(interval_slide)
-            clearTimeout(timer_slide)
-            reset($(slides[i]), function() {
-                move(i)
-            })
-        })
     })
 
     /************** 
