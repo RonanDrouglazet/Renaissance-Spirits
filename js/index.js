@@ -141,6 +141,21 @@ $(document).ready(function() {
         })
     })
 
+    $('.actu .content').click(function() {
+        var current = $(document.body).children('.screen9')
+        var actual = $(this).find('section').clone()
+
+        if (current.length) {
+            current.replaceWith(actual)
+        } else {
+            actual.insertBefore('.screen8')
+        }
+
+        $('html, body').animate({
+          scrollTop: $('body > .screen9').offset().top
+        }, 1000);
+    });
+
     actus.each(function(i, actu) {
         $(actu).css('z-index', actus.length - i)
     })
