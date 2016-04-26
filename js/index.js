@@ -81,7 +81,7 @@ $(document).ready(function() {
      * SCREEN 3 - ACTU
      **************/
     $('.actu .button').click(function() {
-        var left = !$(this).hasClass('right')
+        var left = $(this).hasClass('right')
         var index = actus.get().indexOf(this.parentNode)
         var acl = actus.length
         var delay = 0
@@ -239,4 +239,14 @@ $(document).ready(function() {
      })
     
     $('html, body').css('overflow', 'hidden')
+
+    /************** 
+     * SCREEN 8 - NOS VALEURS
+     **************/
+
+     $('.screen8 img').hover(function() {
+        $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeIn()
+     }, function() {
+        $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeOut()
+     })
 })
