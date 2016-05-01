@@ -249,4 +249,42 @@ $(document).ready(function() {
      }, function() {
         $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeOut()
      })
+
+     /************** 
+     * SCREEN 10 - PRODUCT DETAILS
+     **************/
+     $('.screen10 .slide').each(function(i, slide) {
+        $(slide).css('left', ((i * 200) + 50) + '%')
+     })
+
+     $('.screen10 .arrow').click(function() {
+        var active;
+        var left = $(this).hasClass('left');
+        var menus = $(this).parents('.container').find('.menu div')
+
+        menus.each(function(i, bt) {
+            if ($(bt).hasClass('active')) {
+                active = i
+            }
+        })
+
+        var current = $($(this).parent().find('.slide').get(active))
+        //console.log($(this).parent(), $(this).parent().find('.slide'), current)
+        current.css('transition', 'left 1s ease-in-out')
+        current.css('left', left ? '-200%' : '200%')
+        $(menus.get(active)).removeClass('active')
+
+        var n = left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0
+        var next = $($(this).parent().find('.slide').get(n))
+        next.css('transition', 'none')
+        next.css('left', left ? '200%' : '-200%')
+        //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
+        
+        setTimeout(function() {
+            next.css('transition', 'left 1s ease-in-out')
+            next.css('left', '50%')
+        }, 100)
+
+        $(menus.get(n)).addClass('active')
+     })
 })

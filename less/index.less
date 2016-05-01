@@ -459,3 +459,116 @@ header {
 
     .cover_me("IMAGE_FOND_ROSE_DES_VENTS.jpg");
 }
+
+/************** 
+* SCREEN 10 - PRODUCT DETAILS
+**************/
+
+.screen10 {
+    padding-top: 50px;
+    color: #253d73;
+    .font_htl;
+
+    a {
+        text-decoration: none;
+        color: #253d73;
+    }
+
+    .menu {
+        
+        font-size: 24px;
+        
+        div { 
+            width: 80px;
+            display: inline-block;
+            margin: 0 100px 0 100px;
+            padding-bottom: 5px;
+            text-align: center;
+        }
+
+        div.active {
+            border-bottom: 1px solid #253d73;
+        }
+    }
+
+    .slides {
+        margin-top: 50px;
+        font-size: 16px;
+        height: 650px;
+        position: relative;
+        overflow: hidden;
+
+        .slide {
+            position: absolute;
+            top: 0;
+            width: 850px;
+            margin-left: -425px;
+        }
+        
+        img { margin: auto;}
+        
+        .column { text-align: center !important; }
+        .justify { 
+            text-align: justify !important; 
+        }
+        .text {
+            width: 415px;
+            margin: auto;
+
+            .title {
+                font-size: 20px;
+                text-align: center;
+                margin: 50px;
+                span {
+                    font-size: 26px;
+                }
+            }
+            .button {
+                width: 200px;
+                height: 40px;
+                border: 1px solid #253d73;
+                text-align: center;
+                display: inline-block;
+                margin-right: 5px;
+                padding-top: 10px;
+                font-size: 14px;
+                cursor: pointer;
+                margin-top: 50px;
+            }
+        }
+
+        .arrow {
+            position: absolute;
+            width: 22px;
+            height: 38px;
+            top: 50%;
+            margin-top: -19px;
+            cursor: pointer;
+        }
+
+        .arrow.left {
+            background-image: url(../img/FLECHE_BLEUE_GAUCHE.png);
+            left: 0;
+        }
+
+        .arrow.right {
+            background-image: url(../img/FLECHE_BLEUE_DROITE.png);
+            right: 0;
+        }
+    }
+
+    .mosaik {
+        margin-top: 100px;
+    }
+
+    .footer {
+        width: 500px;
+        height: 60px;
+        margin: 50px auto 100px auto;
+        border-top: 1px solid #253D73;
+        border-bottom: 1px solid #253D73;
+        img {
+            margin: 20px 30px 0 0;
+        }
+    }
+}
