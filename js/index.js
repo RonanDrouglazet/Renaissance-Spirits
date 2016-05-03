@@ -166,7 +166,7 @@ $(document).ready(function() {
     var index_slide = 0
     var screen5 = $('.screen5')
     var screen5top = screen5.offset().top
-    var slides = screen5.find('.slides .slide')
+    var slides = screen5.children('.slides').children('.slide')
     var interval_slide, timer_slide
 
     var reset = function(slide, done) {
@@ -222,6 +222,23 @@ $(document).ready(function() {
         $(slide).css('left', Math.min(i * 100, 100) + '%')
     })
 
+    $('.screen5 .button_rs_out').click(function() {
+        var current = $(document.body).children('.screen10')
+        var actual = $(this).parent().find('section').clone()
+
+        if (current.length) {
+            current.replaceWith(actual)
+        } else {
+            actual.insertBefore('.screen6')
+        }
+
+        screen10()
+
+        $('html, body').animate({
+          scrollTop: $('body > .screen10').offset().top
+        }, 1000);
+    });
+
     /************** 
      * SCREEN 6 - CONTACT
      **************/
@@ -253,38 +270,46 @@ $(document).ready(function() {
      /************** 
      * SCREEN 10 - PRODUCT DETAILS
      **************/
-     $('.screen10 .slide').each(function(i, slide) {
-        $(slide).css('left', ((i * 200) + 50) + '%')
-     })
+     var screen10 = function() {
+        $('.screen10').each(function(a, screen) {
+            $(screen).find('.slide').each(function(i, slide) {
+                $(slide).css('left', ((i * 200) + 50) + '%')
+            })
+         })
 
-     $('.screen10 .arrow').click(function() {
-        var active;
-        var left = $(this).hasClass('left');
-        var menus = $(this).parents('.container').find('.menu div')
+         $('.screen10 .arrow').click(function() {
+            var active;
+            var left = $(this).hasClass('left');
+            var menus = $(this).parents('.container').find('.menu div')
 
-        menus.each(function(i, bt) {
-            if ($(bt).hasClass('active')) {
-                active = i
-            }
-        })
+            menus.each(function(i, bt) {
+                if ($(bt).hasClass('active')) {
+                    active = i
+                }
+            })
 
-        var current = $($(this).parent().find('.slide').get(active))
-        //console.log($(this).parent(), $(this).parent().find('.slide'), current)
-        current.css('transition', 'left 1s ease-in-out')
-        current.css('left', left ? '-200%' : '200%')
-        $(menus.get(active)).removeClass('active')
+            var current = $($(this).parent().find('.slide').get(active))
+            //console.log($(this).parent(), $(this).parent().find('.slide'), current)
+            current.css('transition', 'left 1s ease-in-out')
+            current.css('left', left ? '-200%' : '200%')
+            $(menus.get(active)).removeClass('active')
 
-        var n = left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0
-        var next = $($(this).parent().find('.slide').get(n))
-        next.css('transition', 'none')
-        next.css('left', left ? '200%' : '-200%')
-        //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
-        
-        setTimeout(function() {
-            next.css('transition', 'left 1s ease-in-out')
-            next.css('left', '50%')
-        }, 100)
+            var n = left && active !== 0 ? active - 1 : 
+                    left ? menus.length - 1 : 
+                    active !== menus.length - 1 ? active + 1 : 0
 
-        $(menus.get(n)).addClass('active')
-     })
+            var next = $($(this).parent().find('.slide').get(n))
+            next.css('transition', 'none')
+            next.css('left', left ? '200%' : '-200%')
+            //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
+            
+            setTimeout(function() {
+                next.css('transition', 'left 1s ease-in-out')
+                next.css('left', '50%')
+            }, 100)
+
+            $(menus.get(n)).addClass('active')
+         })
+     }
+     
 })
