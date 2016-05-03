@@ -53,6 +53,41 @@ $(document).ready(function() {
         })
     })
 
+    var block;
+    $('header .menu .column span').hover(function() {
+        $('header .marques').hide()
+    }, null)
+    $('header .menu .column:nth-child(5) span').hover(function() {
+        $('header .marques').show()
+    }, null)
+
+    $('header .marques').hover(function() {
+        block = true
+        $(this).show()
+    }, function() {
+        $(this).hide()
+    })
+
+    $('header .marques .button').click(function() {
+        $(this).parents('.column').find('.button.active').removeClass('active')
+
+        var id = $(this).data('id')
+        var next = $(this).addClass('active')
+        .parents('.column').next()
+
+        next.find('.active')
+        .removeClass('active')
+        next.find('.row:nth-child(' + id + ')')
+        .addClass('active')
+
+        next.next().find('.active')
+        .removeClass('active')
+    })
+
+    $('header .marques').mouseleave(function() {
+        $('header .marques').hide()
+    })
+
     /************** 
      * INTRO
      **************/
@@ -279,7 +314,7 @@ $(document).ready(function() {
 
          $('.screen10 .arrow').click(function() {
             var active;
-            var left = $(this).hasClass('left');
+            var left = !$(this).hasClass('left');
             var menus = $(this).parents('.container').find('.menu div')
 
             menus.each(function(i, bt) {

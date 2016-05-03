@@ -39,6 +39,47 @@ header {
         a {
             color: white;
         }
+
+        .marques {
+            display: none;
+            position: relative;
+            .font_htl;
+            margin-top: 12px;
+            height: 250px;
+            text-align: left;
+            .grid {
+                .bg_king_blue(0.80);
+            }
+            .column:first-child {
+                padding-left: 50px;
+            }
+            .button {
+                margin: 10px auto 10px auto;
+                .arrow {
+                    display: none;
+                    background-image: url(../img/FLECHE_BLANCHE2.png);
+                    width: 6px;
+                    height: 10px;
+                    margin-left: 15px;
+                }
+            }
+            .button:hover, .button.active{
+                .arrow {
+                    display: inline-block;
+                }
+            }
+            .buttonl {
+                display: inline-block;
+                margin: 10px 50px 10px auto;
+            }
+            .row {
+                display: none;
+            }
+            .row.active {
+                display: block;
+            }
+            
+        }
     }
 
     .floating {
@@ -542,6 +583,10 @@ header {
                 font-size: 14px;
                 cursor: pointer;
                 margin-top: 50px;
+            }
+            .button:hover {
+                background-color: #253d73;
+                color: white;
             }
         }
 
