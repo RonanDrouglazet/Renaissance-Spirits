@@ -170,21 +170,29 @@ $(document).ready(function() {
                     if (dir === 'center') {
                         $(actus[i]).find('.button').fadeIn(1000)
                         $(actus[i]).css('z-index', 10)
+                        
+                        if ($(document.body).children('.screen9').length) {
+                            actu_details($(actus[i]).find('section'))
+                        }
                     }
                 }.bind(this, dir), delay)
             }
         })
     })
 
-    $('.actu .content').click(function() {
+    var actu_details = function(section) {
         var current = $(document.body).children('.screen9')
-        var actual = $(this).find('section').clone()
+        var actual = section.clone()
 
         if (current.length) {
             current.replaceWith(actual)
         } else {
             actual.insertBefore('.screen8')
         }
+    }
+
+    $('.actu .content').click(function() {
+        actu_details($(this).find('section'))
 
         $('html, body').animate({
           scrollTop: $('body > .screen9').offset().top
@@ -194,6 +202,14 @@ $(document).ready(function() {
     actus.each(function(i, actu) {
         $(actu).css('z-index', actus.length - i)
     })
+
+    /************** 
+     * SCREEN 5 - BOUTEILLES
+     **************/
+
+     $('.screen4 .bouteille').click(function() {
+        select_slide($(this).data('id'))
+     })
 
     /************** 
      * SCREEN 5 - SLIDE
@@ -237,12 +253,47 @@ $(document).ready(function() {
             $(slides[0]).css('left', '0%')
         }
         
+        // if details is open
+        if ($(document.body).children('.screen10').length) {
+            details($(slides[index_slide]).find('section'));
+        }
+        
         timer_slide = setTimeout(over_slide, 2000);
+    }
+
+    var select_slide = function(n) {
+        clearInterval(interval_slide)
+        interval_slide = true // deactivate scroll listening
+        clearTimeout(timer_slide)
+        
+        $('html, body').animate({
+          scrollTop: $('body > .screen5').offset().top
+        }, 1000);
+        
+        reset($(slides[n]), function() {
+            move(n)
+        })
     }
 
     var over_slide = function() {
         slides.find('.cover').css('left', '100%')
         $(slides[index_slide]).find('.cover').css('left', 0)
+    }
+
+    var details = function(section) {
+        var current = $(document.body).children('.screen10')
+        var actual = section.clone()
+
+        if (current.length) {
+            current.replaceWith(actual)
+        } else {
+            actual.insertBefore('.screen6')
+        }
+
+        screen10()
+
+        clearInterval(interval_slide)
+        interval_slide = true // deactivate scroll listening
     }
 
     
@@ -258,21 +309,20 @@ $(document).ready(function() {
     })
 
     $('.screen5 .button_rs_out').click(function() {
-        var current = $(document.body).children('.screen10')
-        var actual = $(this).parent().find('section').clone()
-
-        if (current.length) {
-            current.replaceWith(actual)
-        } else {
-            actual.insertBefore('.screen6')
-        }
-
-        screen10()
+        details($(this).parent().find('section'));
 
         $('html, body').animate({
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
     });
+
+    //menu
+    $('header .marques .sub:last-child .row').each(function(i, row) {
+        $(row).click(function() {
+            $('header .marques').hide()
+            select_slide(i)
+        })
+    })
 
     /************** 
      * SCREEN 6 - CONTACT
