@@ -18,7 +18,7 @@ $(document).ready(function() {
         }
     })
 
-    $(window).on('scroll', function() {
+    win.on('scroll', function() {
         if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
             menu.slideUp(500)
             fmenu.find('i').removeClass('sort ascending sidebar').addClass('sidebar')
@@ -297,7 +297,7 @@ $(document).ready(function() {
     }
 
     
-    $(window).on('scroll', function() {
+    win.on('scroll', function() {
         if (win.scrollTop() >= screen5top && !interval_slide) {
             interval_slide = setInterval(move, 10000);
             timer_slide = setTimeout(over_slide, 2000);
