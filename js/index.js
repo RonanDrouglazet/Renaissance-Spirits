@@ -234,13 +234,13 @@ $(document).ready(function() {
         $(slides[index_slide]).css('left', '-100%')
         
         // reset out left to out right
-        if (slides[index_slide - 1]) {
+        /*if (slides[index_slide - 1]) {
             s = slides[index_slide - 1]
             reset($(s))
         } else {
             s = slides[slides.length - 1]
             reset($(s))
-        }
+        }*/
         
         // move next to main
         if ((to || to === 0) && slides[to]) {
@@ -263,10 +263,14 @@ $(document).ready(function() {
         timer_slide = setTimeout(over_slide, 2000);
     }
 
-    var select_slide = function(n) {
+    var clean_interval_slide = function() {
         clearInterval(interval_slide)
         interval_slide = true // deactivate scroll listening
         clearTimeout(timer_slide)
+    }
+
+    var select_slide = function(n) {
+        clean_interval_slide()
         
         $('html, body').animate({
           scrollTop: $('body > .screen5').offset().top
@@ -301,8 +305,8 @@ $(document).ready(function() {
     
     win.on('scroll', function() {
         if (win.scrollTop() >= screen5top && !interval_slide) {
-            interval_slide = setInterval(move, 10000);
-            timer_slide = setTimeout(over_slide, 2000);
+            interval_slide = setInterval(move_auto, 10000);
+            timer_slide = setTimeout(over_slide, 3000);
         }
     })
     
@@ -310,6 +314,7 @@ $(document).ready(function() {
         $(slide).css('left', Math.min(i * 100, 100) + '%')
     })
 
+    // show details
     $('.screen5 .button_rs_out').click(function() {
         details($(this).parent().find('section'));
 
@@ -317,6 +322,24 @@ $(document).ready(function() {
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
     });
+
+    // click on arrow
+    $('.screen5 .slides').children('.button').click(function() {
+        move_auto(this)
+    })
+
+    var move_auto = function(button) {
+        if (button) {
+            clean_interval_slide()
+        }
+
+        var index = $(button).hasClass('left') ? index_slide - 1 : index_slide + 1
+        index = index < 0 ? slides.length - 1 : index
+        index = index > slides.length - 1 ? 0 : index
+        reset($(slides[index]), function() {
+            move(index)
+        })
+    }
 
     //menu
     $('header .marques .sub:last-child .row').each(function(i, row) {
