@@ -99,7 +99,6 @@ $(document).ready(function() {
 
     $('button.accept').click(function() {
         $('.intro').fadeOut()
-        $('html, body').css('overflow', '')
     })
 
     /************** 
@@ -340,7 +339,6 @@ $(document).ready(function() {
         })
      })
     
-    $('html, body').css('overflow', 'hidden')
 
     /************** 
      * SCREEN 8 - NOS VALEURS
