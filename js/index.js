@@ -173,6 +173,9 @@ $(document).ready(function() {
                         if ($(document.body).children('.screen9').length) {
                             actu_details($(actus[i]).find('section'))
                         }
+
+                        $('.screen3 .dates .date').removeClass('active');
+                        $('.screen3 .dates #' + $(actus[i]).data('date') ).addClass('active');
                     }
                 }.bind(this, dir), delay)
             }
