@@ -8,7 +8,7 @@ $(document).ready(function() {
     /************** 
      * MENU
      **************/
-    $('header .floating').click(function() {
+    /*$('header .floating').click(function() {
         if (fmenu.find('i').hasClass('sidebar')) {
             menu.slideDown(500)
             fmenu.find('i').removeClass('sidebar').addClass('sort ascending')
@@ -27,7 +27,7 @@ $(document).ready(function() {
             menu.slideDown(500)
             fmenu.fadeOut()
         }
-    })
+    })*/
 
     $('header .selectbar').each(function(i, bar) {
         var select = $(this)
