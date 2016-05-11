@@ -308,7 +308,7 @@ $(document).ready(function() {
         if (current.length) {
             current.replaceWith(actual)
         } else {
-            actual.insertBefore('.screen6')
+            actual.insertBefore('.screen12')
         }
 
         screen10()
