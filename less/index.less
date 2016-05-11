@@ -100,27 +100,39 @@ header {
 **************/
 
 .button_down {
-    .bottom(30px);
-    .horizontal_center(-15px);
+    .bottom(0);
+    .horizontal_center(-50px);
     margin-top: 30px;
     margin-bottom: 10px;
-
-    animation-name: button_down;
-    animation-duration: 0.8s;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    width: 100px;
+    height: 100px;
 
     img {
         width: 30px;
+        .horizontal_center(-15px);
+        .bottom(30px);
+        animation-name: button_down;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+
+.button_down.rotate {
+    cursor: pointer;
+    img {
+        animation-name: button_down_rotate;
     }
 }
 
 @keyframes button_down {
     0%   {transform: translateY(0px)}
-    /*25%  {background-color: yellow; left:200px; top:0px;}
-    50%  {background-color: blue; left:200px; top:200px;}
-    75%  {background-color: green; left:0px; top:200px;}*/
     100% {transform: translateY(30px)}
+}
+
+@keyframes button_down_rotate {
+    0%   {transform: translateY(0px) rotate(180deg)}
+    100% {transform: translateY(30px) rotate(180deg)}
 }
 
 /************** 
@@ -255,7 +267,7 @@ header {
     .outright { left: 150%; transform: scale(0.5) }
 
     .dates {
-        margin-top: 600px;
+        margin-top: 575px;
         margin-left: 35px;
 
         .date {

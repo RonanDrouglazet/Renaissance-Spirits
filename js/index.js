@@ -109,6 +109,13 @@ $(document).ready(function() {
         $('html, body').animate({
           scrollTop: $('.screen2').offset().top
         }, 1000);
+        $('.screen1 .button_down').addClass('rotate').click(function() {
+            $('.screen2').slideUp()
+            $('html, body').animate({
+              scrollTop: $('.screen1').offset().top
+            }, 1000);
+            $(this).removeClass('rotate').off('click')
+        })
     })
 
     /************** 
@@ -170,7 +177,7 @@ $(document).ready(function() {
                         $(actus[i]).find('.button').fadeIn(1000)
                         $(actus[i]).css('z-index', 10)
                         
-                        if ($(document.body).children('.screen9').length) {
+                        if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
                             actu_details($(actus[i]).find('section'))
                         }
 
@@ -199,6 +206,14 @@ $(document).ready(function() {
         $('html, body').animate({
           scrollTop: $('body > .screen9').offset().top
         }, 1000);
+
+        $('.screen3 .button_down').addClass('rotate').click(function() {
+            $('.screen9').slideUp()
+            $('html, body').animate({
+              scrollTop: $('.screen3').offset().top
+            }, 1000);
+            $(this).removeClass('rotate').off('click')
+        })
     });
 
     actus.each(function(i, actu) {
@@ -256,7 +271,7 @@ $(document).ready(function() {
         }
         
         // if details is open
-        if ($(document.body).children('.screen10').length) {
+        if ($(document.body).children('.screen10').length && $(document.body).children('.screen10').css('display') !== 'none') {
             details($(slides[index_slide]).find('section'));
         }
         
@@ -321,6 +336,14 @@ $(document).ready(function() {
         $('html, body').animate({
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
+
+        $('.screen5 .button_down').addClass('rotate').click(function() {
+            $('.screen10').slideUp()
+            $('html, body').animate({
+              scrollTop: $('.screen5').offset().top
+            }, 1000);
+            $(this).removeClass('rotate').off('click')
+        })
     });
 
     // click on arrow
