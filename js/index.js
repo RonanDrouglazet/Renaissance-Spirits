@@ -370,24 +370,7 @@ $(document).ready(function() {
             $('header .marques').hide()
             select_slide(i)
         })
-    })
-
-    /************** 
-     * SCREEN 6 - CONTACT
-     **************/
-
-     $('.screen6 .grid .column').each(function(i, c) {
-        var img = $(c).find('img:not(.cover)')
-        var cover = $(this).find('.cover')
-        $(c).hover(function() {
-            cover.css('top', img.position().top)
-                 .css('left', img.position().left)
-                 .fadeIn()
-        }, function() {
-            cover.fadeOut()
-        })
-     })
-    
+    })    
 
     /************** 
      * SCREEN 8 - NOS VALEURS
