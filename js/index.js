@@ -233,7 +233,7 @@ $(document).ready(function() {
      **************/
     var index_slide = 0
     var screen5 = $('.screen5')
-    var screen5top = screen5.offset().top
+    var screen5top = screen5.offset().top - 200
     var slides = screen5.children('.slides').children('.slide')
     var interval_slide, timer_slide
 
@@ -331,7 +331,7 @@ $(document).ready(function() {
 
     // show details
     $('.screen5 .button_rs_out').click(function() {
-        details($(this).parent().find('section'));
+        details($(this).parents('.cover').find('section'));
 
         $('html, body').animate({
           scrollTop: $('body > .screen10').offset().top

@@ -445,6 +445,13 @@ header {
 /************** 
 * SCREEN 5 - MARQUES SLIDES
 **************/
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
 
  .screen5 {
     .full_size;
@@ -465,14 +472,19 @@ header {
             overflow: hidden;
 
             .cover {
+                .content {
+                    .vertical_center;
+                }
                 .font_htl;
                 .full_size;
                 .top(0,100%);
                 
                 color: white;
                 min-height: 760px;
-                padding-top: 7%;
                 transition: left 1s ease;
+                -webkit-transform-style: preserve-3d;
+                -moz-transform-style: preserve-3d;
+                transform-style: preserve-3d;
 
                 .logo { margin: 0 auto 50px }
                 .logob { margin: 0 auto 16px }

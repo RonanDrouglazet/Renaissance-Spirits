@@ -59,6 +59,14 @@
     margin-left: @offset;
 }
 
+.vertical_center(@position: relative) {
+    position: @position;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
 .cover_me(@img, @bg: rgb(15, 24, 64)) {
 	position: relative;
 	background-image: url("@{imagesdir}@{img}");
