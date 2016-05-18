@@ -109,13 +109,13 @@ $(document).ready(function() {
         $('html, body').animate({
           scrollTop: $('.screen2').offset().top
         }, 1000);
-        $('.screen1 .button_down').addClass('rotate').click(function() {
+        $('.screen1 .button_down').addClass('rotate').appendTo('.screen2').click(function() {
             $('.screen2').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen1').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click')
-        })
+            $(this).removeClass('rotate').off('click').appendTo('.screen1').find('img').attr('src', 'img/arrow_down.png')
+        }).find('img').attr('src', 'img/arrow_down_blue.png')
     })
 
     /************** 
@@ -207,12 +207,12 @@ $(document).ready(function() {
           scrollTop: $('body > .screen9').offset().top
         }, 1000);
 
-        $('.screen3 .button_down').addClass('rotate').click(function() {
-            $('.screen9').slideUp()
+        $('.screen3 .button_down').addClass('rotate').appendTo('body > .screen9').click(function() {
+            $('body > .screen9').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen3').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click')
+            $(this).removeClass('rotate').off('click').appendTo('.screen3')
         })
     });
 
@@ -337,13 +337,13 @@ $(document).ready(function() {
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
 
-        $('.screen5 .button_down').addClass('rotate').click(function() {
-            $('.screen10').slideUp()
+        $('.screen5 .button_down').addClass('rotate').appendTo('body > .screen10').click(function() {
+            $('body > .screen10').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen5').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click')
-        })
+            $(this).removeClass('rotate').off('click').appendTo('.screen5').find('img').attr('src', 'img/arrow_down.png')
+        }).find('img').attr('src', 'img/arrow_down_blue.png')
     });
 
     // click on arrow
