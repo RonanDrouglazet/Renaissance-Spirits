@@ -29,30 +29,64 @@ $(document).ready(function() {
         }
     })*/
 
-    $('header .selectbar').each(function(i, bar) {
-        var select = $(this)
-        $(bar).parent().find('.column').each(function(i, bt) {
-            var span = $(bt).find('span')
-            if (span.html() !== "") {
-                span.hover(function() {
-                    select
-                        .show()
-                        .css('left', span.offset().left)
-                        .css('width', span.width())
-                }, function() {})
+    /****
+    * SELECT BAR WHEN OVER MENU BUTTON
+    *****/
+    var select1 = $($('header .selectbar')[0])
+    select1.parent().find('.column').each(function(i, bt) {
+        var span = $(bt).find('span')
+        if (span.html() !== "") {
+            span.hover(function() {
+                select1
+                    .show()
+                    .css('left', span.offset().left)
+                    .css('width', span.width())
+            }, function() {})
 
-                var to = $(bt).attr('data-to')
-                if (to) {
-                    $(bt).click(function() {
-                        $('html, body').animate({
-                          scrollTop: $(to).offset().top
-                        }, 1000);
-                    })
-                }
+            var to = $(bt).attr('data-to')
+            if (to) {
+                $(bt).click(function() {
+                    $('html, body').animate({
+                      scrollTop: $(to).offset().top
+                    }, 1000);
+                })
+            }
+        }
+    })
+    $('header').mouseleave(function() {
+        select1.fadeOut()
+    })
+
+
+    /****
+    * SELECT BAR WHEN SCROLL OVER SECTION
+    *****/
+    var select2 = $($('header .selectbar')[1])
+    var sectionsTop = []
+    $('.menu > .grid > .column').each(function(i, c) {
+        c = $(c)
+        if (c.data('to')) {
+            sectionsTop.push($(c.data('to')).offset().top)
+        }
+    })
+
+    win.on('scroll', function() {
+        $(sectionsTop.slice().reverse()).each(function(i, t) {
+            if (win.scrollTop() >= (t - (win.height() / 2))) {
+                var span = $($('.menu > .grid > .column[data-to]').get().reverse()[i]).find('span')
+                select2
+                    .show()
+                    .css('left', span.offset().left)
+                    .css('width', span.width())
+                return false
             }
         })
     })
 
+
+    /****
+    * SUB MENU MARQUES
+    *****/
     var block;
     $('header .menu .column span').hover(function() {
         $('header .marques').hide()
