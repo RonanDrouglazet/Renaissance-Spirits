@@ -71,15 +71,20 @@ $(document).ready(function() {
     $('header .marques .button').click(function() {
         $(this).parents('.column').find('.button.active').removeClass('active')
 
-        var id = $(this).data('id')
+        var id = $(this).parent().data('id')
+        var sid = $(this).parent().data('sid')
         var next = $(this).addClass('active')
         .parents('.column').next()
 
+        // reset current selected
         next.find('.active')
         .removeClass('active')
-        next.find('.row:nth-child(' + id + ')')
+
+        // find wich row we have to show and display it
+        next.find('.row[data-id="' + id + '"]' + (sid ? '[data-sid="' + sid + '"]' : ''))
         .addClass('active')
 
+        // hide potential sub menu
         next.next().find('.active')
         .removeClass('active')
     })
