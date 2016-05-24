@@ -3,7 +3,6 @@ $(document).ready(function() {
     var menu = $('header .menu');
     var mheight =  menu.height();
     var fmenu = $('header .floating');
-    var actus = $('.actu')
 
     /************** 
      * MENU
@@ -160,70 +159,126 @@ $(document).ready(function() {
     /************** 
      * SCREEN 3 - ACTU
      **************/
-    $('.actu .button').click(function() {
+    var actus
+    var selectActusByDate = function(date) {
+        actus = $('section .actu[data-date="' + date + '"]').show()
+        $('section .actu:not([data-date="' + date + '"])').hide()
+
+        // reset and set right active date
+        $('section#actualites > .dates > .date').removeClass('active')
+        $('section#actualites > .dates > #' + date).addClass('active')
+
+        actus.each(function(i, actu) {
+            // choose the right position for this actu based on the index
+            var classname = 
+                i === 0 ? 'center' : 
+                i === 1 ? 'right' : 
+                i === 2 && i !== actus.length - 1 ? 'outright' :
+                i === actus.length - 1 ? 'left' : 
+                'outleft'
+
+            // reset
+            actu.className = 'actu'
+            // and set
+            $(actu).addClass(classname)
+            // hide or show arrow button if center actu
+            if (classname === 'center') {
+                $(actu).find('.button').fadeIn(1000)
+                // and show details if already open
+                if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
+                    actu_details($(actu).find('section'))
+                }
+            } else {
+                $(actu).find('.button').fadeOut(1000)
+            }
+        })
+    }
+    
+    selectActusByDate(2015)
+    selectActusByDate(2016)
+
+    $('section#actualites > .dates > .date').click(function() {
+        selectActusByDate(this.id)
+    })
+
+    $('section .actu .button').click(function() {
         var left = $(this).hasClass('right')
         var index = actus.get().indexOf(this.parentNode)
         var acl = actus.length
         var delay = 0
-        
-        var p1 = index === 0 ? acl - 1 : index - 1
-        var p2 = index <= 1 ? (acl - 2) + index : index - 2
-        var p3 = index === acl - 1 ? 0 : index + 1
-        var p4 = index >= acl - 2 ? (index - (acl - 2)) : index + 2
-
         var dir = null
 
-        $('.actu .button').fadeOut(1000)
+        actus.find('.button').fadeOut(1000)
 
         actus.each(function(i, actu) {
             $(actu).css('z-index', actus.length - i)
         })
 
+        var dones = []
         actus.each(function(i, actu) {
+            
+            delay = 0
+            var cl = actu.className.substr(5)
+            if (dones.indexOf(cl) !== -1) {
+                return
+            }
+            dones.push(cl)
 
-            if (i === p1) {
-                dir = left ? 'outleft' : 'center'
-            } else if (i === p2) {
-                dir = left ? 'outleft' : 'left'
-            } else if (i === index) {
-                dir = left ? 'left' : 'right'
-            } else if (i === p3) {
-                dir = left ? 'center' : 'outright'
-            } else if (i === p4) {
-                dir = left ? 'right' : 'outright'
+            switch (cl) {
+                case 'center':
+                    dir = left ? 'left' : 'right'
+                break
+
+                case 'left':
+                    dir = left ? 'outleft' : 'center'
+                break
+
+                case 'right':
+                    dir = left ? 'center' : 'outright'
+                break
+
+                case 'outleft':
+                    dir = left ? 'outright' : 'left'
+                    if (left) {
+                        actu.className = 'actu fast ' + dir
+                        delay = 100
+                        // special case if we have not enought actu
+                        if (actus.length === 4) {
+                            dir = 'right'
+                        }
+                    }
+                break
+
+                case 'outright':
+                    dir = left ? 'right' : 'outleft'
+                        if (!left) {
+                            actu.className = 'actu fast ' + dir
+                            delay = 100
+                            // special case if we have not enought actu
+                            if (actus.length === 4) {
+                                dir = 'left'
+                            }
+                        }
+                break
             }
 
-            if (
-                (dir === 'left' || dir === 'right') && 
-                ( !$(actus[i]).hasClass('out' + dir)  && !$(actus[i]).hasClass('center') )) {
-
-                actus[i].className = 'actu fast out' + dir
-                delay = 100
-            }
-
-            if (
-                (dir === 'outleft' && $(actus[i]).hasClass('outright')) || 
-                (dir === 'outright' && $(actus[i]).hasClass('outleft'))) {
-
-                actus[i].className = 'actu fast ' + dir
-                delay = 100
-            }
 
             if (dir) {
-                setTimeout(function(dir) {
-                    actus[i].className = 'actu ' + dir 
+                setTimeout(function(dir, actu) {
+                    actu.className = 'actu ' + dir 
+                    
                     if (dir === 'center') {
-                        $(actus[i]).find('.button').fadeIn(1000)
-                        $(actus[i]).css('z-index', 10)
+                        $(actu).find('.button').fadeIn(1000)
+                        $(actu).css('z-index', 10)
                         
                         if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
-                            actu_details($(actus[i]).find('section'))
+                            actu_details($(actu).find('section'))
                         }
 
                         $('.screen3 .dates .date').removeClass('active');
-                        $('.screen3 .dates #' + $(actus[i]).data('date') ).addClass('active');
+                        $('.screen3 .dates #' + $(actu).data('date') ).addClass('active');
                     }
-                }.bind(this, dir), delay)
+                }.bind(this, dir, actu), delay)
             }
         })
     })
@@ -235,7 +290,7 @@ $(document).ready(function() {
         if (current.length) {
             current.replaceWith(actual)
         } else {
-            actual.insertBefore('.screen8')
+            actual.insertBefore('.actu.arrowcontainer')
         }
     }
 
@@ -246,7 +301,7 @@ $(document).ready(function() {
           scrollTop: $('body > .screen9').offset().top
         }, 1000);
 
-        $('.screen3 .button_down').addClass('rotate').appendTo('body > .screen9').click(function() {
+        $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer').click(function() {
             $('body > .screen9').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen3').offset().top
@@ -347,7 +402,7 @@ $(document).ready(function() {
         if (current.length) {
             current.replaceWith(actual)
         } else {
-            actual.insertBefore('.screen12')
+            actual.insertBefore('.marques.arrowcontainer')
         }
 
         screen10()
@@ -376,7 +431,7 @@ $(document).ready(function() {
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
 
-        $('.screen5 .button_down').addClass('rotate').appendTo('body > .screen10').click(function() {
+        $('.screen5 .button_down').addClass('rotate').appendTo('body > .marques.arrowcontainer').click(function() {
             $('body > .screen10').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen5').offset().top

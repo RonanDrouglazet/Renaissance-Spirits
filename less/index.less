@@ -267,10 +267,13 @@ header {
     .outright { left: 150%; transform: scale(0.5) }
 
     .dates {
+        position: relative;
+        z-index: 2;
         margin-top: 575px;
         margin-left: 35px;
 
         .date {
+            cursor: pointer;
             width: 20px;
             height: 20px;
             border: 2px solid #2a346c;
@@ -304,6 +307,10 @@ header {
         }
 
     }
+
+    .button_down {
+        z-index: 1;
+    }
 }
 
 /************** 
@@ -336,7 +343,9 @@ header {
             }
         }
     }
+}
 
+.actu.arrowcontainer {
     .button_down {
         margin-left: -61px;
     }
@@ -717,6 +726,12 @@ header {
         img {
             margin: 20px 0 0 0;
         }
+    }
+}
+
+.marques.arrowcontainer {
+    .button_down {
+        margin-left: -53px;
     }
 }
 
