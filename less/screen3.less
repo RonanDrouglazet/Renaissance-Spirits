@@ -1,0 +1,134 @@
+/**************
+* SCREEN 3 - ACTU
+**************/
+
+.screen3 {
+    .full_size;
+    height: 750px;
+    background-color: #faf4ef;
+    color: @king-blue;
+    padding-top: 50px;
+
+    .actu {
+        width: 640px;
+        height: 464px;
+        position: absolute;
+        top: 50%;
+        margin-top: -232px;
+        margin-left: -320px;
+        background-color: white;
+
+        .transform();
+        .transition(left 1s ease, transform 1s ease;);
+        .shadow(rgba(106,117,183,1) 0px 0px 6px);
+
+        .button {
+            .transform();
+            width: 48px;
+            height: 80px;
+            position: absolute;
+            top: 50%;
+            margin-top: -40px;
+            background-color: #212655;
+            padding-top: 24px;
+            cursor: pointer;
+        }
+        .button.right { right: 0; left: auto }
+        .content {
+            cursor: pointer;
+            margin-top: 80px;
+
+            img {
+                height: 276px;
+            }
+        }
+        p {
+            .font_htl; margin: 0 0 0.1em;
+            opacity: 0;
+            .transition(opacity 1s linear);
+            width: 80%;
+            margin: auto;
+            font-size: 14px
+        }
+        img {
+            opacity: 0.4;
+            .transition(opacity 1s linear)
+        }
+        .title { font-size: 18px }
+        section { display: none }
+
+    }
+    .fast {.transition(none)}
+    .center { left: 50%; .transform(1); p { opacity: 1 }; img {opacity: 1} }
+    .left { left: 10%; .transform(0.75) }
+    .outleft { left: -50%; .transform(0.5) }
+    .right { left: 90%; .transform(0.75) }
+    .outright { left: 150%; .transform(0.5) }
+
+    .dates {
+        position: relative;
+        z-index: 2;
+        margin-top: 575px;
+        margin-left: 35px;
+
+        .date {
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #2a346c;
+            border-radius: 10px;
+            position: relative;
+            margin-right: 35px;
+            display: inline-block;
+
+            .line {
+                position: absolute;
+                left: 100%;
+                top: 9px;
+                width: 40px;
+                height: 1px;
+                background-color: #2a346c;
+            }
+
+            span {
+                opacity: 0;
+                .transition(opacity 0.5s linear);
+                .font_htl;
+                position: relative;
+                top: -30px;
+                left: -7px;
+            }
+        }
+
+        .date.active {
+            background-color: #2a346c;
+            span { opacity: 1 }
+        }
+
+    }
+
+    .button_down {
+        z-index: 1;
+    }
+
+    @media only screen and (max-width:667px) {
+        .center { .transform(.5)}
+        .left { .transform(0.25) }
+        .outleft { .transform(0.1) }
+        .right { .transform(0.25) }
+        .outright { .transform(0.1) }
+
+        height: 550px;
+        .dates {
+            margin-top: 340px;
+        }
+    }
+
+    @media only screen and (max-width:320px) {
+        .center { .transform(.4)}
+        .left { .transform(0.25) }
+        .outleft { .transform(0.1) }
+        .right { .transform(0.25) }
+        .outright { .transform(0.1) }
+    }
+}

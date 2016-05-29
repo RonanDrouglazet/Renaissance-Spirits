@@ -1,0 +1,58 @@
+/**************
+* SCREEN 5 - MARQUES SLIDES
+**************/
+
+ .screen5 {
+    .full_size;
+    background-color: white;
+    min-height: 800px;
+
+    .slides {
+        width: 100%;
+        height: 100%;
+        position: relative;
+
+        .slide {
+            .full_size;
+            .cover_me('', white);
+            .top;
+
+            .transition(left 1s ease);
+            overflow: hidden;
+
+            .cover {
+                .content {
+                    .vertical_center;
+                }
+                .font_htl;
+                .full_size;
+                .top(0,100%);
+
+                color: white;
+                min-height: 760px;
+                .transition(left 1s ease);
+                .preserve3d;
+
+                .logo { margin: 0 auto 50px }
+                .logob { margin: 0 auto 16px }
+
+                h2 { margin-bottom: 20px; .font_htl; font-weight: bold; font-size: 22px }
+                p { font-size: 18px }
+                section { display: none }
+            }
+        }
+
+        .button {
+            position: absolute;
+            top: 50%;
+            margin-top: -16px;
+            cursor: pointer;
+        }
+        .button.left {
+            left: 20px;
+        }
+        .button.right {
+            right: 20px;
+        }
+    }
+ }

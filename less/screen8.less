@@ -1,0 +1,75 @@
+/**************
+* SCREEN 8 - NOS VALEURS
+**************/
+
+ .screen8 {
+    margin-top: 40px;
+    background-color: #212655;
+    color: @king-blue;
+    padding: 0 0 20px 0;
+    height: 660px;
+    .cover_me("NOS_VALEURS.jpg");
+
+    h1 {
+        color: white;
+        .font_rs;
+        margin: 50px;
+        font-weight: 400;
+    }
+
+    .cartouches {
+        width: 723px;
+        height: 234px;
+        margin: auto;
+        position: relative;
+    }
+
+    .cartouche {
+        width: 100%;
+        height: 100%;
+        background-color: #151B40;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        padding-top: 10px;
+
+        h3 {
+            .font_htl;
+            color: white;
+            margin: 10px auto;
+            font-weight: 100;
+        }
+        p {
+            .font_htl;
+            font-size: 14px;
+            text-align: justify;
+            color: white;
+            width: 95%;
+            margin: auto;
+        }
+        p.it {
+            text-align: center;
+            font-style: italic;
+        }
+    }
+
+
+    img {
+        margin: 30px;
+        cursor: pointer;
+    }
+
+    @media only screen and (max-width:320px) {
+        img {
+            margin: 5px;
+            width: 20%;
+        }
+
+        .cartouches {
+            width: 90%;
+            height: auto;
+            .cartouche { height: auto }
+        }
+    }
+ }

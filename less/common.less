@@ -162,3 +162,39 @@ a {
     width: 100%;
     position: relative;
 }
+
+.button_down {
+    .bottom(0);
+    .horizontal_center(-50px);
+    margin-top: 30px;
+    margin-bottom: 10px;
+    width: 100px;
+    height: 100px;
+
+    img {
+        width: 30px;
+        .horizontal_center(-15px);
+        .bottom(30px);
+        animation-name: button_down;
+        animation-duration: 0.8s;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+}
+
+.button_down.rotate {
+    cursor: pointer;
+    img {
+        animation-name: button_down_rotate;
+    }
+}
+
+@keyframes button_down {
+    0%   {transform: translateY(0px)}
+    100% {transform: translateY(30px)}
+}
+
+@keyframes button_down_rotate {
+    0%   {transform: translateY(0px) rotate(180deg)}
+    100% {transform: translateY(30px) rotate(180deg)}
+}
