@@ -3,134 +3,220 @@ $(document).ready(function() {
     var menu = $('header .menu');
     var mheight =  menu.height();
     var fmenu = $('header .floating');
+    var is_touch_device = function() {
+      return 'ontouchstart' in window        // works on most browsers
+          || navigator.maxTouchPoints;       // works on IE10/11 and Surface
+    }();
 
-    /************** 
-     * MENU
-     **************/
-    /*$('header .floating').click(function() {
-        if (fmenu.find('i').hasClass('sidebar')) {
-            menu.slideDown(500)
-            fmenu.find('i').removeClass('sidebar').addClass('sort ascending')
-        } else {
-            menu.slideUp(500)
-            fmenu.find('i').removeClass('sort ascending').addClass('sidebar')
-        }
-    })
+    var desktopMenu = function() {
+        /**************
+         * MENU
+         **************/
+        /*$('header .floating').click(function() {
+            if (fmenu.find('i').hasClass('sidebar')) {
+                menu.slideDown(500)
+                fmenu.find('i').removeClass('sidebar').addClass('sort ascending')
+            } else {
+                menu.slideUp(500)
+                fmenu.find('i').removeClass('sort ascending').addClass('sidebar')
+            }
+        })
 
-    win.on('scroll', function() {
-        if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
-            menu.slideUp(500)
-            fmenu.find('i').removeClass('sort ascending sidebar').addClass('sidebar')
-            fmenu.fadeIn()
-        } else if (win.scrollTop() < mheight && fmenu.css('display') === 'block') {
-            menu.slideDown(500)
-            fmenu.fadeOut()
-        }
-    })*/
+        win.on('scroll', function() {
+            if (win.scrollTop() > mheight && fmenu.css('display') !== 'block') {
+                menu.slideUp(500)
+                fmenu.find('i').removeClass('sort ascending sidebar').addClass('sidebar')
+                fmenu.fadeIn()
+            } else if (win.scrollTop() < mheight && fmenu.css('display') === 'block') {
+                menu.slideDown(500)
+                fmenu.fadeOut()
+            }
+        })*/
 
-    /****
-    * SELECT BAR WHEN OVER MENU BUTTON
-    *****/
-    var select1 = $($('header .selectbar')[0])
-    select1.parent().find('.column').each(function(i, bt) {
-        var span = $(bt).find('span')
-        if (span.html() !== "") {
-            span.hover(function() {
-                select1
-                    .show()
-                    .css('left', span.offset().left)
-                    .css('width', span.width())
-            }, function() {})
+        /****
+        * SELECT BAR WHEN OVER MENU BUTTON
+        *****/
+        var select1 = $($('header .selectbar')[0])
+        select1.parent().find('.column').each(function(i, bt) {
+            var span = $(bt).find('span')
+            if (span.html() !== "") {
+                span.hover(function() {
+                    select1
+                        .show()
+                        .css('left', span.offset().left)
+                        .css('width', span.width())
+                }, function() {})
 
-            var to = $(bt).attr('data-to')
+                var to = $(bt).attr('data-to')
+                if (to) {
+                    $(bt).click(function() {
+                        $('html, body').animate({
+                          scrollTop: $(to).offset().top
+                        }, 1000);
+                    })
+                }
+            }
+        })
+        $('header').mouseleave(function() {
+            select1.fadeOut()
+        })
+
+
+        /****
+        * SELECT BAR WHEN SCROLL OVER SECTION
+        *****/
+        var select2 = $($('header .selectbar')[1])
+        var sectionsTop = []
+        $('.menu:not(.mobile) > .grid > .column').each(function(i, c) {
+            c = $(c)
+            if (c.data('to')) {
+                sectionsTop.push($(c.data('to')).offset().top)
+            }
+        })
+
+        win.on('scroll', function() {
+            $(sectionsTop.slice().reverse()).each(function(i, t) {
+                if (win.scrollTop() >= (t - (win.height() / 2))) {
+                    var span = $($('.menu:not(.mobile) > .grid > .column[data-to]').get().reverse()[i]).find('span')
+                    select2
+                        .show()
+                        .css('left', span.offset().left)
+                        .css('width', span.width())
+                    return false
+                }
+            })
+        })
+
+
+        /****
+        * SUB MENU MARQUES
+        *****/
+        var block;
+        $('header .menu .column span').hover(function() {
+            $('header .marques').hide()
+        }, null)
+        $('header .menu .column:nth-child(5) span').hover(function() {
+            $('header .marques').show()
+        }, null)
+
+        $('header .marques').hover(function() {
+            block = true
+            $(this).show()
+        }, function() {
+            $(this).hide()
+        })
+
+        $('header .marques .button').click(function() {
+            $(this).parents('.column').find('.button.active').removeClass('active')
+
+            var id = $(this).parent().data('id')
+            var sid = $(this).parent().data('sid')
+            var next = $(this).addClass('active')
+            .parents('.column').next()
+
+            // reset current selected
+            next.find('.active')
+            .removeClass('active')
+
+            // find wich row we have to show and display it
+            next.find('.row[data-id="' + id + '"]' + (sid ? '[data-sid="' + sid + '"]' : ''))
+            .addClass('active')
+
+            // hide potential sub menu
+            next.next().find('.active')
+            .removeClass('active')
+        })
+
+        $('header .marques').mouseleave(function() {
+            $('header .marques').hide()
+        })
+    }
+
+    var mobileMenu = function() {
+        $('header .floating').click(function() {
+            if (fmenu.find('i').hasClass('sidebar')) {
+                $('.menu.mobile').addClass('open')
+                fmenu.find('i').removeClass('sidebar').addClass('sort ascending')
+            } else {
+                $('.menu.mobile').removeClass('open')
+                fmenu.find('i').removeClass('sort ascending').addClass('sidebar')
+            }
+        })
+
+        /****
+        * SELECT BAR WHEN SCROLL OVER SECTION
+        *****/
+        var select = $('header .menu.mobile .selectbar')
+        var sectionsTop = []
+        var span = $($('.menu.mobile > .grid > .column[data-to]').get(0)).find('span');
+        $('.menu.mobile > .grid > .column').each(function(i, c) {
+            c = $(c)
+            var to = c.data('to')
             if (to) {
-                $(bt).click(function() {
+                sectionsTop.push($(to).offset().top)
+                c.click(function() {
+                    $('header .floating').click()
                     $('html, body').animate({
                       scrollTop: $(to).offset().top
                     }, 1000);
                 })
             }
-        }
-    })
-    $('header').mouseleave(function() {
-        select1.fadeOut()
-    })
-
-
-    /****
-    * SELECT BAR WHEN SCROLL OVER SECTION
-    *****/
-    var select2 = $($('header .selectbar')[1])
-    var sectionsTop = []
-    $('.menu > .grid > .column').each(function(i, c) {
-        c = $(c)
-        if (c.data('to')) {
-            sectionsTop.push($(c.data('to')).offset().top)
-        }
-    })
-
-    win.on('scroll', function() {
-        $(sectionsTop.slice().reverse()).each(function(i, t) {
-            if (win.scrollTop() >= (t - (win.height() / 2))) {
-                var span = $($('.menu > .grid > .column[data-to]').get().reverse()[i]).find('span')
-                select2
-                    .show()
-                    .css('left', span.offset().left)
-                    .css('width', span.width())
-                return false
-            }
         })
-    })
 
+        win.on('scroll', function() {
+            $(sectionsTop.slice().reverse()).each(function(i, t) {
+                if (win.scrollTop() >= (t - (win.height() / 2))) {
+                    span = $($('.menu.mobile > .grid > .column[data-to]').get().reverse()[i]).find('span')
+                    return false
+                }
+            })
+        })
 
-    /****
-    * SUB MENU MARQUES
-    *****/
-    var block;
-    $('header .menu .column span').hover(function() {
-        $('header .marques').hide()
-    }, null)
-    $('header .menu .column:nth-child(5) span').hover(function() {
-        $('header .marques').show()
-    }, null)
+        setInterval(function() {
+            select
+                .show()
+                .css('left', span.offset().left)
+                .css('top', span.parent().position().top + (span.height() + span.position().top))
+                .css('width', span.width())
+        }, 100)
+    }
 
-    $('header .marques').hover(function() {
-        block = true
-        $(this).show()
-    }, function() {
-        $(this).hide()
-    })
+    if ($('.menu.mobile').css('display') !== 'none') {
+        mobileMenu()
+    } else {
+        desktopMenu()
+    }
 
-    $('header .marques .button').click(function() {
-        $(this).parents('.column').find('.button.active').removeClass('active')
+    /**************
+     * MAKE ME TOUCH :)
+     **************/
 
-        var id = $(this).parent().data('id')
-        var sid = $(this).parent().data('sid')
-        var next = $(this).addClass('active')
-        .parents('.column').next()
+     var makeMeTouch = function(btToHide, ctnToTouch, cbk) {
+         var start, diff, stop, limit;
+         btToHide.hide()
+         ctnToTouch.on('touchstart', function(e) {
+             start = e.originalEvent.pageX
+             limit = window.innerWidth * .25
+             stop = false
+         })
+         ctnToTouch.on('touchmove', function(e) {
+             if (stop) return
+             diff = e.originalEvent.pageX - start
+             if (diff < -limit) {
+                 cbk(false)
+                 stop = true
+             } else if (diff > limit) {
+                 cbk(true)
+                 stop = true
+             }
+         })
+     }
 
-        // reset current selected
-        next.find('.active')
-        .removeClass('active')
-
-        // find wich row we have to show and display it
-        next.find('.row[data-id="' + id + '"]' + (sid ? '[data-sid="' + sid + '"]' : ''))
-        .addClass('active')
-
-        // hide potential sub menu
-        next.next().find('.active')
-        .removeClass('active')
-    })
-
-    $('header .marques').mouseleave(function() {
-        $('header .marques').hide()
-    })
-
-    /************** 
+    /**************
      * INTRO
      **************/
     $('.ui.dropdown').dropdown()
-    
+
     $('i.remove').click(function() {
         $('.cookie_use,.cookie_use_mobile').fadeOut()
     })
@@ -139,7 +225,7 @@ $(document).ready(function() {
         $('.intro').fadeOut()
     })
 
-    /************** 
+    /**************
      * SCREEN 1 - SHOW MORE
      **************/
     $('.screen1 .button_rs_out').click(function() {
@@ -156,7 +242,7 @@ $(document).ready(function() {
         }).find('img').attr('src', 'img/arrow_down_blue.png')
     })
 
-    /************** 
+    /**************
      * SCREEN 3 - ACTU
      **************/
     var actus
@@ -170,20 +256,26 @@ $(document).ready(function() {
 
         actus.each(function(i, actu) {
             // choose the right position for this actu based on the index
-            var classname = 
-                i === 0 ? 'center' : 
-                i === 1 ? 'right' : 
+            var classname =
+                i === 0 ? 'center' :
+                i === 1 ? 'right' :
                 i === 2 && i !== actus.length - 1 ? 'outright' :
-                i === actus.length - 1 ? 'left' : 
+                i === actus.length - 1 ? 'left' :
                 'outleft'
 
             // reset
             actu.className = 'actu'
             // and set
             $(actu).addClass(classname)
+            $(actu).css('z-index', actus.length - i)
+
             // hide or show arrow button if center actu
             if (classname === 'center') {
-                $(actu).find('.button').fadeIn(1000)
+                if (!is_touch_device) {
+                    $(actu).find('.button').fadeIn(1000)
+                } else {
+                    $(actu).find('.button').fadeOut(1000)
+                }
                 // and show details if already open
                 if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
                     actu_details($(actu).find('section'))
@@ -193,17 +285,9 @@ $(document).ready(function() {
             }
         })
     }
-    
-    selectActusByDate(2015)
-    selectActusByDate(2016)
 
-    $('section#actualites > .dates > .date').click(function() {
-        selectActusByDate(this.id)
-    })
-
-    $('section .actu .button').click(function() {
-        var left = $(this).hasClass('right')
-        var index = actus.get().indexOf(this.parentNode)
+    var moveActu = function(left) {
+        var index = actus.get().indexOf($('section .actu.center').get(0))
         var acl = actus.length
         var delay = 0
         var dir = null
@@ -216,7 +300,7 @@ $(document).ready(function() {
 
         var dones = []
         actus.each(function(i, actu) {
-            
+
             delay = 0
             var cl = actu.className.substr(5)
             if (dones.indexOf(cl) !== -1) {
@@ -265,12 +349,15 @@ $(document).ready(function() {
 
             if (dir) {
                 setTimeout(function(dir, actu) {
-                    actu.className = 'actu ' + dir 
-                    
+                    actu.className = 'actu ' + dir
+
                     if (dir === 'center') {
-                        $(actu).find('.button').fadeIn(1000)
+                        if (!is_touch_device) {
+                            $(actu).find('.button').fadeIn(1000)
+                        }
+
                         $(actu).css('z-index', 10)
-                        
+
                         if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
                             actu_details($(actu).find('section'))
                         }
@@ -281,7 +368,7 @@ $(document).ready(function() {
                 }.bind(this, dir, actu), delay)
             }
         })
-    })
+    }
 
     var actu_details = function(section) {
         var current = $(document.body).children('.screen9')
@@ -293,6 +380,21 @@ $(document).ready(function() {
             actual.insertBefore('.actu.arrowcontainer')
         }
     }
+
+    selectActusByDate(2015)
+    selectActusByDate(2016)
+
+    if (is_touch_device) {
+        makeMeTouch(actus.find('.button'), $('.screen3'), moveActu)
+    }
+
+    $('section#actualites > .dates > .date').click(function() {
+        selectActusByDate(this.id)
+    })
+
+    $('section .actu .button').click(function() {
+        moveActu($(this).hasClass('right'))
+    })
 
     $('.actu .content').click(function() {
         actu_details($(this).find('section'))
@@ -310,11 +412,7 @@ $(document).ready(function() {
         })
     });
 
-    actus.each(function(i, actu) {
-        $(actu).css('z-index', actus.length - i)
-    })
-
-    /************** 
+    /**************
      * SCREEN 5 - BOUTEILLES
      **************/
 
@@ -322,7 +420,7 @@ $(document).ready(function() {
         select_slide($(this).data('id'))
      })
 
-    /************** 
+    /**************
      * SCREEN 5 - SLIDE
      **************/
     var index_slide = 0
@@ -341,7 +439,7 @@ $(document).ready(function() {
         var s;
         // move main
         $(slides[index_slide]).css('left', '-100%')
-        
+
         // reset out left to out right
         /*if (slides[index_slide - 1]) {
             s = slides[index_slide - 1]
@@ -350,7 +448,7 @@ $(document).ready(function() {
             s = slides[slides.length - 1]
             reset($(s))
         }*/
-        
+
         // move next to main
         if ((to || to === 0) && slides[to]) {
             $(slides[to]).css('left', '0%')
@@ -363,13 +461,13 @@ $(document).ready(function() {
             index_slide = 0
             $(slides[0]).css('left', '0%')
         }
-        
+
         // if details is open
         if ($(document.body).children('.screen10').length && $(document.body).children('.screen10').css('display') !== 'none') {
             details($(slides[index_slide]).find('section'));
         }
-        
-        timer_slide = setTimeout(over_slide, 2000);
+
+        timer_slide = setTimeout(over_slide, is_touch_device ? 0 : 3000);
     }
 
     var clean_interval_slide = function() {
@@ -380,11 +478,11 @@ $(document).ready(function() {
 
     var select_slide = function(n) {
         clean_interval_slide()
-        
+
         $('html, body').animate({
           scrollTop: $('body > .screen5').offset().top
         }, 1000);
-        
+
         reset($(slides[n]), function() {
             move(n)
         })
@@ -411,14 +509,14 @@ $(document).ready(function() {
         interval_slide = true // deactivate scroll listening
     }
 
-    
+
     win.on('scroll', function() {
         if (win.scrollTop() >= screen5top && !interval_slide) {
             interval_slide = setInterval(move_auto, 10000);
-            timer_slide = setTimeout(over_slide, 3000);
+            timer_slide = setTimeout(over_slide, is_touch_device ? 0 : 3000);
         }
     })
-    
+
     slides.each(function(i, slide) {
         $(slide).css('left', Math.min(i * 100, 100) + '%')
     })
@@ -440,22 +538,26 @@ $(document).ready(function() {
         }).find('img').attr('src', 'img/arrow_down_blue.png')
     });
 
-    // click on arrow
-    $('.screen5 .slides').children('.button').click(function() {
-        move_auto(this)
-    })
-
-    var move_auto = function(button) {
-        if (button) {
+    var move_auto = function(goLeft) {
+        if (goLeft || goLeft === false) {
             clean_interval_slide()
         }
 
-        var index = $(button).hasClass('left') ? index_slide - 1 : index_slide + 1
+        var index = goLeft ? index_slide - 1 : index_slide + 1
         index = index < 0 ? slides.length - 1 : index
         index = index > slides.length - 1 ? 0 : index
         reset($(slides[index]), function() {
             move(index)
         })
+    }
+
+    // click on arrow
+    $('.screen5 .slides').children('.button').click(function() {
+        move_auto($(button).hasClass('left'))
+    })
+
+    if (is_touch_device) {
+        makeMeTouch($('.screen5 .slides').children('.button'), $('.screen5'), move_auto)
     }
 
     //menu
@@ -464,9 +566,9 @@ $(document).ready(function() {
             $('header .marques').hide()
             select_slide(i)
         })
-    })    
+    })
 
-    /************** 
+    /**************
      * SCREEN 8 - NOS VALEURS
      **************/
 
@@ -476,49 +578,58 @@ $(document).ready(function() {
         $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeOut()
      })
 
-     /************** 
+     /**************
      * SCREEN 10 - PRODUCT DETAILS
      **************/
      var screen10 = function() {
-        $('.screen10').each(function(a, screen) {
+        $('body > .screen10').each(function(a, screen) {
             $(screen).find('.slide').each(function(i, slide) {
                 $(slide).css('left', ((i * 200) + 50) + '%')
             })
          })
 
-         $('.screen10 .arrow').click(function() {
-            var active;
-            var left = !$(this).hasClass('left');
-            var menus = $(this).parents('.container').find('.menu div')
+         var move = function(left) {
+             var active;
+             var menus = $('body > .screen10 .container .menu div')
 
-            menus.each(function(i, bt) {
-                if ($(bt).hasClass('active')) {
-                    active = i
-                }
-            })
+             menus.each(function(i, bt) {
+                 if ($(bt).hasClass('active')) {
+                     active = i
+                 }
+             })
 
-            var current = $($(this).parent().find('.slide').get(active))
-            //console.log($(this).parent(), $(this).parent().find('.slide'), current)
-            current.css('transition', 'left 1s ease-in-out')
-            current.css('left', left ? '-200%' : '200%')
-            $(menus.get(active)).removeClass('active')
+             var current = $($('body > .screen10').find('.slide').get(active))
+             //console.log($(this).parent(), $(this).parent().find('.slide'), current)
+             current.css('transition', 'left 1s ease-in-out')
+             current.css('left', left ? '-200%' : '200%')
+             $(menus.get(active)).removeClass('active')
 
-            var n = left && active !== 0 ? active - 1 : 
-                    left ? menus.length - 1 : 
-                    active !== menus.length - 1 ? active + 1 : 0
+             var n = left && active !== 0 ? active - 1 :
+                     left ? menus.length - 1 :
+                     active !== menus.length - 1 ? active + 1 : 0
 
-            var next = $($(this).parent().find('.slide').get(n))
-            next.css('transition', 'none')
-            next.css('left', left ? '200%' : '-200%')
-            //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
-            
-            setTimeout(function() {
-                next.css('transition', 'left 1s ease-in-out')
-                next.css('left', '50%')
-            }, 100)
+             var next = $($('body > .screen10').find('.slide').get(n))
+             next.css('transition', 'none')
+             next.css('left', left ? '200%' : '-200%')
+             //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
 
-            $(menus.get(n)).addClass('active')
+             setTimeout(function() {
+                 next.css('transition', 'left 1s ease-in-out')
+                 next.css('left', '50%')
+             }, 100)
+
+             $(menus.get(n)).addClass('active')
+         }
+
+         $('body > .screen10 .arrow').click(function() {
+            move(!$(this).hasClass('left'))
          })
+
+         if (is_touch_device && $('body > .screen10 .arrow').length) {
+             makeMeTouch($('body > .screen10 .arrow'), $('body > .screen10'), function(left) {
+                 move(!left)
+             })
+         }
      }
-     
+
 })

@@ -1,7 +1,7 @@
 @import "common";
 @import "intro";
 
-/************** 
+/**************
 * MENU
 **************/
 
@@ -78,24 +78,69 @@ header {
             .row.active {
                 display: block;
             }
-            
+
         }
     }
 
     .floating {
         .fixed;
-        margin: 10px;
+        margin: 16px 5px;
         display: none;
-        color: black;
-        background-color: rgba(255,255,255,.8);
-        box-shadow: rgba(0,0,0,.1) 0 0 8px;
+        color: white;
         width: 40px;
         height: 30px;
-        i { margin: 1px 4px };
+    }
+
+    .menu.mobile {
+        display: none;
+        overflow: hidden;
+        padding-top: 52px;
+        font-size: 2em;
+        .transition(height 500ms);
+        .grid {
+            height: 100%;
+        }
+        .icon {
+            height: 46px;
+            .top(3px, 50%);
+            margin-left: -34px;
+            img {
+                height: 100%;
+            }
+        }
+        .column:not(.grid) {
+            padding-top: 5%;
+        }
+    }
+
+    .menu.mobile.open {
+        height: 100%;
+        .bg_king_blue(0.95);
+    }
+
+    @media only screen and (max-width:800px) {
+        .menu {
+            display: none;
+        }
+        .menu.mobile {
+            display: block;
+        }
+        .floating {
+            display: block;
+        }
     }
 }
 
-/************** 
+/* PREVENT URL BAR TO HIDE ON IOS BUT KILL SCROLL EVENT / ATTR...
+@media only screen and (max-width:800px) {
+    html {
+        overflow-x: hidden;
+        overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
+    }
+}*/
+
+/**************
 * BUTTON ARROW DOWN
 **************/
 
@@ -135,7 +180,7 @@ header {
     100% {transform: translateY(30px) rotate(180deg)}
 }
 
-/************** 
+/**************
 * SCREEN 1
 **************/
 
@@ -143,7 +188,7 @@ header {
 
     .cover_me("COUV_RS_BLEUE_BIS.jpg");
     .full_size;
-    
+
     padding-top: 100px;
     margin-bottom: 40px;
 
@@ -158,15 +203,15 @@ header {
             font-size: 27px;
             letter-spacing: 3pt;
         }
-        p { 
-            .font_htl; 
+        p {
+            .font_htl;
             margin-top: 50px;
-            font-size: 16px; 
+            font-size: 16px;
         }
     }
 }
 
-/************** 
+/**************
 * SCREEN 2 (HIDDEN)
 **************/
 
@@ -178,10 +223,10 @@ header {
     padding-bottom: 100px;
     display: none;
 
-    h2 { 
-        text-align: center; 
+    h2 {
+        text-align: center;
         margin-top: 50px;
-        .font_rs; 
+        .font_rs;
     };
     p {
         margin-top: 40px;
@@ -190,7 +235,7 @@ header {
     }
 
     .left { text-align: right };
-    .right { 
+    .right {
         text-align: center;
         padding-left: 3rem !important;
         img { margin-top: 50px };
@@ -198,7 +243,7 @@ header {
     };
 }
 
-/************** 
+/**************
 * SCREEN 3 - ACTU
 **************/
 
@@ -217,54 +262,53 @@ header {
         margin-top: -232px;
         margin-left: -320px;
         background-color: white;
-        transform: scale(1);
-        transform-origin: 50% 50%;
-        transition: left 1s ease, transform 1s ease;
-        box-shadow: rgba(106,117,183,1) 0px 0px 6px;
+
+        .transform();
+        .transition(left 1s ease, transform 1s ease;);
+        .shadow(rgba(106,117,183,1) 0px 0px 6px);
 
         .button {
+            .transform();
             width: 48px;
             height: 80px;
             position: absolute;
             top: 50%;
             margin-top: -40px;
             background-color: #212655;
-            transform: scale(1);
             padding-top: 24px;
             cursor: pointer;
         }
         .button.right { right: 0; left: auto }
-        .content { 
+        .content {
             cursor: pointer;
             margin-top: 80px;
-            
+
             img {
                 height: 276px;
             }
         }
-        p { 
-            .font_htl; margin: 0 0 0.1em; 
-            opacity: 0; 
-            transition: opacity 1s linear;
+        p {
+            .font_htl; margin: 0 0 0.1em;
+            opacity: 0;
+            .transition(opacity 1s linear);
             width: 80%;
             margin: auto;
             font-size: 14px
         }
         img {
             opacity: 0.4;
-            transition: opacity 1s linear;
-            
+            .transition(opacity 1s linear)
         }
         .title { font-size: 18px }
         section { display: none }
 
     }
-    .fast {transition: none;}
-    .center { left: 50%; transform: scale(1); p { opacity: 1 }; img {opacity: 1} }
-    .left { left: 10%; transform: scale(0.75) }
-    .outleft { left: -50%; transform: scale(0.5) }
-    .right { left: 90%; transform: scale(0.75) }
-    .outright { left: 150%; transform: scale(0.5) }
+    .fast {.transition(none)}
+    .center { left: 50%; .transform(1); p { opacity: 1 }; img {opacity: 1} }
+    .left { left: 10%; .transform(0.75) }
+    .outleft { left: -50%; .transform(0.5) }
+    .right { left: 90%; .transform(0.75) }
+    .outright { left: 150%; .transform(0.5) }
 
     .dates {
         position: relative;
@@ -293,7 +337,7 @@ header {
 
             span {
                 opacity: 0;
-                transition: opacity 0.5s linear;
+                .transition(opacity 0.5s linear);
                 .font_htl;
                 position: relative;
                 top: -30px;
@@ -313,7 +357,7 @@ header {
     }
 }
 
-/************** 
+/**************
 * SCREEN 9 - ACTU DETAILS
 **************/
 
@@ -343,6 +387,12 @@ header {
             }
         }
     }
+    @media only screen and (max-width:800px) {
+        .content {
+            width: auto;
+            margin: 0 5%;
+        }
+    }
 }
 
 .actu.arrowcontainer {
@@ -351,7 +401,7 @@ header {
     }
 }
 
-/************** 
+/**************
 * SCREEN 8 - NOS VALEURS
 **************/
 
@@ -386,7 +436,7 @@ header {
         left: 0;
         display: none;
         padding-top: 10px;
-        
+
         h3 {
             .font_htl;
             color: white;
@@ -394,8 +444,8 @@ header {
             font-weight: 100;
         }
         p {
-            .font_htl; 
-            font-size: 14px; 
+            .font_htl;
+            font-size: 14px;
             text-align: justify;
             color: white;
             width: 95%;
@@ -407,14 +457,14 @@ header {
         }
     }
 
-    
+
     img {
         margin: 30px;
         cursor: pointer;
     }
  }
 
-/************** 
+/**************
 * SCREEN 4 - MARQUES
 **************/
 
@@ -433,7 +483,7 @@ header {
         width: 100%;
         height: 240px;
         margin-top: 380px;
-        
+
         .content {
             width: 773px;
             margin: auto;
@@ -446,44 +496,37 @@ header {
         }
         img.bouteille {
             position: absolute;
-            transform-origin: 50% 50%;
-            transition: transform 0.5s ease;
+            .transform();
+            .transition(transform 0.5s ease);
             cursor: pointer;
         }
         img.bouteille:hover {
-            transform: scale(1.5);
+            .transform(1.5);
             z-index: 200;
         }
     }
  }
 
-/************** 
+/**************
 * SCREEN 5 - MARQUES SLIDES
 **************/
-@mixin vertical-align($position: relative) {
-  position: $position;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-  -ms-transform: translateY(-50%);
-  transform: translateY(-50%);
-}
 
  .screen5 {
     .full_size;
     background-color: white;
     min-height: 800px;
-    
+
     .slides {
         width: 100%;
         height: 100%;
         position: relative;
 
-        .slide { 
-            .full_size; 
-            .cover_me('', white); 
-            .top; 
+        .slide {
+            .full_size;
+            .cover_me('', white);
+            .top;
 
-            transition: left 1s ease;
+            .transition(left 1s ease);
             overflow: hidden;
 
             .cover {
@@ -493,13 +536,11 @@ header {
                 .font_htl;
                 .full_size;
                 .top(0,100%);
-                
+
                 color: white;
                 min-height: 760px;
-                transition: left 1s ease;
-                -webkit-transform-style: preserve-3d;
-                -moz-transform-style: preserve-3d;
-                transform-style: preserve-3d;
+                .transition(left 1s ease);
+                .preserve3d;
 
                 .logo { margin: 0 auto 50px }
                 .logob { margin: 0 auto 16px }
@@ -507,7 +548,7 @@ header {
                 h2 { margin-bottom: 20px; .font_htl; font-weight: bold; font-size: 22px }
                 p { font-size: 18px }
                 section { display: none }
-            } 
+            }
         }
 
         .button {
@@ -525,28 +566,34 @@ header {
     }
  }
 
-/************** 
+/**************
 * SCREEN 6 - CONTACT
 **************/
 
 .screen6 {
     padding: 50px 0 50px 0;
     color: #212654;
-    
+
     h2 { margin-bottom: 40px }
     .font_htl;
-    p { line-height: 1.8em }
+    p { line-height: 1.8em;text-align: center; }
+    .column {
+        text-align: center !important;
+    }
     .bar {
         width: 74px;
         height: 1px;
         background-color: #212654;
         margin: auto;
         position: relative;
-        top: -40px;
-    } 
+        bottom: -25px;
+    }
+    @media only screen and (max-width:800px) {
+
+    }
 }
 
-/************** 
+/**************
 * SCREEN 7 - FOOTER
 **************/
 
@@ -581,7 +628,7 @@ header {
     }
 
     img.logo { height: 200px }
-    .divider { 
+    .divider {
         margin: 100px auto 10px auto;
         width: 880px;
         height: 1px;
@@ -591,18 +638,18 @@ header {
         width: 880px;
         margin: auto;
         text-align: left;
-        
+
         .bt {
             display: inline-block;
             margin-right: 40px;
         }
     }
-    
+
 
     .cover_me("IMAGE_FOND_ROSE_DES_VENTS.jpg");
 }
 
-/************** 
+/**************
 * SCREEN 10 - PRODUCT DETAILS
 **************/
 
@@ -622,8 +669,8 @@ header {
     .menu {
         display: none;/* REMOVE IT, ASK BY CLIENT*/
         font-size: 18px;
-        
-        div { 
+
+        div {
             width: 80px;
             display: inline-block;
             margin: 0 100px 0 100px;
@@ -652,12 +699,12 @@ header {
             width: 850px;
             margin-left: -425px;
         }
-        
+
         img { margin: auto;}
-        
+
         .column { text-align: center !important; }
-        .justify { 
-            text-align: justify !important; 
+        .justify {
+            text-align: justify !important;
         }
         .text {
             width: 415px;
@@ -727,6 +774,49 @@ header {
             margin: 20px 0 0 0;
         }
     }
+
+    @media only screen and (max-width:800px) {
+        .slides {
+            height: 550px;
+            font-size: 14px;
+
+            img { height: 500px;}
+
+            .slide {
+                width: 750px;
+                margin-left: -375px;
+                .text {
+                    width: auto;
+
+                    .button {
+                        width: 170px;
+                        font-size: 12px;
+                        bottom: 30px;
+                    }
+                    .button.right {
+                        left: 200px;
+                    }
+                    .title {
+                        margin: 20px !important;
+                    }
+                }
+
+                .grid {
+                    width: 100%;
+                }
+                .grid > .column {
+                    padding: .5rem;
+                }
+            }
+        }
+
+        .mosaik {
+            width: 100%;
+            img {
+                width: 100%;
+            }
+        }
+    }
 }
 
 .marques.arrowcontainer {
@@ -735,7 +825,7 @@ header {
     }
 }
 
-/************** 
+/**************
 * SCREEN 11 - CONFIDENTIALITE - MENTIONS
 **************/
 
@@ -759,7 +849,7 @@ header {
 
 }
 
-/************** 
+/**************
 * SCREEN 12
 **************/
 
@@ -767,11 +857,17 @@ header {
     background-color: #212655;
 
     p {
-        .font_htl; 
-        font-size: 16px; 
+        .font_htl;
+        font-size: 16px;
         line-height: 30px;
         margin: 40px auto;
         color: white;
+    }
+
+    @media only screen and (max-width:800px) {
+        p {
+            margin: 50px;
+        }
     }
 }
 

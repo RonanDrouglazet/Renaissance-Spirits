@@ -1,6 +1,20 @@
 @imagesdir: "../img/";
 @king-blue: rgb(37, 61, 115);
 
+@mixin vertical-align($position: relative) {
+  position: $position;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.preserve3d {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+}
+
 .bg_king_blue(@opacity: 1) {
     background-color: rgba(37, 61, 115, @opacity);
 }
@@ -73,6 +87,27 @@
     background-color: @bg !important;
     background-repeat: no-repeat;
     background-size: cover !important;
+}
+
+.transform(@scale: 1, @x: 50%, @y: 50%) {
+    transform: scale(@scale);
+    -webkit-transform: scale(@scale);
+    -moz-transform: scale(@scale);
+    transform-origin: @x @y;
+    -webkit-transform-origin: @x @y;
+    -moz-transform-origin: @x @y;
+}
+
+.transition(@style) {
+    transition: @style;
+    -webkit-transition: @style;
+    -moz-transition: @style;
+}
+
+.shadow (@style) {
+    box-shadow: @style;
+    -webkit-box-shadow: @style;
+    -moz-box-shadow: @style;
 }
 
 section {
