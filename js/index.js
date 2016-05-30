@@ -553,7 +553,7 @@ $(document).ready(function() {
 
     // click on arrow
     $('.screen5 .slides').children('.button').click(function() {
-        move_auto($(button).hasClass('left'))
+        move_auto($(this).hasClass('left'))
     })
 
     if (is_touch_device) {
