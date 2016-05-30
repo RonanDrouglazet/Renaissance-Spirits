@@ -420,6 +420,19 @@ $(document).ready(function() {
         select_slide($(this).data('id'))
      })
 
+     var scalefb = function() {
+         if (win.width() < $('.screen4 .content').width()) {
+             var scaleB = win.width() / $('.screen4 .content').width()
+             $('.screen4 .content').css({
+                 transform: 'scale(' + scaleB + ')',
+                 transformOrigin: '0.5% 0'
+             })
+         }
+     }
+
+     scalefb()
+     win.on('orientationchange', scalefb)
+
     /**************
      * SCREEN 5 - SLIDE
      **************/
@@ -582,9 +595,17 @@ $(document).ready(function() {
      * SCREEN 10 - PRODUCT DETAILS
      **************/
      var screen10 = function() {
-        $('body > .screen10').each(function(a, screen) {
+         if (win.width() < 800) {
+            $('body > .screen10 .slides').css('height', '1100px')
+            $('body > .screen10 .slide').addClass('widthauto')
+            $('body > .screen10 .slide .button').addClass('nobsolute')
+         }
+
+         var center = win.width() < 800 ? 0 : 50
+
+         $('body > .screen10').each(function(a, screen) {
             $(screen).find('.slide').each(function(i, slide) {
-                $(slide).css('left', ((i * 200) + 50) + '%')
+                $(slide).css('left', ((i * 200) + center) + '%')
             })
          })
 
@@ -615,7 +636,7 @@ $(document).ready(function() {
 
              setTimeout(function() {
                  next.css('transition', 'left 1s ease-in-out')
-                 next.css('left', '50%')
+                 next.css('left', center + '%')
              }, 100)
 
              $(menus.get(n)).addClass('active')

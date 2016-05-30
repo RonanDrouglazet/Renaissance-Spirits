@@ -34,10 +34,28 @@
             margin: 0 5%;
         }
     }
+
+    @media only screen and (max-width:400px) {
+        img {
+            max-width: 100%;
+        }
+        .content {
+            max-width: 100%;
+            h2 {
+                margin: 10px 0;
+            }
+            .footer {
+                max-width: 100%;
+                left: 0;
+            }
+        }
+    }
 }
 
 .actu.arrowcontainer {
     .button_down {
-        margin-left: -61px;
+        @media only screen and (min-width:400px) {
+            margin-left: -61px;
+        }
     }
 }

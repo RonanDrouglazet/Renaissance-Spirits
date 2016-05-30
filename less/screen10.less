@@ -49,6 +49,11 @@
             margin-left: -425px;
         }
 
+        .slide.widthauto {
+            width: 100%;
+            margin-left: 0;
+        }
+
         img { margin: auto;}
 
         .column { text-align: center !important; }
@@ -86,6 +91,11 @@
             .button:hover {
                 background-color: #253d73;
                 color: white;
+            }
+            .button.nobsolute {
+                position: static;
+                width: 46% !important;
+                font-size: .6em !important;
             }
         }
 
@@ -166,7 +176,24 @@
             }
         }
     }
+
+    @media only screen and (max-width:400px) {
+        .footer {
+            max-width: 100%;
+            left: 0;
+        }
+        .marques.arrowcontainer {
+            .button_down {
+                margin-left: -50px;
+            }
+        }
+        .mosaik {
+            margin-top: 0;
+        }
+    }
 }
+
+
 
 .marques.arrowcontainer {
     .button_down {
