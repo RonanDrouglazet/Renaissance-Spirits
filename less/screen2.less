@@ -29,6 +29,10 @@
         p { text-align: left };
     };
 
+    .grid.mobile {
+        display: none;
+    }
+
     @media only screen and (max-width:620px) {
         .left, .right {
             text-align: center;
@@ -36,5 +40,14 @@
         }
 
         img { max-width: 100% }
+    }
+
+    @media only screen and (max-width:400px) {
+        .container > .grid.mobile {
+            display: block;
+        }
+        .container > .grid:not(.mobile) {
+            display: none;
+        }
     }
 }
