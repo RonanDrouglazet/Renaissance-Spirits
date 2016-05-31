@@ -67,14 +67,17 @@ $(document).ready(function() {
         *****/
         var select2 = $($('header .selectbar')[1])
         var sectionsTop = []
-        $('.menu:not(.mobile) > .grid > .column').each(function(i, c) {
-            c = $(c)
-            if (c.data('to')) {
-                sectionsTop.push($(c.data('to')).offset().top)
-            }
-        })
+        var getSectionTop = function() {
+            sectionsTop = []
+            $('.menu:not(.mobile) > .grid > .column').each(function(i, c) {
+                c = $(c)
+                if (c.data('to')) {
+                    sectionsTop.push($(c.data('to')).offset().top)
+                }
+            })
+        }
 
-        win.on('scroll', function() {
+        var moveSelectToSection = function() {
             $(sectionsTop.slice().reverse()).each(function(i, t) {
                 if (win.scrollTop() >= (t - (win.height() / 2))) {
                     var span = $($('.menu:not(.mobile) > .grid > .column[data-to]').get().reverse()[i]).find('span')
@@ -85,8 +88,11 @@ $(document).ready(function() {
                     return false
                 }
             })
-        })
+        }
 
+        setInterval(getSectionTop, 1000)
+        win.on('scroll', moveSelectToSection)
+        getSectionTop()
 
         /****
         * SUB MENU MARQUES
