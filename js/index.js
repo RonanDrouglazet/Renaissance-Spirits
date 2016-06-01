@@ -221,15 +221,23 @@ $(document).ready(function() {
     /**************
      * INTRO
      **************/
-    $('.ui.dropdown').dropdown()
+    var cookie = decodeURIComponent(document.cookie.replace(new RegExp("(?:(?:^|.*;)\\s*18Y\\s*\\=\\s*([^;]*).*$)|^.*$"), "$1"))
 
-    $('i.remove').click(function() {
-        $('.cookie_use,.cookie_use_mobile').fadeOut()
-    })
+    if (cookie) {
+        $('.intro').fadeOut(0)
+    } else {
+        $('.ui.dropdown').dropdown()
 
-    $('button.accept').click(function() {
-        $('.intro').fadeOut()
-    })
+        $('i.remove').click(function() {
+            $('.cookie_use,.cookie_use_mobile').fadeOut()
+        })
+
+        $('button.accept').click(function() {
+            document.cookie = "18Y=true; expires=Tue, 19 Jan 2038 03:14:07 GMT; path=/"
+            $('.intro').fadeOut()
+        })
+    }
+
 
     /**************
      * SCREEN 1 - SHOW MORE
