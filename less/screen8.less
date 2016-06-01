@@ -60,7 +60,7 @@
         cursor: pointer;
     }
     .img {
-        display: inline;
+        display: inline-block;
         position: relative;
         text-align: center;
         div {
@@ -76,8 +76,11 @@
             margin: 5px;
             width: 20%;
         }
-        .img div {
-            display: none;
+        .img {
+            display: inline;
+            div {
+                display: none;
+            }
         }
 
         .cartouches {
