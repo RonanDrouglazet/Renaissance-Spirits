@@ -609,13 +609,14 @@ $(document).ready(function() {
      * SCREEN 10 - PRODUCT DETAILS
      **************/
      var screen10 = function() {
-         if (win.width() < 800) {
+         var slideW = $('body > .screen10 .slide').width()
+         if (win.width() < slideW) {
             $('body > .screen10 .slides').css('height', '1100px')
             $('body > .screen10 .slide').addClass('widthauto')
             $('body > .screen10 .slide .button').addClass('nobsolute')
          }
 
-         var center = win.width() < 800 ? 0 : 50
+         var center = win.width() < slideW ? 0 : 50
 
          $('body > .screen10').each(function(a, screen) {
             $(screen).find('.slide').each(function(i, slide) {
