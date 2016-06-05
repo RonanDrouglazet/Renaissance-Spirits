@@ -13,6 +13,7 @@
         position: relative;
 
         .slide {
+            background-position: 50%;
             .full_size;
             .cover_me('', white);
             .top;
@@ -59,6 +60,32 @@
         }
         .button.right {
             right: 20px;
+        }
+    }
+
+    @media only screen and (max-width:800px) {
+        .slides {
+            .slide:nth-child(1) {
+                background-image: url(../img/gvine_mobile.jpg) !important;
+            }
+            .slide:nth-child(2) {
+                background-image: url(../img/vermouth2_mobile.jpg) !important;
+            }
+            .slide:nth-child(3) {
+                background-image: url(../img/tequila_mobile.jpg) !important;
+            }
+            .slide:nth-child(4) {
+                background-image: url(../img/liqueur_mobile.jpg) !important;
+            }
+            .slide:nth-child(5) {
+                background-image: url(../img/vodka_mobile.jpg) !important;
+            }
+            .slide:nth-child(6) {
+                background-image: url(../img/Ciroc_mobile.jpg) !important;
+            }
+            .slide:nth-child(8) {
+                background-image: url(../img/eaudevie_mobile.jpg) !important;
+            }
         }
     }
 

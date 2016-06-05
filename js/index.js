@@ -436,7 +436,7 @@ $(document).ready(function() {
 
      var scalefb = function() {
          if (win.width() < $('.screen4 .content').width()) {
-             var scaleB = win.width() / $('.screen4 .content').width()
+             var scaleB = win.width() / ($('.screen4 .content').width() * 1.1)
              $('.screen4 .content').css({
                  transform: 'scale(' + scaleB + ')',
                  transformOrigin: '0.5% 0'
