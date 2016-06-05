@@ -626,7 +626,7 @@ $(document).ready(function() {
 
          var move = function(left) {
              var active;
-             var menus = $('body > .screen10 .container .menu div')
+             var menus = $('body > .screen10 .container .menu > div')
 
              menus.each(function(i, bt) {
                  if ($(bt).hasClass('active')) {
@@ -662,6 +662,7 @@ $(document).ready(function() {
          })
 
          if (is_touch_device && $('body > .screen10 .arrow').length) {
+             $('body > .screen10 .container .menu').show()
              makeMeTouch($('body > .screen10 .arrow'), $('body > .screen10'), function(left) {
                  move(!left)
              })
