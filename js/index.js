@@ -399,7 +399,9 @@ $(document).ready(function() {
     selectActusByDate(2016)
 
     if (is_touch_device) {
-        makeMeTouch(actus.find('.button'), $('.screen3'), moveActu)
+        makeMeTouch(actus.find('.button'), $('.screen3'), function(left) {
+            moveActu(!left)
+        })
     }
 
     $('section#actualites > .dates > .date').click(function() {
