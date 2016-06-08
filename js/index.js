@@ -98,10 +98,10 @@ $(document).ready(function() {
         * SUB MENU MARQUES
         *****/
         var block;
-        $('header .menu .column span').hover(function() {
+        $('header .menu .stackable.grid .column span').hover(function() {
             $('header .marques').hide()
         }, null)
-        $('header .menu .column:nth-child(5) span').hover(function() {
+        $('header .menu .stackable.grid .column:nth-child(5) span').hover(function() {
             $('header .marques').show()
         }, null)
 
@@ -112,12 +112,12 @@ $(document).ready(function() {
             $(this).hide()
         })
 
-        $('header .marques .button').click(function() {
+        $('header .marques .button span').hover(function() {
             $(this).parents('.column').find('.button.active').removeClass('active')
 
-            var id = $(this).parent().data('id')
-            var sid = $(this).parent().data('sid')
-            var next = $(this).addClass('active')
+            var id = $(this).parents('.row').data('id')
+            var sid = $(this).parents('.row').data('sid')
+            var next = $(this).parent().addClass('active')
             .parents('.column').next()
 
             // reset current selected
@@ -131,7 +131,7 @@ $(document).ready(function() {
             // hide potential sub menu
             next.next().find('.active')
             .removeClass('active')
-        })
+        }, null)
 
         $('header .marques').mouseleave(function() {
             $('header .marques').hide()
