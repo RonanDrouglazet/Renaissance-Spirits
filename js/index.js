@@ -551,21 +551,43 @@ $(document).ready(function() {
     })
 
     // show details
-    $('.screen5 .button_rs_out').click(function() {
-        details($(this).parents('.cover').find('section'));
+    var showDetails = function(section) {
+        details(section);
 
         $('html, body').animate({
           scrollTop: $('body > .screen10').offset().top
         }, 1000);
 
-        $('.screen5 .button_down').addClass('rotate').appendTo('body > .marques.arrowcontainer').click(function() {
+        $('.screen5 .button_down')
+            .addClass('rotate')
+            .appendTo('body > .marques.arrowcontainer')
+            .find('img')
+            .attr('src', 'img/arrow_down_blue.png')
+    }
+
+    var arrowDetails = function() {
+        if ($(this).hasClass('rotate')) {
+            console.log('close')
             $('body > .screen10').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen5').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click').appendTo('.screen5').find('img').attr('src', 'img/arrow_down.png')
-        }).find('img').attr('src', 'img/arrow_down_blue.png')
+            $(this)
+                .removeClass('rotate')
+                .appendTo('.screen5')
+                .find('img')
+                .attr('src', 'img/arrow_down.png')
+        } else {
+            showDetails($(slides[index_slide]).find('section'))
+        }
+    }
+
+    $('.screen5 .button_rs_out').click(function() {
+        showDetails($(this).parents('.cover').find('section'))
     });
+
+    $('.screen5 .button_down').on('click',arrowDetails)
+
 
     var move_auto = function(goLeft) {
         if (goLeft || goLeft === false) {
