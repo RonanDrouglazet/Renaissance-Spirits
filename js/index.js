@@ -505,12 +505,14 @@ $(document).ready(function() {
         clearTimeout(timer_slide)
     }
 
-    var select_slide = function(n) {
+    var select_slide = function(n, noScroll) {
         clean_interval_slide()
 
-        $('html, body').animate({
-          scrollTop: $('body > .screen5').offset().top
-        }, 1000);
+        if (!noScroll) {
+            $('html, body').animate({
+              scrollTop: $('body > .screen5').offset().top
+            }, 1000);
+        }
 
         reset($(slides[n]), function() {
             move(n)
@@ -522,7 +524,7 @@ $(document).ready(function() {
         $(slides[index_slide]).find('.cover').css('left', 0)
     }
 
-    var details = function(section) {
+    var details = function(section, nb) {
         var current = $(document.body).children('.screen10')
         var actual = section.clone()
 
@@ -530,6 +532,11 @@ $(document).ready(function() {
             current.replaceWith(actual)
         } else {
             actual.insertBefore('.marques.arrowcontainer')
+        }
+
+        if (nb) {
+            $('body > .screen10 .container .menu > div.active').removeClass('active')
+            $($('body > .screen10 .container .menu > div').get(nb)).addClass('active')
         }
 
         screen10()
@@ -551,8 +558,8 @@ $(document).ready(function() {
     })
 
     // show details
-    var showDetails = function(section) {
-        details(section);
+    var showDetails = function(section, nb) {
+        details(section, nb);
 
         $('html, body').animate({
           scrollTop: $('body > .screen10').offset().top
@@ -567,7 +574,6 @@ $(document).ready(function() {
 
     var arrowDetails = function() {
         if ($(this).hasClass('rotate')) {
-            console.log('close')
             $('body > .screen10').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen5').offset().top
@@ -613,9 +619,16 @@ $(document).ready(function() {
 
     //menu
     $('header .marques .sub:last-child .row').each(function(i, row) {
-        $(row).click(function() {
-            $('header .marques').hide()
-            select_slide(i)
+        $(row).find('.buttonl').each(function(ib, button) {
+            $(button).click(function() {
+                $('header .marques').hide()
+                // select marque
+                select_slide(i, true)
+                // select details
+                setTimeout(function() {
+                    showDetails($(slides[index_slide]).find('section'), ib)
+                }, 100)
+            })
         })
     })
 
@@ -640,26 +653,22 @@ $(document).ready(function() {
             $('body > .screen10 .slide .button').addClass('nobsolute')
          }
 
+         // init slides
          var center = win.width() < slideW ? 0 : 50
-
-         $('body > .screen10').each(function(a, screen) {
-            $(screen).find('.slide').each(function(i, slide) {
-                $(slide).css('left', ((i * 200) + center) + '%')
-            })
+         var menus = $('body > .screen10 .container .menu > div')
+         var active
+         menus.each(function(i, bt) {
+             if ($(bt).hasClass('active')) {
+                 active = i
+             }
          })
 
+         $('body > .screen10 .slide').css('left', '200%')
+         $($('body > .screen10 .slide').get(active)).css('left', center + '%')
+
          var move = function(left) {
-             var active;
-             var menus = $('body > .screen10 .container .menu > div')
-
-             menus.each(function(i, bt) {
-                 if ($(bt).hasClass('active')) {
-                     active = i
-                 }
-             })
-
              var current = $($('body > .screen10').find('.slide').get(active))
-             //console.log($(this).parent(), $(this).parent().find('.slide'), current)
+
              current.css('transition', 'left 1s ease-in-out')
              current.css('left', left ? '-200%' : '200%')
              $(menus.get(active)).removeClass('active')
@@ -671,14 +680,21 @@ $(document).ready(function() {
              var next = $($('body > .screen10').find('.slide').get(n))
              next.css('transition', 'none')
              next.css('left', left ? '200%' : '-200%')
-             //console.log(active, left && active !== 0 ? active - 1 : active !== menus.length - 1 ? active + 1 : 0)
+
 
              setTimeout(function() {
                  next.css('transition', 'left 1s ease-in-out')
                  next.css('left', center + '%')
              }, 100)
 
+
+             // reset active index
              $(menus.get(n)).addClass('active')
+             menus.each(function(i, bt) {
+                 if ($(bt).hasClass('active')) {
+                     active = i
+                 }
+             })
          }
 
          $('body > .screen10 .arrow').click(function() {
