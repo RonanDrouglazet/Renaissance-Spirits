@@ -709,4 +709,25 @@ $(document).ready(function() {
          }
      }
 
+     /**************
+      * FORM
+      **************/
+
+      $('form').submit(function() {
+          var valid = !!$('form input[name="nom"]').val() &&
+                      !!$('form input[name="prenom"]').val() &&
+                      !!$('form input[name="email"]').val() &&
+                      !!$('form input[name="sujet"]').val() &&
+                      !!$('form textarea[name="message"]').val()
+
+          if (valid) {
+              valid = !!$('form input[name="email"]').val().match(/\w+@\w+\.\w+/)
+          }
+
+          $(this).find('.message').hide()
+          $(this).find('.message.' + (valid ? 'success' : 'error') ).show()
+
+          return valid
+      })
+
 })

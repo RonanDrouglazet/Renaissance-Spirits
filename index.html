@@ -1502,25 +1502,29 @@ Nos équipes sont salariées, intégrées et leur expérience du secteur est rec
         <form class="ui form" action="http://octoboot.soizen.ovh/email/RenaissanceSpirits%3Cwebsite%3E/rs-france@maisonvillevert.com%3Bm-gebleux@maisonvillevert.com/contact" method="post" target="dummyframe">
         <div class="two fields">
            <div class="field">
-            <input type="text" name="nom" placeholder="NOM">
+            <input type="text" name="nom" placeholder="NOM*">
           </div>
           <div class="field">
-            <input type="text" name="prenom" placeholder="PRÉNOM">
+            <input type="text" name="prenom" placeholder="PRÉNOM*">
           </div>
         </div>
 
         <div class="field">
-          <input type="text" name="email" placeholder="EMAIL">
+          <input type="text" name="email" placeholder="EMAIL*">
         </div>
         <div class="field">
-          <input type="text" name="sujet" placeholder="SUJET">
+          <input type="text" name="sujet" placeholder="SUJET*">
         </div>
         <div class="field">
-          <textarea name="message" placeholder="MESSAGE"></textarea>
+          <textarea name="message" placeholder="MESSAGE*"></textarea>
         </div>
-        <button class="reserve" type="submit" onclick="$(this).parent().find('.message').show()">ENVOYER</button><br/><br/>
+        <span>*obligatoire</span>
+        <button class="reserve" type="submit">ENVOYER</button><br/><br/>
         <div class="ui message success">
           <div class="header">Merci de nous avoir contacté ! Nous vous répondrons dès que possible.</div>
+        </div>
+        <div class="ui message error">
+          <div class="header">Tous les champs sont obligatoires, ainsi qu'un email valide</div>
         </div>
       </form>
       <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="border:none"></iframe>
