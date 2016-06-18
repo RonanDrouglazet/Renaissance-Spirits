@@ -187,11 +187,8 @@ $(document).ready(function() {
         }, 100)
     }
 
-    if ($('.menu.mobile').css('display') !== 'none') {
-        mobileMenu()
-    } else {
-        desktopMenu()
-    }
+    desktopMenu()
+    mobileMenu()
 
     /**************
      * MAKE ME TOUCH :)
