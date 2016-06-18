@@ -242,19 +242,32 @@ $(document).ready(function() {
     /**************
      * SCREEN 1 - SHOW MORE
      **************/
-    $('.screen1 .button_rs_out').click(function() {
-        $('.screen2').show()
-        $('html, body').animate({
-          scrollTop: $('.screen2').offset().top
-        }, 1000);
-        $('.screen1 .button_down').addClass('rotate').appendTo('.screen2').click(function() {
+
+    var screen1_details = function() {
+        if ($('.screen1 .button_down').length) {
+            $('.screen2').show()
+            $('html, body').animate({
+              scrollTop: $('.screen2').offset().top
+            }, 1000);
+            $('.screen1 .button_down')
+                .addClass('rotate')
+                .appendTo('.screen2')
+                .find('img')
+                .attr('src', 'img/arrow_down_blue.png')
+        } else {
             $('.screen2').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen1').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click').appendTo('.screen1').find('img').attr('src', 'img/arrow_down.png')
-        }).find('img').attr('src', 'img/arrow_down_blue.png')
-    })
+            $('.screen2 .button_down')
+               .removeClass('rotate')
+               .appendTo('.screen1')
+               .find('img')
+               .attr('src', 'img/arrow_down.png')
+        }
+    }
+
+    $('.screen1 .button_rs_out, .screen1 .button_down').on('click', screen1_details)
 
     /**************
      * SCREEN 3 - ACTU
@@ -412,21 +425,27 @@ $(document).ready(function() {
         moveActu($(this).hasClass('right'))
     })
 
-    $('.actu .content').click(function() {
-        actu_details($(this).find('section'))
+    var show_actu_details = function() {
+        var date_active = $('section#actualites > .dates > .date.active').attr('id')
+        var actu = $('.actu.center[data-date="'+ date_active +'"]')
 
-        $('html, body').animate({
-          scrollTop: $('body > .screen9').offset().top
-        }, 1000);
+        if (!$(this).hasClass('rotate')) {
+            actu_details($('.actu.center[data-date="'+ $('section#actualites > .dates > .date.active').attr('id') +'"]').find('section'))
+            $('html, body').animate({
+              scrollTop: $('body > .screen9').offset().top
+            }, 1000);
 
-        $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer').click(function() {
+            $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer')
+        } else {
             $('body > .screen9').slideUp()
             $('html, body').animate({
               scrollTop: $('.screen3').offset().top
             }, 1000);
-            $(this).removeClass('rotate').off('click').appendTo('.screen3')
-        })
-    });
+            $(this).removeClass('rotate').appendTo('.screen3')
+        }
+    }
+
+    $('.actu .content, .screen3 .button_down').click(show_actu_details)
 
     /**************
      * SCREEN 5 - BOUTEILLES
