@@ -194,6 +194,9 @@
     }
 
     @media only screen and (max-width:400px) {
+        .ui.stackable.grid>.column:not(.row) {
+             padding: 0 !important;
+        }
         .footer {
             max-width: 100%;
             left: 0;
@@ -205,6 +208,9 @@
         }
         .mosaik {
             margin-top: 0;
+        }
+        .slides .justify {
+            text-align: center !important;
         }
     }
 }
