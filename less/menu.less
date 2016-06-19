@@ -63,19 +63,19 @@ header {
             }
             .buttonl {
                 display: inline-block;
-                margin: 10px 50px 10px auto;
+                margin: 10px 50px 0px auto;
             }
-            .row {
+            .column:not(:first-child) {
                 display: none;
             }
-            .row.active {
+            .column.active {
                 display: block;
             }
-            .column:last-child  .row[data-sid="2"] {
-                margin-top: 28px;
-            }
-
         }
+    }
+
+    .ui.grid>.row {
+        padding: 0 !important;
     }
 
     .floating {

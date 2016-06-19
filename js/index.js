@@ -113,24 +113,23 @@ $(document).ready(function() {
         })
 
         $('header .marques .button span').hover(function() {
-            $(this).parents('.column').find('.button.active').removeClass('active')
+            var parent = $(this).parents('.column')
+            parent.find('.button.active').removeClass('active')
 
-            var id = $(this).parents('.row').data('id')
-            var sid = $(this).parents('.row').data('sid')
-            var next = $(this).parent().addClass('active')
-            .parents('.column').next()
+            if (parent.hasClass('main')) {
+                $('header .marques .active').removeClass('active')
+            }
 
-            // reset current selected
-            next.find('.active')
-            .removeClass('active')
+            $(this).parent().addClass('active')
 
-            // find wich row we have to show and display it
-            next.find('.row[data-id="' + id + '"]' + (sid ? '[data-sid="' + sid + '"]' : ''))
-            .addClass('active')
+            var next = parent.next().addClass('active')
 
-            // hide potential sub menu
-            next.next().find('.active')
-            .removeClass('active')
+            if (!parent.hasClass('main') && parent.find('.button').length >= 2) {
+                next.children('div').css('visibility', 'hidden')
+                console.log(parent.find('.button').index($(this).parent()))
+                next.children('div:nth-child(' + (parent.find('.button').index($(this).parent()) + 1) + ')').css('visibility', 'visible')
+            }
+
         }, null)
 
         $('header .marques').mouseleave(function() {
@@ -634,16 +633,21 @@ $(document).ready(function() {
     }
 
     //menu
-    $('header .marques .sub:last-child .row').each(function(i, row) {
-        $(row).find('.buttonl').each(function(ib, button) {
-            $(button).click(function() {
-                $('header .marques').hide()
-                // select marque
-                select_slide(i, true)
-                // select details
-                setTimeout(function() {
-                    showDetails($(slides[index_slide]).find('section'), ib)
-                }, 100)
+    var diff = 0
+    $('header .marques .row .column:last-child').each(function(i, row) {
+        $(row).children('div').each(function(a, div) {
+            diff += a
+            $(div).find('.buttonl').each(function(ib, button) {
+                var diff2 = diff
+                $(button).click(function() {
+                    $('header .marques').hide()
+                    // select marque
+                    select_slide(i + diff2, true)
+                    // select details
+                    setTimeout(function() {
+                        showDetails($(slides[index_slide]).find('section'), ib)
+                    }, 100)
+                })
             })
         })
     })
