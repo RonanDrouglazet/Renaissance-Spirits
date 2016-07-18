@@ -197,13 +197,13 @@ $(document).ready(function() {
          var start, diff, stop, limit;
          btToHide.hide()
          ctnToTouch.on('touchstart', function(e) {
-             start = e.originalEvent.pageX
+             start = e.originalEvent.touches[0].pageX
              limit = window.innerWidth * .25
              stop = false
          })
          ctnToTouch.on('touchmove', function(e) {
              if (stop) return
-             diff = e.originalEvent.pageX - start
+             diff = e.originalEvent.touches[0].pageX - start
              if (diff < -limit) {
                  cbk(false)
                  stop = true
