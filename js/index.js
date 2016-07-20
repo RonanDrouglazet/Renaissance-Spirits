@@ -1,8 +1,11 @@
 $(document).ready(function() {
+    var GLOBAL_ANIMATE = true
+
     var win = $(window);
     var menu = $('header .menu');
     var mheight =  menu.height();
     var fmenu = $('header .floating');
+
     var is_touch_device = function() {
       return 'ontouchstart' in window        // works on most browsers
           || navigator.maxTouchPoints;       // works on IE10/11 and Surface
@@ -243,19 +246,27 @@ $(document).ready(function() {
     var screen1_details = function() {
         if ($('.screen1 .button_down').length) {
             $('.screen2').show()
-            $('html, body').animate({
-              scrollTop: $('.screen2').offset().top
-            }, 1000);
+
+            if (GLOBAL_ANIMATE) {
+                $('html, body').animate({
+                  scrollTop: $('.screen2').offset().top
+                }, 1000);
+            }
+
             $('.screen1 .button_down')
                 .addClass('rotate')
                 .appendTo('.screen2')
                 .find('img')
                 .attr('src', 'img/arrow_down_blue.png')
         } else {
-            $('.screen2').slideUp()
-            $('html, body').animate({
-              scrollTop: $('.screen1').offset().top
-            }, 1000);
+            $('.screen2').slideUp(GLOBAL_ANIMATE ? 400 : 0)
+
+            if (GLOBAL_ANIMATE) {
+                $('html, body').animate({
+                  scrollTop: $('.screen1').offset().top
+                }, 1000);
+            }
+
             $('.screen2 .button_down')
                .removeClass('rotate')
                .appendTo('.screen1')
@@ -397,12 +408,13 @@ $(document).ready(function() {
     var actu_details = function(section) {
         var current = $(document.body).children('.screen9')
         var actual = section.clone()
+        actual.data('referer', section)
 
         if (current.length) {
-            current.replaceWith(actual)
-        } else {
-            actual.insertBefore('.actu.arrowcontainer')
+            current.data('referer').replaceWith(current)
         }
+
+        actual.insertBefore('.actu.arrowcontainer')
     }
 
     selectActusByDate(2015)
@@ -427,17 +439,25 @@ $(document).ready(function() {
         var actu = $('.actu.center[data-date="'+ date_active +'"]')
 
         if (!$(this).hasClass('rotate')) {
-            actu_details($('.actu.center[data-date="'+ $('section#actualites > .dates > .date.active').attr('id') +'"]').find('section'))
-            $('html, body').animate({
-              scrollTop: $('body > .screen9').offset().top
-            }, 1000);
+            actu_details(actu.find('section'))
+
+            if (GLOBAL_ANIMATE) {
+                $('html, body').animate({
+                  scrollTop: $('body > .screen9').offset().top
+                }, 1000);
+            }
 
             $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer')
         } else {
-            $('body > .screen9').slideUp()
-            $('html, body').animate({
-              scrollTop: $('.screen3').offset().top
-            }, 1000);
+            actu.find('section').replaceWith($('body > .screen9').clone())
+            $('body > .screen9').slideUp(GLOBAL_ANIMATE ? 400 : 0)
+
+            if (GLOBAL_ANIMATE) {
+                $('html, body').animate({
+                  scrollTop: $('.screen3').offset().top
+                }, 1000);
+            }
+
             $(this).removeClass('rotate').appendTo('.screen3')
         }
     }
@@ -593,10 +613,14 @@ $(document).ready(function() {
     var arrowDetails = function() {
         if ($(this).hasClass('rotate')) {
             $(slides[index_slide]).find('section').replaceWith($('body > .screen10').clone())
-            $('body > .screen10').slideUp()
-            $('html, body').animate({
-              scrollTop: $('.screen5').offset().top
-            }, 1000);
+            $('body > .screen10').slideUp(GLOBAL_ANIMATE ? 400 : 0)
+
+            if (GLOBAL_ANIMATE) {
+                $('html, body').animate({
+                  scrollTop: $('.screen5').offset().top
+                }, 1000);
+            }
+
             $(this)
                 .removeClass('rotate')
                 .appendTo('.screen5')
@@ -758,5 +782,27 @@ $(document).ready(function() {
 
           return valid
       })
+
+      /**************
+       * OCTOBOOT SAVE (reset)
+       **************/
+
+       window.octoboot_before_save = function(save) {
+           GLOBAL_ANIMATE = false
+           // if screen 1 open, close it
+           if (!$('.screen1 .button_down').length) {
+               screen1_details()
+           }
+           // if actu open, close it
+           if ($(document.body).children('.screen9').length) {
+               show_actu_details.bind($('body > .actu.arrowcontainer .button_down'))()
+           }
+           // if product open, close it
+           if ($(document.body).children('.screen10').length) {
+               arrowDetails.bind($('body > .marques.arrowcontainer .button_down'))()
+           }
+           GLOBAL_ANIMATE = true
+           save()
+       }
 
 })
