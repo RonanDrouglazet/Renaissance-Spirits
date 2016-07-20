@@ -544,11 +544,13 @@ $(document).ready(function() {
         var current = $(document.body).children('.screen10')
         var actual = section.clone()
 
+        actual.data('id', index_slide)
+
         if (current.length) {
-            current.replaceWith(actual)
-        } else {
-            actual.insertBefore('.marques.arrowcontainer')
+            $(slides[current.data('id')]).find('section').replaceWith(current)
         }
+
+        actual.insertBefore('.marques.arrowcontainer')
 
         if (nb) {
             $('body > .screen10 .container .menu > div.active').removeClass('active')
