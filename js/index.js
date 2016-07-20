@@ -450,7 +450,10 @@ $(document).ready(function() {
             $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer')
         } else {
             actu.find('section').replaceWith($('body > .screen9').clone())
-            $('body > .screen9').slideUp(GLOBAL_ANIMATE ? 400 : 0)
+
+            $('body > .screen9').slideUp(GLOBAL_ANIMATE ? 400 : 0, function() {
+                $('body > .screen9').remove()
+            })
 
             if (GLOBAL_ANIMATE) {
                 $('html, body').animate({
@@ -613,7 +616,10 @@ $(document).ready(function() {
     var arrowDetails = function() {
         if ($(this).hasClass('rotate')) {
             $(slides[index_slide]).find('section').replaceWith($('body > .screen10').clone())
-            $('body > .screen10').slideUp(GLOBAL_ANIMATE ? 400 : 0)
+
+            $('body > .screen10').slideUp(GLOBAL_ANIMATE ? 400 : 0, function() {
+                $('body > .screen10').remove()
+            })
 
             if (GLOBAL_ANIMATE) {
                 $('html, body').animate({
