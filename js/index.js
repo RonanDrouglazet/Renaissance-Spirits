@@ -575,7 +575,7 @@ $(document).ready(function() {
 
         actual.insertBefore('.marques.arrowcontainer')
 
-        if (nb) {
+        if (nb || nb === 0) {
             $('body > .screen10 .container .menu > div.active').removeClass('active')
             $($('body > .screen10 .container .menu > div').get(nb)).addClass('active')
         }
