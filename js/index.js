@@ -100,8 +100,8 @@ $(document).ready(function() {
         /****
         * SUB MENU MARQUES
         *****/
-        var block;
-        $('header .menu .stackable.grid .column span').hover(function() {
+        var block, submenu_timeout_hide;
+        $('header .menu .stackable.grid .column:not(:nth-child(5)) span').hover(function() {
             $('header .marques').hide()
         }, null)
         $('header .menu .stackable.grid .column:nth-child(5) span').hover(function() {
@@ -109,10 +109,15 @@ $(document).ready(function() {
         }, null)
 
         $('header .marques').hover(function() {
+            clearTimeout(submenu_timeout_hide)
             block = true
             $(this).show()
-        }, function() {
-            $(this).hide()
+        }, function(e) {
+            var rect = $('header .marques').get(0).getBoundingClientRect()
+
+            if (e.clientY >= rect.bottom) {
+                submenu_timeout_hide = setTimeout(() => $(this).hide(), 1000)
+            }
         })
 
         $('header .marques .button span').hover(function() {
@@ -129,15 +134,10 @@ $(document).ready(function() {
 
             if (!parent.hasClass('main') && parent.find('.button').length >= 2) {
                 next.children('div').css('visibility', 'hidden')
-                console.log(parent.find('.button').index($(this).parent()))
                 next.children('div:nth-child(' + (parent.find('.button').index($(this).parent()) + 1) + ')').css('visibility', 'visible')
             }
 
         }, null)
-
-        $('header .marques').mouseleave(function() {
-            $('header .marques').hide()
-        })
     }
 
     var mobileMenu = function() {
