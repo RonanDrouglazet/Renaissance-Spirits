@@ -827,6 +827,7 @@ $(document).ready(function() {
            if ($(document.body).children('.screen10').length) {
                arrowDetails.bind($('body > .marques.arrowcontainer .button_down'))()
            }
+           $('header .marques').hide()
            GLOBAL_ANIMATE = true
            save()
        }
