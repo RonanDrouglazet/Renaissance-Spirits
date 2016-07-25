@@ -574,6 +574,7 @@ $(document).ready(function() {
 
         timer_slide = setTimeout(over_slide, is_touch_device ? 0 : 3000);
     }
+    move(0)
 
     var clean_interval_slide = function() {
         clearInterval(interval_slide)
