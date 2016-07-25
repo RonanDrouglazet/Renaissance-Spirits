@@ -96,6 +96,7 @@ $(document).ready(function() {
         setInterval(getSectionTop, 1000)
         win.on('scroll', moveSelectToSection)
         getSectionTop()
+        moveSelectToSection()
 
         /****
         * SUB MENU MARQUES
