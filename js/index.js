@@ -116,28 +116,52 @@ $(document).ready(function() {
             var rect = $('header .marques').get(0).getBoundingClientRect()
 
             if (e.clientY >= rect.bottom) {
-                submenu_timeout_hide = setTimeout(() => $(this).hide(), 1000)
+                var _this = $(this)
+                submenu_timeout_hide = setTimeout(function() { _this.hide()}, 1000)
             }
         })
 
-        $('header .marques .button span').hover(function() {
-            var parent = $(this).parents('.column')
-            parent.find('.button.active').removeClass('active')
+        $('header .marques .button span').hover(submenu_marques_span, null)
+        submenu_marques_click()
+    }
 
-            if (parent.hasClass('main')) {
-                $('header .marques .active').removeClass('active')
-            }
+    var submenu_marques_span = function() {
+        var parent = $(this).parents('.column')
+        parent.find('.button.active').removeClass('active')
 
-            $(this).parent().addClass('active')
+        if (parent.hasClass('main')) {
+            $('header .marques .active').removeClass('active')
+        }
 
-            var next = parent.next().addClass('active')
+        $(this).parent().addClass('active')
 
-            if (!parent.hasClass('main') && parent.find('.button').length >= 2) {
-                next.children('div').css('visibility', 'hidden')
-                next.children('div:nth-child(' + (parent.find('.button').index($(this).parent()) + 1) + ')').css('visibility', 'visible')
-            }
+        var next = parent.next().addClass('active')
 
-        }, null)
+        if (!parent.hasClass('main') && parent.find('.button').length >= 2) {
+            next.children('div').css('visibility', 'hidden')
+            next.children('div:nth-child(' + (parent.find('.button').index($(this).parent()) + 1) + ')').css('visibility', 'visible')
+        }
+    }
+
+    var submenu_marques_click = function() {
+        var diff = 0
+        $('header .marques .row .column:last-child').each(function(i, row) {
+            $(row).children('div').each(function(a, div) {
+                diff += a
+                $(div).find('.buttonl').each(function(ib, button) {
+                    var diff2 = diff
+                    $(button).off('click').click(function() {
+                        $('header .marques').hide()
+                        // select marque
+                        select_slide(i + diff2, true)
+                        // select details
+                        setTimeout(function() {
+                            showDetails($(slides[index_slide]).find('section'), ib)
+                        }, 100)
+                    })
+                })
+            })
+        })
     }
 
     var mobileMenu = function() {
@@ -504,9 +528,8 @@ $(document).ready(function() {
     }
 
     var move = function(to) {
-        var s;
-        // move main
-        $(slides[index_slide]).css('left', '-100%')
+        var s, el, oldi = index_slide;
+
 
         // reset out left to out right
         /*if (slides[index_slide - 1]) {
@@ -519,16 +542,30 @@ $(document).ready(function() {
 
         // move next to main
         if ((to || to === 0) && slides[to]) {
-            $(slides[to]).css('left', '0%')
+            el = $(slides[to]).show()
             index_slide = to
         } else if (slides[index_slide + 1]) {
-            $(slides[index_slide + 1]).css('left', '0%')
+            el = $(slides[index_slide + 1]).show()
             index_slide++;
         } else {
             // else restart from begining
             index_slide = 0
-            $(slides[0]).css('left', '0%')
+            el = $(slides[0]).show()
         }
+
+        setTimeout(function() {
+            if (slides[oldi] !== el.get(0)) {
+                $(slides[oldi]).css('left', '-100%').one('transitionend', function(e) {
+                    if (e.target.className === 'cover') {
+                        $(slides[oldi]).one('transitionend', function(e) { $(this).hide() })
+                    } else if ($(this).css('left') !== '0px'){
+                        $(this).hide()
+                    }
+                })
+            }
+
+            el.css('left', '0')
+        }, 100)
 
         // if details is open
         if ($(document.body).children('.screen10').length && $(document.body).children('.screen10').css('display') !== 'none') {
@@ -558,6 +595,7 @@ $(document).ready(function() {
         })
     }
 
+    slides.find('.cover').css('left', '100%')
     var over_slide = function() {
         slides.find('.cover').css('left', '100%')
         $(slides[index_slide]).find('.cover').css('left', 0)
@@ -668,26 +706,6 @@ $(document).ready(function() {
         $('.screen5 .slides').children('.button').show()
     }
 
-    //menu
-    var diff = 0
-    $('header .marques .row .column:last-child').each(function(i, row) {
-        $(row).children('div').each(function(a, div) {
-            diff += a
-            $(div).find('.buttonl').each(function(ib, button) {
-                var diff2 = diff
-                $(button).click(function() {
-                    $('header .marques').hide()
-                    // select marque
-                    select_slide(i + diff2, true)
-                    // select details
-                    setTimeout(function() {
-                        showDetails($(slides[index_slide]).find('section'), ib)
-                    }, 100)
-                })
-            })
-        })
-    })
-
     /**************
      * SCREEN 8 - NOS VALEURS
      **************/
@@ -712,7 +730,7 @@ $(document).ready(function() {
          // init slides
          var center = win.width() < slideW ? 0 : 50
          var menus = $('body > .screen10 .container .menu > div')
-         var active
+         var active = 0
          menus.each(function(i, bt) {
              if ($(bt).hasClass('active')) {
                  active = i
@@ -790,7 +808,7 @@ $(document).ready(function() {
       })
 
       /**************
-       * OCTOBOOT SAVE (reset)
+       * OCTOBOOT CUSTOM (reset, duplicate, etc..)
        **************/
 
        window.octoboot_before_save = function(save) {
@@ -810,5 +828,144 @@ $(document).ready(function() {
            GLOBAL_ANIMATE = true
            save()
        }
+
+       window.octoboot_duplicate_actu = function(actu, duplicate) {
+           if (duplicate) {
+               $(actu).find('.button').click(function() {
+                   moveActu($(this).hasClass('right'))
+               })
+               $(actu).find('.content').click(show_actu_details)
+           }
+
+           selectActusByDate($('section#actualites > .dates > .date.active').attr('id'))
+       }
+
+        window.octoboot_duplicate_marque = function(element, duplicate) {
+
+            var getId = function(button, row) {
+                var count = 0
+                var found = false
+
+                row = row || $(element).parents('.row')
+                var row_id = row.index()
+
+                row.parent().children('.row').each(function(i, row) {
+                    if (i <= row_id) {
+                        $(row).children('.three.wide.column:not(.main)').children().each(function(nb, bt) {
+                            if (!found && button !== bt) {
+                                count++
+                            } else if (!found) {
+                                found = true
+                            }
+                        })
+                    }
+                })
+                return count
+            }
+
+            switch (element.className.replace(' active', '')) {
+                case 'row':
+                    var childs = $(element).children('.three.wide.column:not(.main)').children()
+                    // duplicate
+                    if (duplicate) {
+                        childs.each(function(i, bt) {
+                            var ci = getId(bt, $(element)) - childs.length
+                            var di = getId(bt, $(element)) - 1
+                            // select the slide to duplicate too
+                            to_duplicate = $($('.screen5 > .slides > .slide')[ci])
+                            to_duplicate.clone().insertAfter($($('.screen5 > .slides > .slide')[di]))
+                            // reset slides
+                            slides = screen5.children('.slides').children('.slide')
+                            $(slides[++di]).css('left', Math.min(di * 100, 100) + '%')
+                        })
+                        $(element).find('span').hover(submenu_marques_span, null)
+                        submenu_marques_click()
+                        $('.screen5 .button_rs_out').off('click').click(function() {
+                            showDetails($(this).parents('.cover').find('section'))
+                        })
+                    } else {
+                        var slide = $('.screen5 > .slides > .slide')
+                        childs.each(function(i, bt) {
+                            var id = getId(bt, $(element))
+                            // select the slide to duplicate too
+                            $(slide[id]).remove()
+                        })
+                        // reset slides
+                        slides = screen5.children('.slides').children('.slide')
+                        move_auto()
+                    }
+
+                break
+
+                case 'button':
+                    var i = getId(element) - 1
+                    // duplicate
+                    if (duplicate) {
+                        // if we add a marques, select and duplicate submarque to
+                        var to_duplicate = $($(element).parent().next().children()[$(element).index() - 1])
+                        to_duplicate.clone().insertAfter(to_duplicate)
+                        // then active hover on it
+                        $(element).find('span').hover(submenu_marques_span, null)
+                        submenu_marques_click()
+                        // select the slide to duplicate too
+                        to_duplicate = $($('.screen5 > .slides > .slide')[i])
+                        to_duplicate.clone().insertAfter(to_duplicate)
+                        // reset slides
+                        slides = screen5.children('.slides').children('.slide')
+                        $(slides[++i]).css('left', Math.min(i * 100, 100) + '%')
+                        $('.screen5 .button_rs_out').off('click').click(function() {
+                            showDetails($(this).parents('.cover').find('section'))
+                        })
+                    } else {
+                        $($('.screen5 > .slides > .slide')[++i]).remove()
+                        $($(element).parent().next().children()[$(element).index() - 1]).remove()
+                        slides = screen5.children('.slides').children('.slide')
+                        move_auto()
+                    }
+                break
+
+                case 'buttonl':
+                    var i = getId($(element).parents('.row').children('.three.wide.column:not(.main)').children('.active').get(0))
+                    var ci = $(element).index()
+
+                    GLOBAL_ANIMATE = false
+                    // if product open, close it
+                    if ($(document.body).children('.screen10').length) {
+                        arrowDetails.bind($('body > .marques.arrowcontainer .button_down'))()
+                    }
+                    GLOBAL_ANIMATE = true
+
+                    // duplicate
+                    if (duplicate) {
+                        console.log($(slides[i]))
+                        var to_duplicate = $(slides[i]).find('section .slide:nth-child(' + ci + ')')
+                        to_duplicate.clone().insertAfter(to_duplicate)
+
+                        if ($(slides[i]).find('section .menu').length) {
+                            to_duplicate = $(slides[i]).find('section .menu > div:nth-child(' + ci + ')')
+                            to_duplicate.clone().insertAfter(to_duplicate)
+                        } else {
+                            $(slides[i]).find('section .container').prepend(
+                                '<div class="menu" ><div class=""><div class="line"></div></div><div class=""></div></div>'
+                            )
+                            .children('.slides').append(
+                                '<div class="arrow left"></div><div class="arrow right"></div>'
+                            )
+                        }
+
+                    } else {
+                        $(slides[i]).find('section .slide:nth-child(' + ++ci + ')').remove()
+                        $(slides[i]).find('section .menu > div:nth-child(' + ci + ')').remove()
+
+                        if ($(slides[i]).find('section .menu > div').length === 1) {
+                            $(slides[i]).find('section .menu').remove()
+                            $(slides[i]).find('section .arrow').remove()
+                        }
+
+                    }
+                    submenu_marques_click()
+                break
+            }
+        }
 
 })
