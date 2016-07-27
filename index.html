@@ -85,8 +85,8 @@
           <div class="two wide column" data-to=".screen6acr"><span>CONTACT</span></div>
           <div class="one wide column"></div>
 
-          <div class="selectbar" style="display: none; left: 715.844px; width: 70px;"></div>
-          <div class="selectbar" style="display: block; left: 715.844px; width: 70px;"></div>
+          <div class="selectbar" style="left: 715.844px; width: 70px; display: none;"></div>
+          <div class="selectbar" style="display: block; left: 367.938px; width: 86px;"></div>
         </div>
 
       <div class="marques" style="display: none;">
@@ -150,13 +150,14 @@
             </div>
             <div class="row" ob-duplicable="octoboot_duplicate_marque">
                 <div class="three wide column main">
-                    <div class="button"><span>Rhum</span><div class="arrow"></div></div>
+                    <div class="button active"><span>Rhum</span><div class="arrow"></div></div>
                 </div>
-                <div class="three wide column">
-                    <div class="button" ob-duplicable="octoboot_duplicate_marque"><span>BLACKWELL</span><div class="arrow"></div></div>
+                <div class="three wide column active">
+                    <div class="button" ob-duplicable="octoboot_duplicate_marque"><span>BLACKWELL</span><div class="arrow"></div></div><div class="button active" ob-duplicable="octoboot_duplicate_marque"><span>BUMBU</span><div class="arrow"></div></div>
                 </div>
-                <div class="ten wide column">
-                    <div><div class="buttonl" ob-duplicable="octoboot_duplicate_marque">BLACKWELL Rhum</div></div>
+                <div class="ten wide column active">
+                    <div style="visibility: hidden;"><div class="buttonl" ob-duplicable="octoboot_duplicate_marque">BLACKWELL Rhum</div></div><div style="visibility: visible;"><div class="buttonl" ob-duplicable="octoboot_duplicate_marque">BUMBU Rhum</div>
+</div>
                 </div>
             </div>
             <div class="row" ob-duplicable="octoboot_duplicate_marque">
@@ -172,9 +173,9 @@
             </div>
             <div class="row" ob-duplicable="octoboot_duplicate_marque">
                 <div class="three wide column main">
-                    <div class="button active"><span>Pétillant</span><div class="arrow"></div></div>
+                    <div class="button"><span>Pétillant</span><div class="arrow"></div></div>
                 </div>
-                <div class="three wide column active">
+                <div class="three wide column">
                     <div class="button" ob-duplicable="octoboot_duplicate_marque"><span>BELAIRE</span><div class="arrow"></div></div>
                 </div>
                 <div class="ten wide column">
@@ -215,7 +216,7 @@
           <div class="column" data-to=".screen4acr"><span>MARQUES</span></div>
           <div class="column"><a href="http://espritdevillevert.com/" target="_blank"><span>MAISON VILLEVERT</span></a></div>
           <div class="column" data-to=".screen6acr"><span>CONTACT</span></div>
-          <div class="selectbar" style="display: block; left: 0px; top: 4820px; width: 0px;"></div>
+          <div class="selectbar" style="display: block; left: 0px; top: 1424px; width: 0px;"></div>
           <div class="icon"><img src="img/LOGO-RS-BLANC_VALEURS.png" /></div>
         </div>
       </div>      <div class="floating">
@@ -722,7 +723,7 @@
           </section>
           </div>
         </div>
-        <div class="slide" style="left: -100%; transition: left 1s ease; display: none; background-image: url(&quot;img/vermouth2.jpg&quot;);">
+        <div class="slide" style="left: 100%; transition: left 1s ease; display: none; background-image: url(&quot;img/vermouth2.jpg&quot;);">
           <div class="cover" style="left: 100%; background-color: rgba(91, 139, 174, 0.85098);">
             <div class="content">
               <div class="logo"><img src="img/vermouth_logo.png" alt="logo" height="209" /></div>
@@ -897,8 +898,8 @@
           </section>
           </div>
         </div>
-        <div class="slide" style="left: 0px; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;);">
-          <div class="cover" style="left: 0px; background-color: rgba(255, 160, 69, 0.85098);">
+        <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;);">
+          <div class="cover" style="left: 100%; background-color: rgba(255, 160, 69, 0.85098);">
             <div class="content">
               <div class="logob"><img src="img/liqueur_logo.png" alt="logo" /></div>
               <div class="title">
@@ -1051,7 +1052,7 @@
           </div>
         </div>
 
-        <div class="slide" style="left: -100%; transition: left 1s ease; display: none; background-image: url(&quot;img/Ciroc.jpg&quot;);">
+        <div class="slide" style="left: 100%; transition: left 1s ease; display: none; background-image: url(&quot;img/Ciroc.jpg&quot;);">
           <div class="cover" style="left: 100%; background-color: rgba(43, 61, 141, 0.8);">
             <div class="content">
               <div class="logo"><img src="img/LOGO_CIROC.png" alt="logo" height="80" /></div>
@@ -1076,7 +1077,7 @@
               <div class="ui container">
                 <div class="menu" style="display: block;">
                   <div><div class="line"></div></div>
-                  <div class=""><div class="line"></div></div>
+                  <div><div class="line"></div></div>
                   <div class=""><div class="line"></div></div>
                   <div class="active"></div>
                 </div>
@@ -1189,6 +1190,54 @@
               <div class="ui container">
                 <div class="slides">
                 <div class="slide">
+                    <div class="ui two column stackable grid">
+                      <div class="column"><img src="img/PHOTO_BLACKWELL.jpg" /></div>
+                      <div class="column justify">
+                        <div class="text">
+                          <p class="title"><span>BLACKWELL</span><br />Rhum</p>
+                          <p>UN AUTHENTIQUE RHUM JAMAÏCAIN.</p>
+                          <p>Blackwell rhum est coloré, riche et complexe, comme la Jamaïque. Il est l'expression de Chris Blackwell, un authentique jamaïcain.<br />Cette recette de famille brise les codes du rhum traditionnel avec un style "Black Gold" qui est l'équilibre parfait de la complexité, du caractère, et de la douceur que les connaisseurs et  amateurs de rhum ont appris à aimer.</p>
+                          <p>BLACK GOLD - Un profil de goût exclusif qui permet d'atteindre un caractère de rhum traditionnel et les notes douces et légères du corps d'un rhum d'or.</p>
+                          <a href="img/Blackwell.pdf" target="_blank"><div class="button">Télécharger la fiche produit</div></a>
+                          <a href="http://www.blackwellrum.com/" target="_blank"><div class="button right">Visiter le site internet</div></a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                <div class="mosaik"><img src="img/blackwell_mosaik.jpg" /></div>
+                <div class="footer">
+                  <a href="https://www.facebook.com/blackwellrum/?fref=ts" target="_blank"><img src="img/PICTO_FACEBOOK.png" /></a>
+                  <a href="img/Blackwell.zip" target="_blank"><img src="img/PICTO_TELECHARGER.png" /></a>
+                </div>
+              </div>
+
+          </section>
+          </div>
+        </div><div class="slide" style="left: 0px; transition: left 1s ease; background-image: url(&quot;img/rhum.jpg&quot;);">
+          <div class="cover" style="left: 0px; background-color: rgba(253, 197, 84, 0.780392);">
+            <div class="content">
+              <div class="logo"><img src="img/rhum_logo.png" alt="logo" height="94" /></div>
+              <div class="title">
+                <h2>L’OR NOIR DE LA JAMAÏQUE</h2>
+                <p>
+                  Blackwell est un rhum jamaïcain produit dans la plus pure tradition de cette île mystique et emblématique.<br />
+                  Son fondateur Chris Blackwell, est une icône de la musique internationale, <br />
+                  entrepreneur pionnier culturel et fier d’offrir le meilleur de la Jamaïque.<br />
+                </p>
+              </div>
+              <div class="button_rs_out">
+                <div class="button_rs_in">
+                  En savoir plus...
+                </div>
+              </div>
+            </div>
+
+            <section class="screen10">
+              <div class="ui container">
+                <div class="slides">
+                <div class="slide" style="left: 50%;">
                     <div class="ui two column stackable grid">
                       <div class="column"><img src="img/PHOTO_BLACKWELL.jpg" /></div>
                       <div class="column justify">
@@ -1599,4 +1648,5 @@ Nos équipes sont salariées, intégrées et leur expérience du secteur est rec
     <footer>
           L’ABUS D’ALCOOL EST DANGEREUX POUR LA SANTÉ. A CONSOMMER AVEC MODÉRATION.
       </footer>
+
 </body></html>
