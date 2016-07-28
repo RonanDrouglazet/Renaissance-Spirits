@@ -138,7 +138,7 @@ $(document).ready(function() {
 
         var next = parent.next().addClass('active')
 
-        if (!parent.hasClass('main') && parent.find('.button').length >= 2) {
+        if (!parent.hasClass('main')) {
             next.children('div').css('visibility', 'hidden')
             next.children('div:nth-child(' + (parent.find('.button').index($(this).parent()) + 1) + ')').css('visibility', 'visible')
         }
@@ -493,11 +493,11 @@ $(document).ready(function() {
     $('.actu .content, .screen3 .button_down').click(show_actu_details)
 
     /**************
-     * SCREEN 5 - BOUTEILLES
+     * SCREEN 4 - BOUTEILLES
      **************/
 
      $('.screen4 .bouteille').click(function() {
-        select_slide($(this).data('id'))
+        select_slide($(this).index('.bouteille'))
      })
 
      var scalefb = function() {
@@ -876,10 +876,15 @@ $(document).ready(function() {
                             var di = getId(bt, $(element)) - 1
                             // select the slide to duplicate too
                             to_duplicate = $($('.screen5 > .slides > .slide')[ci])
-                            to_duplicate.clone().insertAfter($($('.screen5 > .slides > .slide')[di]))
+                            to_duplicate.clone().insertAfter($('.screen5 > .slides > .slide')[di])
                             // reset slides
                             slides = screen5.children('.slides').children('.slide')
-                            $(slides[++di]).css('left', Math.min(di * 100, 100) + '%')
+                            $(slides[di + 1]).css('left', Math.min((di + 1) * 100, 100) + '%')
+                            // and to finish
+                            to_duplicate = $($('.screen4 .bouteilles .bouteille')[ci])
+                            to_duplicate.clone().insertAfter($('.screen4 .bouteilles .bouteille')[di]).css({top: 0, left: 0}).click(function() {
+                               select_slide($(this).index('.bouteille'))
+                            })
                         })
                         $(element).find('span').hover(submenu_marques_span, null)
                         submenu_marques_click()
@@ -888,10 +893,12 @@ $(document).ready(function() {
                         })
                     } else {
                         var slide = $('.screen5 > .slides > .slide')
+                        var bouteilles = $('.screen4 .bouteilles .bouteille')
                         childs.each(function(i, bt) {
                             var id = getId(bt, $(element))
                             // select the slide to duplicate too
                             $(slide[id]).remove()
+                            $(bouteilles[id]).remove()
                         })
                         // reset slides
                         slides = screen5.children('.slides').children('.slide')
@@ -906,6 +913,7 @@ $(document).ready(function() {
                     if (duplicate) {
                         // if we add a marques, select and duplicate submarque to
                         var to_duplicate = $($(element).parent().next().children()[$(element).index() - 1])
+
                         to_duplicate.clone().insertAfter(to_duplicate)
                         // then active hover on it
                         $(element).find('span').hover(submenu_marques_span, null)
@@ -915,13 +923,20 @@ $(document).ready(function() {
                         to_duplicate.clone().insertAfter(to_duplicate)
                         // reset slides
                         slides = screen5.children('.slides').children('.slide')
-                        $(slides[++i]).css('left', Math.min(i * 100, 100) + '%')
+                        $(slides[i + 1]).css('left', Math.min((i + 1) * 100, 100) + '%')
                         $('.screen5 .button_rs_out').off('click').click(function() {
                             showDetails($(this).parents('.cover').find('section'))
                         })
+
+                        // and to finish
+                        to_duplicate = $($('.screen4 .bouteilles .bouteille')[i])
+                        to_duplicate.clone().insertAfter(to_duplicate).css({top: 0, left: 0}).click(function() {
+                           select_slide($(this).index('.bouteille'))
+                        })
                     } else {
                         $($('.screen5 > .slides > .slide')[++i]).remove()
-                        $($(element).parent().next().children()[$(element).index() - 1]).remove()
+                        $($(element).parent().next().children()[$(element).index()]).remove()
+                        $($('.screen4 .bouteilles .bouteille')[i]).remove()
                         slides = screen5.children('.slides').children('.slide')
                         move_auto()
                     }
@@ -940,7 +955,6 @@ $(document).ready(function() {
 
                     // duplicate
                     if (duplicate) {
-                        console.log($(slides[i]))
                         var to_duplicate = $(slides[i]).find('section .slide:nth-child(' + ci + ')')
                         to_duplicate.clone().insertAfter(to_duplicate)
 
