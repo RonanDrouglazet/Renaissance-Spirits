@@ -838,9 +838,13 @@ $(document).ready(function() {
                    moveActu($(this).hasClass('right'))
                })
                $(actu).find('.content').click(show_actu_details)
-           }
 
-           selectActusByDate($('section#actualites > .dates > .date.active').attr('id'))
+               selectActusByDate($('section#actualites > .dates > .date.active').attr('id'))
+           } else {
+               setTimeout(function() {
+                   selectActusByDate($('section#actualites > .dates > .date.active').attr('id'))
+               }, 100)
+           }
        }
 
         window.octoboot_duplicate_marque = function(element, duplicate) {
