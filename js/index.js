@@ -713,9 +713,12 @@ $(document).ready(function() {
      **************/
 
      $('.screen8 img').hover(function() {
+        $('.screen8 .cartouche').fadeOut()
         $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeIn()
      }, function() {
-        $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeOut()
+         if (!window.editing) {
+             $('.screen8 .cartouche:nth-child(' + $(this).data('id') + ')').fadeOut()
+         }
      })
 
      /**************
@@ -826,6 +829,7 @@ $(document).ready(function() {
                arrowDetails.bind($('body > .marques.arrowcontainer .button_down'))()
            }
            $('header .marques').hide()
+           $('.screen8 .cartouche').hide()
            GLOBAL_ANIMATE = true
            save()
        }
