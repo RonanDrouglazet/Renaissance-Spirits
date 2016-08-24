@@ -733,11 +733,9 @@ $(document).ready(function() {
          var center = win.width() < slideW ? 0 : 50
          var menus = $('body > .screen10 .container .menu > div')
          var active = 0
-         menus.each(function(i, bt) {
-             if ($(bt).hasClass('active')) {
-                 active = i
-             }
-         })
+
+         $('body > .screen10 .container .menu > div.active').removeClass('active')
+         $(menus[active]).addClass('active')
 
          $('body > .screen10 .slide').css('left', '200%')
          $($('body > .screen10 .slide').get(active)).css('left', center + '%')
