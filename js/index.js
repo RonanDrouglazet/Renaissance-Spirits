@@ -837,14 +837,39 @@ $(document).ready(function() {
        window.octoboot_duplicate_date = function(date, duplicate) {
             if (duplicate) {
                 var now = Date.now()
-                $(date).attr('id', now)
                 $('section .actu[data-date="' + date.id + '"]').each(function(i, actu) {
-                    actu.clone().attr('id', now).appendTo('section#actualites')
+                    var clone = $(actu).clone()
+                    clone
+                        .attr('data-date', now)
+                        .appendTo('section#actualites')
+                    clone
+                        .find('.button')
+                        .click(function() {
+                            moveActu($(this).hasClass('right'))
+                        })
+                    clone
+                        .find('.content')
+                        .click(show_actu_details)
+
                 })
+                $('section#actualites > .dates > .date').removeClass('active')
+                $(date).attr('id', now).addClass('active').click(function() {
+                    selectActusByDate(this.id)
+                })
+                if ($($(date).prev()).children('.line').length === 0) {
+                    $($(date).prev()).append('<div class="line"></div>')
+                }
+                selectActusByDate(now)
             } else {
                 $('section .actu[data-date="' + date.id + '"]').remove()
                 if ($('section#actualites > .dates > .date').length === 2) {
                     $('section#actualites > .dates .line').remove()
+                }
+                if ($(date).hasClass('active')) {
+                    setTimeout(function() {
+                        $($('section#actualites > .dates > .date')[0]).addClass('active')
+                        selectActusByDate($('section#actualites > .dates > .date')[0].id)
+                    }, 500)
                 }
             }
        }
