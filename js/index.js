@@ -834,6 +834,21 @@ $(document).ready(function() {
            save()
        }
 
+       window.octoboot_duplicate_date = function(date, duplicate) {
+            if (duplicate) {
+                var now = Date.now()
+                $(date).attr('id', now)
+                $('section .actu[data-date="' + date.id + '"]').each(function(i, actu) {
+                    actu.clone().attr('id', now).appendTo('section#actualites')
+                })
+            } else {
+                $('section .actu[data-date="' + date.id + '"]').remove()
+                if ($('section#actualites > .dates > .date').length === 2) {
+                    $('section#actualites > .dates .line').remove()
+                }
+            }
+       }
+
        window.octoboot_duplicate_actu = function(actu, duplicate) {
            if (duplicate) {
                $(actu).find('.button').click(function() {
