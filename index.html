@@ -34,8 +34,9 @@
 </head>
 <body>
     <div class="intro" style="display: none;">
-      <div class="cookie_use">En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour réaliser des statistiques de visite. Pour en savoir plus et paramétrer les cookies cliquez<a href="#">ici</a>  <i class="remove icon"></i></div>
-      <div class="cookie_use_mobile">pour paramétrer les cookies cliquez<a href="#">ici</a>  <i class="remove icon"></i></div>
+        <div class="cookie_use">En poursuivant votre navigation sur ce site, vous acceptez l’utilisation de cookies pour réaliser des statistiques de visite. Pour en savoir plus et paramétrer les cookies cliquez<a href="#">ici</a>  <i class="remove icon"></i></div>
+        <div class="cookie_use_mobile">pour paramétrer les cookies cliquez<a href="#">ici</a>  <i class="remove icon"></i></div>
+
       <header class="logo">
           <img src="img/logo_renaissance_spirits_argent.png" alt="logo renaissance spirits" />
       </header>
@@ -43,29 +44,34 @@
       <section class="ui container">
 
           <div class="ui stackable four column centered grid">
-            <div class="two column centered row">
-              <div class="column"><p>Je certifie avoir l'âge requis  par les lois de mon pays<br /> de résidence pour accéder à ce site</p></div>
+            <div class="six column centered row">
+                <div class="column"><button class="ui fluid active inverted button accept">Renaissance France</button></div>
+                <div class="column"><a href="http://renaissance-spirits.com/iberia/"><button class="ui fluid inverted button">Renaissance Ibéria</button></a></div>
+            </div>
+            <div class="three column centered row">
+                <div class="column">
+                    <div class="ui fluid selection dropdown" tabindex="0">
+                      <input type="hidden" name="gender" />
+                      <i class="inverted dropdown icon"></i>
+                      <div class="text"><i class="fr flag"></i>Français</div>
+                      <div class="menu inverted" tabindex="-1">
+                        <div class="active item" data-value="fr"><i class="fr flag"></i>Français</div>
+                      </div>
+                    </div>
+                </div>
             </div>
 
-            <div class="eight column centered row">
+            <div class="two column centered row">
+              <div class="column"><p>Je certifie avoir l'âge requis  par les lois de mon pays de résidence pour accéder à ce site</p></div>
+            </div>
+
+            <div class="six column centered row">
               <div class="column"><button class="ui fluid inverted button accept">Oui</button></div>
               <div class="column"><a href="http://www.responsibledrinking.eu"><button class="ui fluid inverted button">Non</button></a></div>
             </div>
 
-            <div class="column">
-              <div class="ui fluid selection dropdown" tabindex="0">
-                <input type="hidden" name="gender" />
-                <i class="inverted dropdown icon"></i>
-                <div class="text"><i class="fr flag"></i>Français</div>
-                <div class="menu inverted" tabindex="-1">
-                  <div class="active item" data-value="fr"><i class="fr flag"></i>Français</div>
-                </div>
-              </div>
-            </div>
-
           </div>
       </section>
-
       <footer>
           L’ABUS D’ALCOOL EST DANGEREUX POUR LA SANTÉ. A CONSOMMER AVEC MODÉRATION.
       </footer>
