@@ -386,6 +386,17 @@ $(document).ready(function() {
             if ((cl.match('right') && dir.match('left')) || (dir.match('right') && cl.match('left'))) {
                 actu.className = 'actu fast ' + dir
                 delay = 100
+
+                // SPECIAL CASE: JUST 4 ACTU
+                if (actus.length === 4 && (cl === 'outleft' && dir === 'right')) {
+                    actu.className = 'actu fast outright'
+                }
+                if (actus.length === 4 && (cl === 'outright' && dir === 'left')) {
+                    actu.className = 'actu fast outleft'
+                }
+                if (actus.length === 4 && dir === 'outleft') {
+                    dir = 'left'
+                }
             }
 
             setTimeout(function(dir, actu) {
