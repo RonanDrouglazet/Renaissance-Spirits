@@ -305,8 +305,9 @@ $(document).ready(function() {
     /**************
      * SCREEN 3 - ACTU
      **************/
-    var actus
+    var actus, cdate
     var selectActusByDate = function(date) {
+        cdate = date
         actus = $('section .actu[data-date="' + date + '"]').show()
         $('section .actu:not([data-date="' + date + '"])').hide()
 
@@ -347,7 +348,7 @@ $(document).ready(function() {
     }
 
     var moveActu = function(left) {
-        var index = actus.get().indexOf($('section .actu.center').get(0))
+        var index = actus.get().indexOf($('section .actu.center[data-date="' + cdate + '"]').get(0))
         var acl = actus.length
         var delay = 0
         var dir = null
@@ -358,75 +359,53 @@ $(document).ready(function() {
             $(actu).css('z-index', actus.length - i)
         })
 
-        var dones = []
         actus.each(function(i, actu) {
-
             delay = 0
             var cl = actu.className.substr(5)
-            if (dones.indexOf(cl) !== -1) {
-                return
+
+            var after1 = index + 1 === acl ? 0 : index + 1
+            var after2 = index + 2 >= acl ? (index + 1) - (acl - 1) : index + 2
+
+            var before1 = index - 1 < 0 ? acl - 1 : index - 1
+            var before2 = index - 2 < 0 ? (acl - 1) + (index - 1) : index - 2
+
+            if (i === index) {
+                dir = left ? 'left' : 'right'
+            } else if (i === after1) {
+                dir = left ? 'center' : 'outright'
+            } else if (i === before1) {
+                dir = left ? 'outleft' : 'center'
+            } else if (i === after2) {
+                dir = left ? 'right' : 'outleft'
+            } else if (i === before2) {
+                dir = left ? 'outright' : 'left'
+            } else {
+                dir = left ? 'outright' : 'outleft'
             }
-            dones.push(cl)
 
-            switch (cl) {
-                case 'center':
-                    dir = left ? 'left' : 'right'
-                break
+            if ((cl.match('right') && dir.match('left')) || (dir.match('right') && cl.match('left'))) {
+                actu.className = 'actu fast ' + dir
+                delay = 100
+            }
 
-                case 'left':
-                    dir = left ? 'outleft' : 'center'
-                break
+            setTimeout(function(dir, actu) {
+                actu.className = 'actu ' + dir
 
-                case 'right':
-                    dir = left ? 'center' : 'outright'
-                break
-
-                case 'outleft':
-                    dir = left ? 'outright' : 'left'
-                    if (left) {
-                        actu.className = 'actu fast ' + dir
-                        delay = 100
-                        // special case if we have not enought actu
-                        if (actus.length === 4) {
-                            dir = 'right'
-                        }
+                if (dir === 'center') {
+                    if (!is_touch_device) {
+                        $(actu).find('.button').fadeIn(1000)
                     }
-                break
 
-                case 'outright':
-                    dir = left ? 'right' : 'outleft'
-                        if (!left) {
-                            actu.className = 'actu fast ' + dir
-                            delay = 100
-                            // special case if we have not enought actu
-                            if (actus.length === 4) {
-                                dir = 'left'
-                            }
-                        }
-                break
-            }
+                    $(actu).css('z-index', 10)
 
-
-            if (dir) {
-                setTimeout(function(dir, actu) {
-                    actu.className = 'actu ' + dir
-
-                    if (dir === 'center') {
-                        if (!is_touch_device) {
-                            $(actu).find('.button').fadeIn(1000)
-                        }
-
-                        $(actu).css('z-index', 10)
-
-                        if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
-                            actu_details($(actu).find('section'))
-                        }
-
-                        $('.screen3 .dates .date').removeClass('active');
-                        $('.screen3 .dates #' + $(actu).data('date') ).addClass('active');
+                    if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
+                        actu_details($(actu).find('section'))
                     }
-                }.bind(this, dir, actu), delay)
-            }
+
+                    $('.screen3 .dates .date').removeClass('active');
+                    $('.screen3 .dates #' + $(actu).data('date') ).addClass('active');
+                }
+            }.bind(this, dir, actu), delay)
         })
     }
 
