@@ -605,12 +605,7 @@ $(document).ready(function() {
 
         actual.insertBefore('.marques.arrowcontainer')
 
-        if (nb || nb === 0) {
-            $('body > .screen10 .container .menu > div.active').removeClass('active')
-            $($('body > .screen10 .container .menu > div').get(nb)).addClass('active')
-        }
-
-        screen10()
+        screen10(nb)
 
         clearInterval(interval_slide)
         interval_slide = true // deactivate scroll listening
@@ -714,7 +709,7 @@ $(document).ready(function() {
      /**************
      * SCREEN 10 - PRODUCT DETAILS
      **************/
-     var screen10 = function() {
+     var screen10 = function(nb) {
          var slideW = $('body > .screen10 .slide').width()
          if (win.width() < slideW) {
             $('body > .screen10 .slides').css('height', '1100px')
@@ -725,7 +720,7 @@ $(document).ready(function() {
          // init slides
          var center = win.width() < slideW ? 0 : 50
          var menus = $('body > .screen10 .container .menu > div')
-         var active = 0
+         var active = nb || 0
 
          $('body > .screen10 .container .menu > div.active').removeClass('active')
          $(menus[active]).addClass('active')
