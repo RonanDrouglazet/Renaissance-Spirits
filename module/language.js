@@ -7,9 +7,10 @@
             $(el).contents().filter(function() {
                 return this.nodeType == 3 && !!$(this).text().trim()
             }).each(function(i, text) {
-                var sln = $(el).children('.ob-language').find('.ob-language.' + ln + ' span')[i]
-                if (sln) {
-                    text.textContent = $(sln).text()
+                var sln = $(el).children('.ob-language').find('.ob-language.' + ln + ' span.' + ln + i)
+
+                if (sln.length) {
+                    text.textContent = sln.text()
                 }
             })
         })
