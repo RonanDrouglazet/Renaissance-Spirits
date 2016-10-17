@@ -815,6 +815,7 @@ $(document).ready(function() {
            }
            $('header .marques').hide()
            $('.screen8 .cartouche').hide()
+           $('.bouteilles .content').get(0).style = ""
            GLOBAL_ANIMATE = true
            save()
        }
