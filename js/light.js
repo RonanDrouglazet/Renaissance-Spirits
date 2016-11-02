@@ -3,8 +3,9 @@ $(document).ready(function() {
     /**************
      * MENU
      **************/
-
-    $('header .selectbar').each(function(i, bar) {
+     
+    $('header .selectbar').hide()
+    /*$('header .selectbar').each(function(i, bar) {
         var select = $(this)
         $(bar).parent().find('.column').each(function(i, bt) {
             var span = $(bt).find('span')
@@ -17,7 +18,7 @@ $(document).ready(function() {
                 }, function() {})
             }
         })
-    })
+    })*/
 
     var fmenu = $('header .floating')
     var menu = $('.menu.mobile')
