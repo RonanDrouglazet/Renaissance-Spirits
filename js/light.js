@@ -32,3 +32,15 @@ $(document).ready(function() {
     })
 
 });
+
+if (window.top === window) {
+    var hash = window.location.hash.replace('#', '') || window.localStorage.getItem('hash')
+    if (window.localStorage.getItem('hash') && !window.location.hash.replace('#', '')) {
+        window.location.hash = '#' + hash
+        window.location.reload()
+    }
+
+    if (hash) {
+        window.localStorage.setItem('hash', hash)
+    }
+}
