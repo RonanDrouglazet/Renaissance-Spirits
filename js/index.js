@@ -226,7 +226,7 @@ $(document).ready(function() {
          btToHide.hide()
          ctnToTouch.on('touchstart', function(e) {
              start = e.originalEvent.touches[0].pageX
-             limit = window.innerWidth * .25
+             limit = window.innerWidth * .10
              stop = false
          })
          ctnToTouch.on('touchmove', function(e) {
