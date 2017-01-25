@@ -428,7 +428,7 @@ $(document).ready(function() {
                         $(actu).children('.button').fadeIn(1000)
                     }
 
-                    $(actu).css('z-index', 10)
+                    $(actu).css('z-index', 100)
 
                     if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
                         actu_details($(actu).find('section'))
