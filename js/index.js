@@ -374,7 +374,7 @@ $(document).ready(function() {
         var delay = 0
         var dir = null
 
-        actus.find('.button').fadeOut(1000)
+        actus.children('.button').fadeOut(1000)
 
         actus.each(function(i, actu) {
             $(actu).css('z-index', actus.length - i)
@@ -425,7 +425,7 @@ $(document).ready(function() {
 
                 if (dir === 'center') {
                     if (!is_touch_device) {
-                        $(actu).find('.button').fadeIn(1000)
+                        $(actu).children('.button').fadeIn(1000)
                     }
 
                     $(actu).css('z-index', 10)
