@@ -354,16 +354,16 @@ $(document).ready(function() {
             // hide or show arrow button if center actu
             if (classname === 'center') {
                 if (!is_touch_device) {
-                    $(actu).find('.button').fadeIn(1000)
+                    $(actu).children('.button').fadeIn(1000)
                 } else {
-                    $(actu).find('.button').fadeOut(1000)
+                    $(actu).children('.button').fadeOut(1000)
                 }
                 // and show details if already open
                 if ($(document.body).children('.screen9').length && $(document.body).children('.screen9').css('display') !== 'none') {
                     actu_details($(actu).find('section'))
                 }
             } else {
-                $(actu).find('.button').fadeOut(1000)
+                $(actu).children('.button').fadeOut(1000)
             }
         })
     }
