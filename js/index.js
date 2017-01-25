@@ -453,8 +453,7 @@ $(document).ready(function() {
         actual.insertBefore('.actu.arrowcontainer')
     }
 
-    selectActusByDate(2015)
-    selectActusByDate(2016)
+    selectActusByDate($('.dates .date').get(0).id)
 
     if (is_touch_device) {
         makeMeTouch(actus.find('.button'), $('.screen3'), function(left) {
