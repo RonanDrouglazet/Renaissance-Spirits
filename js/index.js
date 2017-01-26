@@ -844,21 +844,19 @@ $(document).ready(function() {
             if (duplicate) {
                 var now = Date.now()
                 $('section .actu[data-date="' + date.id + '"]').each(function(i, actu) {
-                    // THE CLIENT ASK US TO ONLY CLONE THE MINIMUM ACTU WHEN DUPLICATE DATE
-                    if (i < 4) {
-                        var clone = $(actu).clone()
-                        clone
-                            .attr('data-date', now)
-                            .appendTo('section#actualites')
-                        clone
-                            .find('.button')
-                            .click(function() {
-                                moveActu($(this).hasClass('right'))
-                            })
-                        clone
-                            .find('.content')
-                            .click(show_actu_details)
-                    }
+                    var clone = $(actu).clone()
+                    clone
+                        .attr('data-date', now)
+                        .appendTo('section#actualites')
+                    clone
+                        .find('.button')
+                        .click(function() {
+                            moveActu($(this).hasClass('right'))
+                        })
+                    clone
+                        .find('.content')
+                        .click(show_actu_details)
+
                 })
                 $('section#actualites > .dates > .date').removeClass('active')
                 $(date).attr('id', now).addClass('active').click(function() {
