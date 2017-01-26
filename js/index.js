@@ -456,7 +456,7 @@ $(document).ready(function() {
     selectActusByDate($('.dates .date').get(0).id)
 
     if (is_touch_device) {
-        makeMeTouch(actus.find('.button'), $('.screen3'), function(left) {
+        makeMeTouch(actus.children('.button'), $('.screen3'), function(left) {
             moveActu(!left)
         })
     }
@@ -849,12 +849,12 @@ $(document).ready(function() {
                         .attr('data-date', now)
                         .appendTo('section#actualites')
                     clone
-                        .find('.button')
+                        .children('.button')
                         .click(function() {
                             moveActu($(this).hasClass('right'))
                         })
                     clone
-                        .find('.content')
+                        .children('.content')
                         .click(show_actu_details)
 
                 })
@@ -882,10 +882,10 @@ $(document).ready(function() {
 
        window.octoboot_duplicate_actu = function(actu, duplicate) {
            if (duplicate) {
-               $(actu).find('.button').click(function() {
+               $(actu).children('.button').click(function() {
                    moveActu($(this).hasClass('right'))
                })
-               $(actu).find('.content').click(show_actu_details)
+               $(actu).children('.content').click(show_actu_details)
 
                selectActusByDate($('section#actualites > .dates > .date.active').attr('id'))
            } else {
