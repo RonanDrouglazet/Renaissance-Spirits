@@ -447,10 +447,17 @@ $(document).ready(function() {
         actual.data('referer', section)
 
         if (current.length) {
+            if ($('body > .screen9 video').length) {
+                $('body > .screen9 video').get(0).pause()
+            }
             current.data('referer').replaceWith(current)
         }
 
         actual.insertBefore('.actu.arrowcontainer')
+
+        if ($('body > .screen9 video').length) {
+            $('body > .screen9 video').get(0).play()
+        }
     }
 
     selectActusByDate($('.dates .date').get(0).id)
@@ -483,6 +490,10 @@ $(document).ready(function() {
             }
 
             $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer')
+
+            if ($('body > .screen9 video').length) {
+                $('body > .screen9 video').get(0).play()
+            }
         } else {
             actu.find('section').replaceWith($('body > .screen9').clone())
 
@@ -497,6 +508,10 @@ $(document).ready(function() {
             }
 
             $(this).removeClass('rotate').appendTo('.screen3')
+
+            if ($('body > .screen9 video').length) {
+                $('body > .screen9 video').get(0).pause()
+            }
         }
     }
 
