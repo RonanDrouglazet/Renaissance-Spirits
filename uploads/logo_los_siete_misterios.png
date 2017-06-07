@@ -401,7 +401,7 @@
             <div class="column" data-to=".screen6acr">
                <span>CONTACT<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">CONTACT</span></span></span></span>
             </div>
-            <div class="selectbar" style="display: block; left: 0px; top: 9772px; width: 0px;"></div>
+            <div class="selectbar" style="display: block; left: 0px; top: 7772px; width: 0px;"></div>
             <div class="icon">
                <img src="img/LOGO-RS-BLANC_VALEURS.png" />
             </div>
@@ -1489,8 +1489,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/vermouth2.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(91, 139, 174, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/vermouth2.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(91, 139, 174, 0.85098);">
                <div class="content">
                   <div class="logo">
                      <img src="img/vermouth_logo.png" alt="logo" height="209" />
@@ -1608,8 +1608,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/tequila.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(232, 207, 164, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/tequila.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(232, 207, 164, 0.85098);">
                <div class="content">
                   <div class="logo">
                      <img src="img/tequila_logo.png" alt="logo" height="64" />
@@ -1729,8 +1729,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(255, 160, 69, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(255, 160, 69, 0.85098);">
                <div class="content">
                   <div class="logob">
                      <img src="img/liqueur_logo.png" alt="logo" />
@@ -2643,10 +2643,10 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
                   <p>Los Siete Misterios est né en 2010 avec le désir de remettre à l'honneur la tradition du Mezcal en favorisant le commerce local et les petits producteurs, le tout avec une approche contemporaine.<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Los Siete Misterios est né en 2010 avec le désir de remettre à l'honneur la tradition du Mezcal en favorisant le commerce local et les petits producteurs, le tout avec une approche contemporaine.</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">English speakers call it “spicy ginger beer” for its high ginger content, and this unique beverage gives your mouth a real “kick”, much like alcohol does.</span></span></span></p>
                   <p>Certifié 100% d’Agave, chaque Mezcal de la gamme Los Siete Misterios est composé d’une seule variété d’Agave apportant des arômes spécifiques et propres à chaque bouteille. <span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Certifié 100% d’Agave, chaque Mezcal de la gamme Los Siete Misterios est composé d’une seule variété d’Agave apportant des arômes spécifiques et propres à chaque bouteille. </span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Pimento is the perfect soft drink for people who don’t drink alcohol or who think that classic sodas lack any real flavour. </span></span></span></p>
                   <p>A la recherche de caractéristiques extraordinaires, les distillateurs de Los Siete Misterios ont élaboré le  Mezcal Espadin à partir d’Agave de la célèbre région de la Sola de Vega lui offrant une puissance florale ainsi qu’une légère amertume. <span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">A la recherche de caractéristiques extraordinaires, les distillateurs de Los Siete Misterios ont élaboré le  Mezcal Espadin à partir d’Agave de la célèbre région de la Sola de Vega lui offrant une puissance florale ainsi qu’une légère amertume. </span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Bartenders prefer Pimento because its chilli pepper really enhances flavours. The soft drink is arguably the most versatile mixer there is with 100% of spirits. </span></span></span></p>
-                  <a href="img/Pimento.pdf" target="_blank" ob-language-default="href=img/Pimento.pdf" ob-language-en="href=uploads/Pimento_EN.pdf">
+                  <a href="../uploads/LosSieteMisterios_FR.pdf" target="_blank" ob-language-default="href=../uploads/LosSieteMisterios_FR.pdf" ob-language-en="href=uploads/Pimento_EN.pdf">
                   <div class="button" ob-language-default="style=font-size:14px" ob-language-en="style=font-size:13px" style="font-size:14px">Télécharger la fiche produit<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Télécharger la fiche produit</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Download the product datasheet</span></span></span>
                   </div>
-            </a><a href="http://www.sietemisterios.com/fr" target="_blank">
+            </a><a href="http://www.pimentodrink.com/" target="_blank">
             <div class="button right">Visiter le site internet<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Visiter le site internet</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Visit website</span></span></span>
             </div>
             </a>
@@ -2667,10 +2667,10 @@ Doba yej</span></span></span></p>
                   <p>Los Siete Misterios est né en 2010 avec le désir de remettre à l'honneur la tradition du Mezcal en favorisant le commerce local et les petits producteurs, le tout avec une approche contemporaine.<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Los Siete Misterios est né en 2010 avec le désir de remettre à l'honneur la tradition du Mezcal en favorisant le commerce local et les petits producteurs, le tout avec une approche contemporaine.</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">English speakers call it “spicy ginger beer” for its high ginger content, and this unique beverage gives your mouth a real “kick”, much like alcohol does.</span></span></span></p>
                   <p>Certifié 100% d’Agave, chaque Mezcal de la gamme Los Siete Misterios est composé d’une seule variété d’Agave apportant des arômes spécifiques et propres à chaque bouteille. <span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Certifié 100% d’Agave, chaque Mezcal de la gamme Los Siete Misterios est composé d’une seule variété d’Agave apportant des arômes spécifiques et propres à chaque bouteille. </span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Pimento is the perfect soft drink for people who don’t drink alcohol or who think that classic sodas lack any real flavour. </span></span></span></p>
                   <p>Ce jeune Mezcal 100% Agave provenant de la région de Santiago Matatlán est le premier Mezcal de la gamme à être élaboré à partir d’Agave d’une région autre que la traditionnelle Sola de Vega. Le Mezcal Doba Yej offre des notes d’agrumes et d’Agave caramélisé pour une teneur en bouche intense. <span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Ce jeune Mezcal 100% Agave provenant de la région de Santiago Matatlán est le premier Mezcal de la gamme à être élaboré à partir d’Agave d’une région autre que la traditionnelle Sola de Vega. Le Mezcal Doba Yej offre des notes d’agrumes et d’Agave caramélisé pour une teneur en bouche intense. </span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Bartenders prefer Pimento because its chilli pepper really enhances flavours. The soft drink is arguably the most versatile mixer there is with 100% of spirits. </span></span></span></p>
-                  <a href="img/Pimento.pdf" target="_blank" ob-language-default="href=img/Pimento.pdf" ob-language-en="href=uploads/Pimento_EN.pdf">
+                  <a href="../uploads/LosSieteMisterios_FR.pdf" target="_blank" ob-language-default="href=../uploads/LosSieteMisterios_FR.pdf" ob-language-en="href=uploads/Pimento_EN.pdf">
                   <div class="button" ob-language-default="style=font-size:14px" ob-language-en="style=font-size:13px" style="font-size: 14px; position: static;">Télécharger la fiche produit<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Télécharger la fiche produit</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Download the product datasheet</span></span></span>
                   </div>
-            </a><a href="http://www.sietemisterios.com/fr" target="_blank">
+            </a><a href="http://www.pimentodrink.com/" target="_blank">
             <div class="button right" style="position: static;">Visiter le site internet<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Visiter le site internet</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Visit website</span></span></span>
             </div>
             </a>
@@ -2683,7 +2683,7 @@ Doba yej</span></span></span></p>
                <img src="uploads/espadin.jpg" alt="" title="" />
             </div>
             <div class="footer">
-               <a href="https://www.facebook.com/MezcalSieteMisterios/" target="_blank"><img src="img/PICTO_FACEBOOK.png" /></a><a href="img/Pimento.zip" target="_blank"><img src="img/PICTO_TELECHARGER.png" /></a>
+               <a href="https://www.facebook.com/pimento.drink/?fref=ts" target="_blank"><img src="img/PICTO_FACEBOOK.png" /></a><a href="img/Pimento.zip" target="_blank"><img src="img/PICTO_TELECHARGER.png" /></a>
             </div>
 </div>
 </section>
@@ -2885,5 +2885,4 @@ Doba yej</span></span></span></p>
 </section>
          <footer>L’ABUS D’ALCOOL EST DANGEREUX POUR LA SANTÉ. A CONSOMMER AVEC MODÉRATION.<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">L’ABUS D’ALCOOL EST DANGEREUX POUR LA SANTÉ. A CONSOMMER AVEC MODÉRATION.</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">EXCESSIVE ALCOHOL CONSUMPTION CAUSES HEALTH RISKS. DRINK IN MODERATION.</span></span></span>
          </footer>
-         <a href="https://www.facebook.com/renaissancespirits/" target="_blank"><button class="ui facebook main icon button"><i class="facebook f big icon"></i></button></a>
-</body></html>
+         <a href="https://www.facebook.com/renaissancespirits/" target="_blank"><button class="ui facebook main icon button"><i class="facebook f big icon"></i></button></a></body></html>
