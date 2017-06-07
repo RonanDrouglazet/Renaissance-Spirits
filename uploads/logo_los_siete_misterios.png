@@ -84,8 +84,8 @@
                <span>CONTACT<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">CONTACT</span></span></span></span>
             </div>
             <div class="one wide column"></div>
-            <div class="selectbar" style="left: 987.969px; width: 57px; display: none;"></div>
-            <div class="selectbar" style="display: block; left: 987.969px; width: 57px;"></div>
+            <div class="selectbar" style="left: 981.906px; width: 69px; display: none;"></div>
+            <div class="selectbar" style="display: block; left: 1553.78px; width: 71px;"></div>
 </div>
             <div class="marques" style="display: none;">
                <div class="ui grid">
@@ -301,18 +301,18 @@
 </div>
             <div class="row" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
                <div class="three wide column main">
-                  <div class="button active">
+                  <div class="button">
                      <span>Soft drink<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Soft drink</span></span></span></span>
                      <div class="arrow"></div>
 </div>
 </div>
-            <div class="three wide column active">
-               <div class="button active" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
+            <div class="three wide column">
+               <div class="button" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
                   <span>PIMENTO<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">PIMENTO</span></span></span></span>
                   <div class="arrow"></div>
 </div>
 </div>
-            <div class="ten wide column active">
+            <div class="ten wide column">
                <div style="visibility: visible;">
                   <div class="buttonl" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">PIMENTO Gingembre<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">PIMENTO Gingembre</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Pimento Ginger</span></span></span>
                   </div>
@@ -320,18 +320,18 @@
 </div>
 </div><div class="row" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
                <div class="three wide column main">
-                  <div class="button">
+                  <div class="button active">
                      <span>Mezcal<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Mezcal</span></span></span></span>
                      <div class="arrow"></div>
 </div>
 </div>
-            <div class="three wide column">
-               <div class="button" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
+            <div class="three wide column active">
+               <div class="button active" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">
                   <span>LOS SIETE MISTERIOS<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">LOS SIETE MISTERIOS</span></span></span></span>
                   <div class="arrow"></div>
 </div>
 </div>
-            <div class="ten wide column">
+            <div class="ten wide column active">
                <div style="visibility: visible;">
                   <div class="buttonl" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">LOS SIETE MISTERIOS Espadin<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">LOS SIETE MISTERIOS Espadin</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Pimento Ginger</span></span></span></div><div class="buttonl" ob-duplicable="octoboot_duplicate_marque" alt="ob-basic-edit">LOS SIETE MISTERIOS Doba Yej<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">LOS SIETE MISTERIOS Doba Yej</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Pimento Ginger</span></span></span></div>
 </div>
@@ -401,7 +401,7 @@
             <div class="column" data-to=".screen6acr">
                <span>CONTACT<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">CONTACT</span></span></span></span>
             </div>
-            <div class="selectbar" style="display: block; left: 0px; top: 7022px; width: 0px;"></div>
+            <div class="selectbar" style="display: block; left: 0px; top: 10022px; width: 0px;"></div>
             <div class="icon">
                <img src="img/LOGO-RS-BLANC_VALEURS.png" />
             </div>
@@ -653,7 +653,7 @@
          </div>
 </div>
          
-         <div ob-duplicable="octoboot_duplicate_actu" class="actu center" data-date="1484757286143" style="z-index: 4; display: block;" alt="ob-basic-edit"><div class="content"><img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_MANISHARORA_2017_CIROC_BAR.jpg" title="" />
+         <div ob-duplicable="octoboot_duplicate_actu" class="actu left" data-date="1484757286143" style="z-index: 4; display: block;" alt="ob-basic-edit"><div class="content"><img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_MANISHARORA_2017_CIROC_BAR.jpg" title="" />
 <p class="title">NEWSPAPER - CHARENTE LIBRE<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">NEWSPAPER - CHARENTE LIBRE</span></span></span></p>
 
 <p class="desc">The Stars of the Economy : Entrepreneur of the Year Award for Maison Villevert<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">The Stars of the Economy : Entrepreneur of the Year Award for Maison Villevert</span></span></span></p>
@@ -671,10 +671,10 @@
 </section>
 </div>
 
-<div class="button"><img src="img/arrow_left.png" /></div>
+<div class="button" style="display: none;"><img src="img/arrow_left.png" /></div>
 
-<div class="button right"><img src="img/arrow_right.png" /></div>
-</div><div ob-duplicable="octoboot_duplicate_actu" class="actu right" data-date="1484757286143" style="z-index: 3; display: block;" alt="ob-basic-edit">
+<div class="button right" style="display: none;"><img src="img/arrow_right.png" /></div>
+</div><div ob-duplicable="octoboot_duplicate_actu" class="actu center" data-date="1484757286143" style="z-index: 100; display: block;" alt="ob-basic-edit">
             <div class="content">
                <img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_GROOM_2017_GVINE_BOUTEILLES.jpg" title="" />
                <p class="title">G'ROOM - PARIS<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">G'ROOM - PARIS</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">NEWSPAPER - CHARENTE LIBRE</span></span></span></p>
@@ -692,14 +692,14 @@
 <img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_GROOM_2017_GVINE_COCKTAIL.jpg" title="" /><img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_GROOM_2017_GVINE_ROOM.jpg" title="" /><img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_GROOM_2017_GVINE_GOODIES.jpg" title="" /><img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_GROOM_2017_GVINE.jpg" title="" /></div>
 </section>
 </div>
-         <div class="button" style="display: none;">
+         <div class="button">
             <img src="img/arrow_left.png" />
          </div>
-         <div class="button right" style="display: none;">
+         <div class="button right">
             <img src="img/arrow_right.png" />
          </div>
 </div>
-         <div ob-duplicable="octoboot_duplicate_actu" class="actu outright" data-date="1484757286143" style="z-index: 2; display: block;" alt="ob-basic-edit">
+         <div ob-duplicable="octoboot_duplicate_actu" class="actu right" data-date="1484757286143" style="z-index: 2; display: block;" alt="ob-basic-edit">
             <div class="content">
                <img alt="" src="uploads/FIGARO_MAGAZINE_JEAN_SEBASTIEN_ROBICQUET.jpg" title="" />
                <p class="title">ARTICLE DE PRESSE - FIGARO MAGAZINE<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">ARTICLE DE PRESSE - FIGARO MAGAZINE</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">NEWSPAPER - LE POINT</span></span></span></p>
@@ -727,7 +727,7 @@
             <img src="img/arrow_right.png" />
          </div>
 </div>
-         <div ob-duplicable="octoboot_duplicate_actu" class="actu left" data-date="1484757286143" style="z-index: 1; display: block;" alt="ob-basic-edit">
+         <div ob-duplicable="octoboot_duplicate_actu" class="actu outleft" data-date="1484757286143" style="z-index: 1; display: block;" alt="ob-basic-edit">
             <div class="content">
                <img alt="" src="uploads/RENAISSANCE_SPIRITS_FRANCE_NOUVEL_AN_RUSSE_2017_BELUGA.jpg" title="" />
                <p class="title">NOUVEL AN RUSSE - PARIS<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">NOUVEL AN RUSSE - PARIS</span></span></span></p>
@@ -1489,8 +1489,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/vermouth2.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(91, 139, 174, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/vermouth2.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(91, 139, 174, 0.85098);">
                <div class="content">
                   <div class="logo">
                      <img src="img/vermouth_logo.png" alt="logo" height="209" />
@@ -1608,8 +1608,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/tequila.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(232, 207, 164, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/tequila.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(232, 207, 164, 0.85098);">
                <div class="content">
                   <div class="logo">
                      <img src="img/tequila_logo.png" alt="logo" height="64" />
@@ -1729,8 +1729,8 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(255, 160, 69, 0.85);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/liqueur.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(255, 160, 69, 0.85098);">
                <div class="content">
                   <div class="logob">
                      <img src="img/liqueur_logo.png" alt="logo" />
@@ -1791,7 +1791,7 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/vodka.jpg&quot;); display: none;">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/vodka.jpg&quot;); display: none;">
             <div class="cover" style="left: 100%; background-color: rgba(169, 173, 179, 0.8);">
                <div class="content">
                   <div class="logo">
@@ -1942,7 +1942,7 @@
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/Ciroc.jpg&quot;); display: none;">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/Ciroc.jpg&quot;); display: none;">
             <div class="cover" style="left: 100%; background-color: rgba(43, 61, 141, 0.8);">
                <div class="content">
                   <div class="logo">
@@ -2222,8 +2222,8 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/rhum.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(253, 197, 84, 0.78);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/rhum.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(253, 197, 84, 0.780392);">
                <div class="content">
                   <div class="logo">
                      <img src="img/rhum_logo.png" alt="logo" height="94" />
@@ -2280,7 +2280,7 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;uploads/PHOTO_PRESENTATION_BUMBU.jpg&quot;); display: none;">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;uploads/PHOTO_PRESENTATION_BUMBU.jpg&quot;); display: none;">
             <div class="cover" style="left: 100%; background-color: rgba(144, 66, 3, 0.831373);">
                <div class="content">
                   <div class="logo">
@@ -2338,7 +2338,7 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/eaudevie.jpg&quot;); display: none;">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/eaudevie.jpg&quot;); display: none;">
             <div class="cover" style="left: 100%; background-color: rgba(116, 15, 15, 0.8);">
                <div class="content">
                   <div class="logo">
@@ -2431,8 +2431,8 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/bel.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(169, 30, 108, 0.83);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/bel.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(169, 30, 108, 0.831373);">
                <div class="content">
                   <div class="logo">
                      <img src="img/belaire_logo.png" alt="logo" height="101" />
@@ -2554,8 +2554,8 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </section>
 </div>
 </div>
-         <div class="slide" style="left: 0px; transition: left 1s ease; background-image: url(&quot;img/soft.jpg&quot;);">
-            <div class="cover" style="left: 0px; background-color: rgba(182, 146, 83, 0.8);">
+         <div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/soft.jpg&quot;); display: none;">
+            <div class="cover" style="left: 100%; background-color: rgba(182, 146, 83, 0.8);">
                <div class="content">
                   <div class="logo">
                      <img src="img/soft_logo.png" alt="logo" />
@@ -2613,8 +2613,8 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </div>
 </section>
 </div>
-</div><div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;uploads/Los-Siete-Misterios.jpg&quot;); display: none;">
-            <div class="cover" style="left: 100%; background-color: rgba(124, 44, 130, 0.8);">
+</div><div class="slide" style="left: 0px; transition: left 1s ease; background-image: url(&quot;uploads/Los-Siete-Misterios.jpg&quot;); display: block;">
+            <div class="cover" style="left: 0px; background-color: rgba(124, 44, 130, 0.8);">
                <div class="content">
                   <div class="logo">
                      <img src="uploads/logo_los_siete_misterios.png" alt="Logo los siete misterios" title="Logo los siete misterios" />
@@ -2629,9 +2629,9 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
 </div>
 </div>
          <section class="screen10">
-            <div class="ui container"><div class="menu" style="display: none;"><div><div class="line"></div></div><div class="active"></div></div>
+            <div class="ui container"><div class="menu" style="display: none;"><div class="active"><div class="line"></div></div><div></div></div>
                <div class="slides">
-                  <div class="slide" style="left: -200%; transition: left 1s ease-in-out;">
+                  <div class="slide" style="left: 50%; transition: left 1s ease-in-out;">
                      <div class="ui two column stackable grid">
                         <div class="column">
                            <img src="uploads/LOS_SIETE_MISTERIOS_Espadin.jpg" alt="Los siete misterios espadin" title="Los siete misterios espadin" />
@@ -2646,14 +2646,14 @@ in cocktails such as the classic "Cîroc-o-lada", with coconut water and premium
                   <a href="img/Pimento.pdf" target="_blank" ob-language-default="href=img/Pimento.pdf" ob-language-en="href=uploads/Pimento_EN.pdf">
                   <div class="button" ob-language-default="style=font-size:14px" ob-language-en="style=font-size:13px" style="font-size:14px">Télécharger la fiche produit<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Télécharger la fiche produit</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Download the product datasheet</span></span></span>
                   </div>
-            </a><a href="http://www.pimentodrink.com/" target="_blank" ob-language-default="href=http://www.pimentodrink.com/" ob-language-en="href=http://www.sietemisterios.com/">
+            </a><a href="http://www.pimentodrink.com/" target="_blank">
             <div class="button right">Visiter le site internet<span class="ob-language" style="display:none"><span class="default ob-language" style="display:none"><span class="default0 ob-language">Visiter le site internet</span></span><span class="en ob-language" style="display:none"><span class="en0 ob-language">Visit website</span></span></span>
             </div>
             </a>
          </div>
 </div>
 </div>
-</div><div class="slide" style="left: 50%; transition: left 1s ease-in-out;">
+</div><div class="slide" style="left: 200%; transition: left 1s ease-in-out;">
                      <div class="ui two column stackable grid">
                         <div class="column">
                            <img src="uploads/LOS_SIETE_MISYTERIOS_Doba%20Yej_Morelos.jpg" alt="Los siete misterios boba yej" title="Los siete misterios boba yej" />
@@ -2683,12 +2683,12 @@ Doba yej</span></span></span></p>
                <img src="uploads/espadin.jpg" alt="" title="" />
             </div>
             <div class="footer">
-               <a href="https://www.facebook.com/pimento.drink/?fref" target="_blank" ob-language-default="href=https://www.facebook.com/pimento.drink/?fref=ts" ob-language-en="href=https://www.facebook.com/search/top/?q=mezcal%20los%20siete%20misterios"><img src="img/PICTO_FACEBOOK.png" /></a><a href="img/Pimento.zip" target="_blank"><img src="img/PICTO_TELECHARGER.png" /></a>
+               <a href="https://www.facebook.com/pimento.drink/?fref=ts" target="_blank"><img src="img/PICTO_FACEBOOK.png" /></a><a href="../uploads/LOS_SIETE_MISTERIOS.rar" target="_blank"><img src="img/PICTO_TELECHARGER.png" /></a>
             </div>
 </div>
 </section>
 </div>
-</div><div class="slide" style="left: 100%; transition: left 1s ease; background-image: url(&quot;img/soft.jpg&quot;); display: none;">
+</div><div class="slide" style="left: -100%; transition: left 1s ease; background-image: url(&quot;img/soft.jpg&quot;); display: none;">
             <div class="cover" style="left: 100%; background-color: rgba(182, 146, 83, 0.8);">
                <div class="content">
                   <div class="logo">
