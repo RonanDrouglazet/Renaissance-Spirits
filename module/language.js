@@ -21,7 +21,15 @@
                 data = $(el).attr('ob-language-' + ln).split('&')
                 data.forEach(function(attr) {
                     attr = attr.split('=')
-                    $(el).attr(attr[0], attr[1])
+                    if (attr[0] === 'style')  {
+                        var styles = attr[1].split(';')
+                        styles.forEach(function(style) {
+                            var styleSplited = style.split(':')
+                            $(el).css(styleSplited[0], styleSplited[1])
+                        })
+                    } else {
+                        $(el).attr(attr[0], attr[1])
+                    }
                 })
 
             } catch (e) {console.error(e)}
