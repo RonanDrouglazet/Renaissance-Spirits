@@ -491,7 +491,7 @@ $(document).ready(function() {
 
             $('.screen3 .button_down').addClass('rotate').appendTo('body > .actu.arrowcontainer')
 
-            if ($('body > .screen9 video').length) {
+            if ($('body > .screen9 video').length && $('body > .screen9 video').attr("muted") !== undefined) {
                 $('body > .screen9 video').get(0).play()
             }
         } else {
