@@ -455,7 +455,7 @@ $(document).ready(function() {
 
         actual.insertBefore('.actu.arrowcontainer')
 
-        if ($('body > .screen9 video').length) {
+        if ($('body > .screen9 video').length && $('body > .screen9 video').attr("muted") !== undefined) {
             $('body > .screen9 video').get(0).play()
         }
     }
