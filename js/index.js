@@ -145,16 +145,16 @@ $(document).ready(function() {
     }
 
     var submenu_marques_click = function() {
-        var diff = 0
+        var diff = -1
         $('header .marques .row .column:last-child').each(function(i, row) {
             $(row).children('div').each(function(a, div) {
-                diff += a
+                diff++
                 $(div).find('.buttonl').each(function(ib, button) {
                     var diff2 = diff
                     $(button).off('click').click(function() {
                         $('header .marques').hide()
                         // select marque
-                        select_slide(i + diff2, true)
+                        select_slide(diff2, true)
                         // select details
                         setTimeout(function() {
                             showDetails($(slides[index_slide]).find('section'), ib)
